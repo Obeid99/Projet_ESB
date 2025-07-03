@@ -306,6 +306,12 @@
             <div class="chat-header">
                 <h1>🤖 ESB Multi-Agent Chatbot</h1>
                 <p>Live Demo - Powered by 6 AI Agents</p>
+                <div id="authSection" style="margin-top:10px;">
+                    <span id="authStatus"></span>
+                    <button id="loginBtn" onclick="showLoginModal()">Login</button>
+                    <button id="logoutBtn" onclick="logout()" style="display:none;">Logout</button>
+                    <button id="registerBtn" onclick="showRegisterModal()">Register</button>
+                </div>
             </div>
             
             <div class="chat-messages" id="chatMessages">
@@ -337,6 +343,21 @@
                 <h3>🤖 Agent Status</h3>
                 <div id="agentStatus">
                     <div class="loading"></div> Loading agents...
+                </div>
+            </div>
+
+            <div class="sidebar-section" id="projectsSection">
+                <h3>📁 Projects</h3>
+                <div id="projectsList">
+                    <div style="color:#888;">No projects yet.</div>
+                </div>
+                <button style="margin-top:10px;width:100%;" onclick="showCreateProjectModal()">+ New Project</button>
+            </div>
+
+            <div class="sidebar-section" id="chatHistorySection">
+                <h3>🕑 Chat History</h3>
+                <div id="chatHistoryList">
+                    <div style="color:#888;">No chat history yet.</div>
                 </div>
             </div>
 
@@ -373,12 +394,37 @@
         </div>
     </div>
 
+    <!-- Login Modal -->
+    <div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:1000; justify-content:center; align-items:center;">
+        <div style="background:white; padding:30px; border-radius:12px; min-width:300px;">
+            <h2>Login</h2>
+            <input id="loginUsername" type="text" placeholder="Username" style="width:100%; margin-bottom:10px; padding:8px;">
+            <input id="loginPassword" type="password" placeholder="Password" style="width:100%; margin-bottom:10px; padding:8px;">
+            <button onclick="login(); return false;" style="width:100%; padding:10px;">Login</button>
+            <button onclick="hideLoginModal(); return false;" style="width:100%; margin-top:8px;">Cancel</button>
+            <div id="loginError" style="color:red; margin-top:8px;"></div>
+        </div>
+    </div>
+    <!-- Register Modal -->
+    <div id="registerModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:1000; justify-content:center; align-items:center;">
+        <div style="background:white; padding:30px; border-radius:12px; min-width:300px;">
+            <h2>Register</h2>
+            <input id="registerUsername" type="text" placeholder="Username" style="width:100%; margin-bottom:10px; padding:8px;">
+            <input id="registerPassword" type="password" placeholder="Password" style="width:100%; margin-bottom:10px; padding:8px;">
+            <button onclick="register(); return false;" style="width:100%; padding:10px;">Register</button>
+            <button onclick="hideRegisterModal(); return false;" style="width:100%; margin-top:8px;">Cancel</button>
+            <div id="registerError" style="color:red; margin-top:8px;"></div>
+        </div>
+    </div>
+
     <script>
         let isProcessing = false;
 
         // Load agent status on page load
         window.onload = function() {
             loadAgentStatus();
+            loadProjects();
+            loadChatHistory();
             document.getElementById('messageInput').focus();
         };
 
@@ -546,6 +592,133 @@
             messagesDiv.appendChild(messageDiv);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
+
+        // --- PROJECTS & CHAT HISTORY LOGIC ---
+        function showCreateProjectModal() {
+            const name = prompt('Enter a name for your new project:');
+            if (!name) return;
+            fetch('/api/projects', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name }),
+                credentials: 'include'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    alert('Error: ' + data.error);
+                } else {
+                    loadProjects();
+                }
+            })
+            .catch(() => alert('Failed to create project.'));
+        }
+        function loadProjects() {
+            fetch('/api/projects', { credentials: 'include' })
+                .then(res => res.json())
+                .then(projects => {
+                    const list = document.getElementById('projectsList');
+                    if (!projects.length) {
+                        list.innerHTML = '<div style="color:#888;">No projects yet.</div>';
+                        return;
+                    }
+                    list.innerHTML = projects.map(p => `<div class="project-item">${p.name} <span style="color:#aaa;font-size:12px;">(${new Date(p.created_at).toLocaleString()})</span></div>`).join('');
+                })
+                .catch(() => {
+                    document.getElementById('projectsList').innerHTML = '<div style="color:#888;">Failed to load projects.</div>';
+                });
+        }
+        function loadChatHistory() {
+            // Placeholder: fetch('/api/chat_history')
+            document.getElementById('chatHistoryList').innerHTML = '<div style="color:#888;">No chat history yet.</div>';
+        }
+        // Call on load
+        window.onload = function() {
+            loadAgentStatus();
+            loadProjects();
+            loadChatHistory();
+            document.getElementById('messageInput').focus();
+        };
+
+        // --- AUTH LOGIC ---
+        function showLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+        function hideLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('loginError').innerText = '';
+        }
+        function showRegisterModal() {
+            document.getElementById('registerModal').style.display = 'flex';
+        }
+        function hideRegisterModal() {
+            document.getElementById('registerModal').style.display = 'none';
+            document.getElementById('registerError').innerText = '';
+        }
+        function login() {
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+            fetch('/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password }),
+                credentials: 'include'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    hideLoginModal();
+                    updateAuthStatus();
+                } else {
+                    document.getElementById('loginError').innerText = data.error || 'Login failed';
+                }
+            });
+            return false;
+        }
+        function logout() {
+            fetch('/auth/logout', { method: 'POST', credentials: 'include' })
+            .then(() => updateAuthStatus());
+            return false;
+        }
+        function register() {
+            const username = document.getElementById('registerUsername').value.trim();
+            const password = document.getElementById('registerPassword').value.trim();
+            fetch('/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password }),
+                credentials: 'include'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    hideRegisterModal();
+                    updateAuthStatus();
+                } else {
+                    document.getElementById('registerError').innerText = data.error || 'Registration failed';
+                }
+            });
+            return false;
+        }
+        function updateAuthStatus() {
+            fetch('/api/health', { credentials: 'include' })
+            .then(res => res.json())
+            .then(_ => {
+                document.getElementById('authStatus').innerText = 'Logged in';
+                document.getElementById('loginBtn').style.display = '';
+                document.getElementById('logoutBtn').style.display = '';
+                document.getElementById('registerBtn').style.display = '';
+                document.getElementById('loginBtn').style.display = 'none';
+                document.getElementById('registerBtn').style.display = 'none';
+            })
+            .catch(_ => {
+                document.getElementById('authStatus').innerText = 'Not logged in';
+                document.getElementById('loginBtn').style.display = '';
+                document.getElementById('logoutBtn').style.display = 'none';
+                document.getElementById('registerBtn').style.display = '';
+            });
+        }
+        updateAuthStatus();
     </script>
 </body>
 </html>
