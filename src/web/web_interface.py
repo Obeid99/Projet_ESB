@@ -18,13 +18,13 @@ print = print
 all = all
 
 # Import our agents
-from ..agents.sentiment_agent import SentimentAgent
-from ..agents.intent_agent import IntentAgent
-from ..agents.web_agent import WebAgent
-from ..agents.refiner_agent import RefinerAgent
-from ..agents.self_reflection_agent import SelfReflectionAgent
-from ..core.models import ChatbotState
-from ..graph.esb_graph import build_esb_graph
+from src.agents.sentiment_agent import SentimentAgent
+from src.agents.intent_agent import IntentAgent
+from src.agents.web_agent import WebAgent
+from src.agents.refiner_agent import RefinerAgent
+from src.agents.self_reflection_agent import SelfReflectionAgent
+from src.core.models import ChatbotState
+from src.graph.esb_graph import build_esb_graph
 from src.web.auth import bp_auth
 from src.core.chat_history import store_message, get_recent_history
 from src.core.models_db import db, Project

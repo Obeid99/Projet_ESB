@@ -32,5 +32,4 @@ if __name__ == "__main__":
         )
     except Exception as e:
         print(f"❌ Error starting server: {e}")
-        print("💡 Try: python test_structure.py first")
         sys.exit(1)

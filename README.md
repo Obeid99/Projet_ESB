@@ -168,4 +168,105 @@ The system includes comprehensive logging and monitoring:
 4. Ensure all tests pass
 5. Submit a pull request
 
+---
+
+## 🐳 Docker & Postgres Setup
+
+This project now uses **PostgreSQL** for persistent storage and can be run locally or in Docker.
+
+### 1. Environment Variables
+
+Edit the `.env` file to set your database and LLM config. Example:
+
+```
+DATABASE_URL=postgresql://esbuser:esbpass@localhost:5432/esbchatbot
+OLLAMA_BASE_URL=http://localhost:11434
+OLLAMA_MODEL=llama3.1:8b
+SECRET_KEY=your_secret_key_here
+```
+
+### 2. Docker Compose (Recommended for Dev)
+
+```bash
+docker compose up -d db  # Start Postgres only (for local Flask dev)
+```
+
+Or to run both Flask and Postgres in containers:
+
+```bash
+docker compose up --build
+```
+
+### 3. Database Initialization
+
+After Postgres is running, initialize tables:
+
+```bash
+# Set PYTHONPATH if needed (Windows PowerShell):
+$env:PYTHONPATH = "."
+python init_db.py
+```
+
+### 4. Run Flask App (Locally)
+
+```bash
+python -m flask run --app src/web/web_interface.py
+```
+
+Or use the Dockerfile to run Flask in a container.
+
+---
+
+## 🔐 Authentication & Projects
+
+- User registration, login, and logout are supported (session-based, secure cookies).
+- Each user can create and manage their own projects.
+- Chat history is stored per user.
+- Project management UI is available in the chat sidebar.
+
+---
+
+## 🗂️ Project Structure (Updated)
+
+```
+project_root/
+├── Dockerfile
+├── docker-compose.yml
+├── .env
+├── init_db.py
+├── requirements.txt
+├── src/
+│   ├── core/
+│   │   ├── models_db.py  # User, Project, ChatHistory models (Flask-SQLAlchemy)
+│   │   ├── db_init.py    # DB init util (Flask-SQLAlchemy only)
+│   │   ├── chat_history.py
+│   │   └── config.py
+│   ├── web/
+│   │   ├── web_interface.py  # Flask app
+│   │   ├── auth.py           # Auth blueprint
+│   │   └── templates/
+│   │       ├── chat.html     # Main chat UI (with project mgmt)
+│   │       ├── login.html
+│   │       └── register.html
+│   └── agents/...
+└── ...
+```
+
+---
+
+## 📝 Quick Start (Summary)
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Start Postgres: `docker compose up -d db`
+3. Initialize DB: `python init_db.py`
+4. Run Flask: `python -m flask run --app src/web/web_interface.py`
+5. Open [http://localhost:5000](http://localhost:5000)
+
+---
+
+## 💡 Notes
+- All user data (projects, chat history) is isolated per user.
+- You can extend the Project and ChatHistory models for more features.
+- For production, set a strong `SECRET_KEY` and use secure cookies.
+
 
