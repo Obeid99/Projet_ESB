@@ -1,12 +1,21 @@
 """
-Flask Web Interface for ESB Multi-Agent Chatbot
+Flask Web Interface for Multi-Agent Chatbot
 Real-time testing interface with live agent processing
 """
-from flask import Flask, render_template, request, jsonify
-import sys
-import os
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
 import time
 import traceback
+from dotenv import load_dotenv
+load_dotenv()
+import os
+from src.core import config
+print("DATABASE_URL from env:", repr(os.getenv("DATABASE_URL")))
+
+str = str
+Exception = Exception
+print = print
+all = all
 
 # Import our agents
 from ..agents.sentiment_agent import SentimentAgent
@@ -15,11 +24,20 @@ from ..agents.web_agent import WebAgent
 from ..agents.refiner_agent import RefinerAgent
 from ..agents.self_reflection_agent import SelfReflectionAgent
 from ..core.models import ChatbotState
+from ..graph.esb_graph import build_esb_graph
+from src.web.auth import bp_auth
+from src.core.chat_history import store_message, get_recent_history
+from src.core.models_db import db, Project
 
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY", "supersecretkey")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "postgresql://esbuser:esbpass@db:5432/esbchatbot")
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
+app.register_blueprint(bp_auth)
 
 # Initialize agents globally
-print("🤖 Initializing ESB Multi-Agent System...")
+print("🤖 Initializing Multi-Agent System...")
 try:
     # Try to initialize with Hybrid (Ollama + traditional) first, fallback to rule-based if needed
     print("🦙 Attempting to connect to Ollama for hybrid analysis...")
@@ -43,122 +61,86 @@ except Exception as e:
         sentiment_agent = intent_agent = web_agent = refiner_agent = reflection_agent = None
 
 @app.route('/')
-def index():
+def root():
+    """Redirect to login or chat depending on authentication"""
+    if 'user_id' in session:
+        return redirect(url_for('chat_page'))
+    return redirect(url_for('login_page'))
+
+@app.route('/login')
+def login_page():
+    """Render login page"""
+    if 'user_id' in session:
+        return redirect(url_for('chat_page'))
+    return render_template('login.html')
+
+@app.route('/register')
+def register_page():
+    """Render registration page"""
+    if 'user_id' in session:
+        return redirect(url_for('chat_page'))
+    return render_template('register.html')
+
+@app.route('/chat')
+def chat_page():
     """Main chat interface"""
+    if 'user_id' not in session:
+        return redirect(url_for('login_page'))
     return render_template('chat.html')
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    """Process chat message through multi-agent system"""
+    """Process chat message through multi-agent system using LangGraph"""
     try:
+        if 'user_id' not in session:
+            return jsonify({'error': 'Authentication required'}), 401
+        user_id = session['user_id']
         data = request.json
         user_message = data.get('message', '').strip()
-        
         if not user_message:
             return jsonify({
                 'error': 'Empty message',
                 'response': 'Please enter a message to get started!'
             })
-        
-        # Track processing time
+        # Store user message
+        store_message(user_id, user_message, is_user=True)
+        # Fetch recent chat history for context
+        chat_history = get_recent_history(user_id)
+        # Optionally, format chat_history for the chatbot (e.g., as a string)
+        history_text = '\n'.join([
+            ("User: " if h['is_user'] else "Bot: ") + h['message'] for h in chat_history
+        ])
         start_time = time.time()
-        
-        # Initialize state
-        state = ChatbotState(user_message=user_message)
-        processing_steps = []
-        
-        # Step 1: Sentiment Analysis
-        step_start = time.time()
-        if sentiment_agent:
-            state = sentiment_agent.process(state)
-            sentiment_time = time.time() - step_start
-            
-            if state.sentiment_result:
-                processing_steps.append({
-                    'agent': 'SentimentAgent',
-                    'result': f"{state.sentiment_result.label} ({state.sentiment_result.confidence:.3f})",
-                    'time': f"{sentiment_time*1000:.1f}ms",
-                    'reasoning': state.sentiment_result.reasoning
-                })
-        
-        # Step 2: Intent Classification
-        step_start = time.time()
-        if intent_agent:
-            state = intent_agent.process(state)
-            intent_time = time.time() - step_start
-            
-            processing_steps.append({
-                'agent': 'IntentAgent',
-                'result': state.intent or 'general_info',
-                'time': f"{intent_time*1000:.1f}ms",
-                'confidence': state.context.get('intent_confidence', 0)
-            })
-        
-        # Step 3: Web Information (if needed)
-        step_start = time.time()
-        if web_agent:
-            state = web_agent.process(state)
-            web_time = time.time() - step_start
-            
-            web_info = state.context.get('web_info', [])
-            processing_steps.append({
-                'agent': 'WebAgent',
-                'result': f"{len(web_info)} information sources found",
-                'time': f"{web_time*1000:.1f}ms",
-                'sources': [info.get('title', 'Unknown') for info in web_info[:3]]
-            })
-        
-        # Step 4: Response Generation
-        step_start = time.time()
-        if refiner_agent:
-            state = refiner_agent.process(state)
-            refiner_time = time.time() - step_start
-            
-            processing_steps.append({
-                'agent': 'RefinerAgent',
-                'result': f"Response generated ({len(state.response or '')} characters)",
-                'time': f"{refiner_time*1000:.1f}ms",
-                'tone': state.context.get('response_tone', 'professional')
-            })
-        
-        # Step 5: Self-Reflection (if appropriate)
-        step_start = time.time()
-        if reflection_agent:
-            state = reflection_agent.process(state)
-            reflection_time = time.time() - step_start
-            
-            reflection = state.context.get('reflection_prompt')
-            processing_steps.append({
-                'agent': 'SelfReflectionAgent',
-                'result': 'Reflection provided' if reflection else 'No reflection needed',
-                'time': f"{reflection_time*1000:.1f}ms",
-                'type': reflection.get('type') if reflection else None
-            })
-        
+        # Build the graph (reuse agents from global scope)
+        graph = build_esb_graph(sentiment_agent, intent_agent, web_agent, refiner_agent, reflection_agent)
+        # Initialize state as a dict, include history
+        chatbot_state = ChatbotState(user_message=user_message, chat_history=history_text)
+        state = {"user_message": user_message, "chatbot_state": chatbot_state}
+        # Run the graph using .invoke()
+        result = graph.invoke(state)
+        state = result  # result is the final state dict
         total_time = time.time() - start_time
-        
-        # Prepare response
+        # Store bot response
+        bot_response = state['chatbot_state'].response or "I'm here to help! How can I assist you?"
+        store_message(user_id, bot_response, is_user=False)
+        # Prepare response (reuse previous logic)
         response_data = {
             'success': True,
-            'response': state.response or "I'm here to help! How can I assist you?",
+            'response': bot_response,
             'processing_time': f"{total_time*1000:.1f}ms",
-            'steps': processing_steps,
             'sentiment': {
-                'label': str(state.sentiment_result.label) if state.sentiment_result else 'unknown',
-                'confidence': state.sentiment_result.confidence if state.sentiment_result else 0,
-                'emoji': get_sentiment_emoji(str(state.sentiment_result.label) if state.sentiment_result else 'neutral')
+                'label': str(state['chatbot_state'].sentiment_result.label) if state['chatbot_state'].sentiment_result else 'unknown',
+                'confidence': state['chatbot_state'].sentiment_result.confidence if state['chatbot_state'].sentiment_result else 0,
+                'emoji': get_sentiment_emoji(str(state['chatbot_state'].sentiment_result.label) if state['chatbot_state'].sentiment_result else 'neutral')
             },
-            'intent': state.intent or 'general_info',
-            'reflection': state.context.get('reflection_prompt')
+            'intent': state['chatbot_state'].intent or 'general_info',
+            'reflection': state['chatbot_state'].context.get('reflection_prompt')
         }
-        
         return jsonify(response_data)
-        
     except Exception as e:
         error_trace = traceback.format_exc()
         print(f"❌ Error processing message: {e}")
         print(error_trace)
-        
         return jsonify({
             'success': False,
             'error': str(e),
@@ -194,9 +176,35 @@ def health_check():
         'timestamp': time.time()
     })
 
+@app.route('/api/projects', methods=['GET'])
+def get_projects():
+    """Get list of projects for the authenticated user"""
+    if 'user_id' not in session:
+        return jsonify({'error': 'Authentication required'}), 401
+    user_id = session['user_id']
+    projects = Project.query.filter_by(user_id=user_id).order_by(Project.created_at.desc()).all()
+    return jsonify([
+        {'id': p.id, 'name': p.name, 'created_at': p.created_at.isoformat()} for p in projects
+    ])
+
+@app.route('/api/projects', methods=['POST'])
+def create_project():
+    """Create a new project for the authenticated user"""
+    if 'user_id' not in session:
+        return jsonify({'error': 'Authentication required'}), 401
+    user_id = session['user_id']
+    data = request.json
+    name = data.get('name', '').strip()
+    if not name:
+        return jsonify({'error': 'Project name required'}), 400
+    project = Project(name=name, user_id=user_id)
+    db.session.add(project)
+    db.session.commit()
+    return jsonify({'id': project.id, 'name': project.name, 'created_at': project.created_at.isoformat()})
+
 if __name__ == '__main__':
-    print("🚀 Starting ESB Multi-Agent Chatbot Web Interface...")
+    print("🚀 Starting Multi-Agent Chatbot Web Interface...")
     print("📱 Open your browser to: http://localhost:5000")
     print("🔧 Press Ctrl+C to stop the server")
-    
     app.run(debug=True, host='0.0.0.0', port=5000)
+
