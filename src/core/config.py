@@ -20,7 +20,7 @@ class Settings:
         self.openai_api_key = os.getenv("OPENAI_API_KEY")
 
         # Database Configuration
-        self.database_url = os.getenv("DATABASE_URL", "sqlite:///esb_chatbot.db")
+        self.database_url = os.getenv("DATABASE_URL", "postgresql://esbuser:esbpass@localhost:5433/esbchatbot")
 
         # Sentiment Analysis Configuration
         self.sentiment_model = os.getenv("SENTIMENT_MODEL", "hybrid")
