@@ -11,4 +11,4 @@ ENV FLASK_APP=src/web/web_interface.py
 ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_ENV=production
 
-CMD ["python", "-m", "flask", "run", "--host=0.0.0.0", "--port=8000"]
+CMD ["python", "run_server.py"]

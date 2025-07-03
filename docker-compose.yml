@@ -10,5 +10,20 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: python run_server.py
+    environment:
+      - DATABASE_URL=postgresql://esbuser:esbpass@db:5432/esbchatbot
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - OLLAMA_MODEL=llama3.1:8b
+      - SECRET_KEY=supersecretkey
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
 volumes:
   postgres_data:

@@ -16,6 +16,9 @@ httpx>=0.24.0
 
 # Database
 sqlalchemy>=2.0.0
+flask
+flask_sqlalchemy
+psycopg2-binary
 
 # Web scraping (for WebAgent)
 requests>=2.31.0
