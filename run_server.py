@@ -5,10 +5,16 @@ ESB Multi-Agent Chatbot Server
 
 import sys
 from pathlib import Path
+import os
 
 # Add src directory to Python path
 src_path = Path(__file__).parent / "src"
 sys.path.insert(0, str(src_path))
+
+# Set up database connection
+os.environ["DATABASE_URL"] = "postgresql://esbuser:esbpass@localhost:5432/esbchatbot"
+from dotenv import load_dotenv
+load_dotenv(override=True)
 
 if __name__ == "__main__":
     print("🤖 ESB Multi-Agent Chatbot System")
