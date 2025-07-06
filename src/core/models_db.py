@@ -34,9 +34,4 @@ class Project(db.Model):
     # user relationship is handled by backref in User.projects
 
 # Admin table for administration's session
-class Admin(db.Model):
-    __tablename__ = 'admins'
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128), nullable=False)
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+# Removed Admin model, use hardcoded admin credentials instead
