@@ -1,7 +1,43 @@
+"""
+Flask Web Interface for Multi-Agent Chatbot
+Real-time testing interface with live agent processing
+"""
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+import time
+import traceback
+from dotenv import load_dotenv
+load_dotenv()
+import os
+from src.core import config
+print("DATABASE_URL from env:", repr(os.getenv("DATABASE_URL")))
 
+str = str
+Exception = Exception
+print = print
+all = all
+
+# Import our agents
+from ..agents.sentiment_agent import SentimentAgent
+from ..agents.intent_agent import IntentAgent
+from ..agents.web_agent import WebAgent
+from ..agents.refiner_agent import RefinerAgent
+from ..agents.self_reflection_agent import SelfReflectionAgent
+from ..core.models import ChatbotState
+from .esb_graph import build_esb_graph
+from .auth import bp_auth
+from ..core.chat_history import store_message, get_recent_history
+from ..core.models_db import db, Project
+
+
+app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY", "supersecretkey")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "postgresql://esbuser:esbpass@db:5432/esbchatbot")
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
+app.register_blueprint(bp_auth)
 
 # Admin authentication routes (must be after app = Flask(__name__))
-from ..core.models_db import Admin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 # Place these routes after app is defined
@@ -105,18 +141,15 @@ def register_admin_routes(app):
 
     @app.route('/admin/login', methods=['POST'])
     def admin_login():
-        from ..core.models_db import User  # Import here to avoid circular import
         data = request.get_json()
         username = data.get('username', '').strip()
         password = data.get('password', '').strip()
-        user = User.query.filter_by(username=username).first()
-        if not user:
-            return jsonify({'success': False, 'error': "Nom d'utilisateur administrateur introuvable."})
-        if not check_password_hash(user.password_hash, password):
-            return jsonify({'success': False, 'error': 'Mot de passe incorrect.'})
-        session['admin_id'] = user.id
-        # Redirect admin to the admin landing page with navigation squares
-        return jsonify({'success': True, 'redirect': '/admin/landing'})
+        # Hardcoded admin credentials
+        if username == 'admin' and password == 'admin':
+            session['admin_id'] = 'admin'
+            return jsonify({'success': True, 'redirect': '/admin/landing'})
+        else:
+            return jsonify({'success': False, 'error': 'Invalid admin credentials.'})
 
     @app.route('/admin/chat')
     def admin_chat_page():
@@ -257,46 +290,8 @@ def register_admin_routes(app):
         # After successful registration, redirect to login page
         return jsonify({'success': True, 'redirect': '/admin/login'})
 
-# ...existing code...
-"""
-Flask Web Interface for Multi-Agent Chatbot
-Real-time testing interface with live agent processing
-"""
-from flask import Flask, render_template, request, jsonify, session, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-import time
-import traceback
-from dotenv import load_dotenv
-load_dotenv()
-import os
-from src.core import config
-print("DATABASE_URL from env:", repr(os.getenv("DATABASE_URL")))
-
-str = str
-Exception = Exception
-print = print
-all = all
-
-# Import our agents
-from ..agents.sentiment_agent import SentimentAgent
-from ..agents.intent_agent import IntentAgent
-from ..agents.web_agent import WebAgent
-from ..agents.refiner_agent import RefinerAgent
-from ..agents.self_reflection_agent import SelfReflectionAgent
-from ..core.models import ChatbotState
-from .esb_graph import build_esb_graph
-from .auth import bp_auth
-from ..core.chat_history import store_message, get_recent_history
-from ..core.models_db import db, Project
-
-
-app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY", "supersecretkey")
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "postgresql://esbuser:esbpass@db:5432/esbchatbot")
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db.init_app(app)
-app.register_blueprint(bp_auth)
 register_admin_routes(app)
+
 
 # Initialize agents globally
 print("🤖 Initializing Multi-Agent System...")
