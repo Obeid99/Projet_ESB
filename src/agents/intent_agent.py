@@ -2,7 +2,6 @@ import logging
 import uuid
 from typing import Dict, Any, Optional, List
 from datetime import datetime
-from enum import Enum
 import re
 
 from ..core.models import ChatbotState, AgentAction, AgentObservation
@@ -10,29 +9,8 @@ from ..core.config import get_settings
 
 logger = logging.getLogger(__name__)
 
-class IntentCategory(str, Enum):
-    REGISTRATION_HELP = "registration_help"
-    GRADE_INQUIRY = "grade_inquiry"
-    COURSE_INFO = "course_info"
-    SCHEDULE_INQUIRY = "schedule_inquiry"
-    ACADEMIC_SUPPORT = "academic_support"
-    FINANCIAL_INQUIRY = "financial_inquiry"
-    DOCUMENT_REQUEST = "document_request"
-    FACILITY_INFO = "facility_info"
-    CONTACT_INFO = "contact_info"
-    TECHNICAL_SUPPORT = "technical_support"
-    COMPLAINT = "complaint"
-    SUGGESTION = "suggestion"
-    APPRECIATION = "appreciation"
-    GENERAL_INFO = "general_info"
-    EVENT_INFO = "event_info"
-    CAREER_GUIDANCE = "career_guidance"
-    SOCIAL_INTERACTION = "social_interaction"
-    PERSONAL_SHARING = "personal_sharing"
-    UNCLEAR = "unclear"
-
 class IntentResult:
-    def __init__(self, primary_intent: IntentCategory, confidence: float, secondary_intents: List[IntentCategory] = None, entities: Dict[str, Any] = None, reasoning: str = ""):
+    def __init__(self, primary_intent: str, confidence: float, secondary_intents: List[str] = None, entities: Dict[str, Any] = None, reasoning: str = ""):
         self.primary_intent = primary_intent
         self.confidence = confidence
         self.secondary_intents = secondary_intents or []
@@ -54,107 +32,92 @@ class IntentAgent:
             except Exception as e:
                 logger.warning(f"Ollama not available: {e}")
 
-        self.intent_keywords = {
-            IntentCategory.COURSE_INFO: ["math", "mathematics", "maths", "algebra", "geometry", "calculus", "statistics", "trigonometry", "probability", "equation", "formule", "cours", "professeur"],
-            IntentCategory.COMPLAINT: ["don't like", "dont like", "do not like", "dislike", "hate", "can't stand", "detest", "loathe", "problem", "issue", "bad", "terrible", "useless", "frustrated", "upset"]
-            # Add other intents as needed...
-        }
-
     def reason(self, state: ChatbotState) -> AgentAction:
         user_message = state.user_message.strip()
         if not user_message or len(user_message) < 3:
             return AgentAction(action="skip_intent_detection", action_input={"reason": "too short"}, reasoning="Too short")
         if state.intent:
             return AgentAction(action="use_existing_intent", action_input={"existing_intent": state.intent}, reasoning="Already exists")
-
-        word_count = len(user_message.split())
-        if word_count > 5 and self.ollama_available:
-            return AgentAction(action="llm_intent_detection", action_input={"text": user_message}, reasoning="Using LLM")
-        return AgentAction(action="keyword_intent_detection", action_input={"text": user_message}, reasoning="Using keyword")
-
-    def normalize_text(self, text: str) -> str:
-        text = text.lower()
-        contractions = {
-            "don't": "do not", "dont": "do not", "can't": "cannot", "cant": "cannot", "i'm": "i am"
-        }
-        for k, v in contractions.items():
-            text = re.sub(r'\\b' + re.escape(k) + r'\\b', v, text)
-        return text
+        # Always use LLM for intent detection
+        return AgentAction(action="llm_intent_detection", action_input={"text": user_message}, reasoning="Using LLM")
 
     def act(self, action: AgentAction) -> AgentObservation:
         try:
             if action.action == "skip_intent_detection":
-                return AgentObservation(observation="Skipped", success=True, data={"intent_result": IntentResult(IntentCategory.UNCLEAR, 0.0, reasoning="Skipped")})
+                return AgentObservation(observation="Skipped", success=True, data={"intent_result": IntentResult("unclear", 0.0, reasoning="Skipped")})
             elif action.action == "use_existing_intent":
-                return AgentObservation(observation="Using existing", success=True, data={"intent_result": IntentResult(IntentCategory(action.action_input["existing_intent"]), 1.0, reasoning="Pre-existing")})
-            elif action.action == "keyword_intent_detection":
-                return self._keyword_intent_detection(action.action_input["text"])
+                return AgentObservation(observation="Using existing", success=True, data={"intent_result": IntentResult(action.action_input["existing_intent"], 1.0, reasoning="Pre-existing")})
             elif action.action == "llm_intent_detection":
                 return self._llm_intent_detection(action.action_input["text"])
             else:
                 return AgentObservation(observation="Unknown action", success=False, data={})
         except Exception as e:
             logger.error(f"Error: {e}")
-            return AgentObservation(observation="Error", success=False, data={})
-
-    def _keyword_intent_detection(self, text: str) -> AgentObservation:
-        text_lower = self.normalize_text(text)
-        is_negative = any(kw in text_lower for kw in self.intent_keywords[IntentCategory.COMPLAINT])
-        is_course = any(kw in text_lower for kw in self.intent_keywords[IntentCategory.COURSE_INFO])
-
-        if is_negative and is_course:
-            intent_result = IntentResult(
-                primary_intent=IntentCategory.COURSE_INFO,
-                confidence=0.9,
-                secondary_intents=[IntentCategory.COMPLAINT],
-                entities={"negative_course": True},
-                reasoning="Detected negative sentiment about a course."
-            )
-        else:
-            intent_result = IntentResult(
-                primary_intent=IntentCategory.GENERAL_INFO,
-                confidence=0.3,
-                reasoning="Defaulted to general info"
-            )
-        return AgentObservation(observation=f"Detected: {intent_result.primary_intent}", success=True, data={"intent_result": intent_result})
+            return AgentObservation(observation="LLM intent detection failed", success=False, data={"error": str(e)})
 
     def _llm_intent_detection(self, text: str) -> AgentObservation:
-        if not self.ollama_available:
-            return self._keyword_intent_detection(text)
         try:
             import ollama
             import json
-            prompt = f"What is the user's intent in this message: '{text}'? Respond in JSON."
+            prompt = (
+                "What is the user's intent in this message: '" + text + "'? "
+                "Respond ONLY with a flat JSON object like: "
+                "{\"primary_intent\": <intent>, \"confidence\": <float>, \"secondary_intents\": [<str>], \"entities\": {<key>: <value>}, \"reasoning\": <str>}"
+            )
             response = ollama.chat(model=self.settings.ollama_model, messages=[{"role": "user", "content": prompt}])
-            result = json.loads(response['message']['content'])
+            raw = response['message']['content']
+            print("LLM raw response:", raw)
+            # Remove markdown code block formatting if present
+            if '```' in raw:
+                raw = raw.split('```')[1] if len(raw.split('```')) > 1 else raw
+                raw = raw.strip()
+            # Try to parse as JSON
+            result = json.loads(raw)
+            # If nested intent, flatten
+            if 'intent' in result and isinstance(result['intent'], dict):
+                intent = result['intent']
+                primary_intent = intent.get('type', 'unclear')
+                secondary_intents = intent.get('subtypes', [])
+                entities = intent.get('entities', {})
+            else:
+                primary_intent = result.get('primary_intent', 'unclear')
+                secondary_intents = result.get('secondary_intents', [])
+                entities = result.get('entities', {})
+            confidence = float(result.get('confidence', 1.0))
+            reasoning = result.get('reasoning', "LLM analysis")
             intent_result = IntentResult(
-                primary_intent=IntentCategory(result['primary_intent']),
-                confidence=float(result['confidence']),
-                reasoning=result.get("reasoning", "LLM analysis")
+                primary_intent=primary_intent,
+                confidence=confidence,
+                secondary_intents=secondary_intents,
+                entities=entities,
+                reasoning=reasoning
             )
             return AgentObservation(observation="LLM detected", success=True, data={"intent_result": intent_result})
         except Exception as e:
-            logger.warning(f"LLM fallback: {e}")
-            return self._keyword_intent_detection(text)
+            logger.error(f"LLM intent detection failed: {e}")
+            return AgentObservation(observation="LLM intent detection failed", success=False, data={"error": str(e)})
 
     def observe(self, observation: AgentObservation, state: ChatbotState) -> ChatbotState:
         if observation.success and "intent_result" in observation.data:
             intent_result = observation.data["intent_result"]
-            state.intent = intent_result.primary_intent.value
+            state.intent = intent_result.primary_intent
             state.context.update({
                 "intent_confidence": intent_result.confidence,
-                "secondary_intents": [i.value for i in intent_result.secondary_intents],
+                "secondary_intents": intent_result.secondary_intents,
                 "intent_entities": intent_result.entities,
                 "intent_reasoning": intent_result.reasoning
             })
             state.metadata.update({
                 "intent_analysis_timestamp": datetime.utcnow().isoformat(),
                 "intent_session_id": self.session_id,
-                "intent_method": "llm" if self.ollama_available else "keyword"
+                "intent_method": "llm"
             })
         else:
-            state.intent = IntentCategory.UNCLEAR.value
-            state.context.update({"intent_confidence": 0.0, "intent_reasoning": "Detection failed"})
+            state.intent = "unclear"
+            state.context.update({
+                "intent_confidence": 0.0,
+                "intent_reasoning": observation.data.get("error", "LLM intent detection failed")
+            })
         return state
 
     def process(self, state: ChatbotState) -> ChatbotState:
