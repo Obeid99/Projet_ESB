@@ -237,11 +237,11 @@ def register_admin_routes(app):
         admin_message = data.get('message', '').strip()
         if not admin_message:
             return jsonify({'response': 'Please enter a message.'})
-        # Use the same multi-agent pipeline as the student chat, but with the real admin user_id (integer)
-        admin_id = session['admin_id']
-        user_id = admin_id  # Use integer ID for DB compatibility
-        store_message(user_id, admin_message, is_user=True)
-        chat_history = get_recent_history(user_id)
+        # Ensure dummy admin user exists and get its ID
+        from src.core.models_db import ensure_admin_user
+        admin_user_id = ensure_admin_user()
+        store_message(admin_user_id, admin_message, is_user=True)
+        chat_history = get_recent_history(admin_user_id)
         history_text = '\n'.join([
             ("User: " if h['is_user'] else "Bot: ") + h['message'] for h in chat_history
         ])
@@ -254,7 +254,7 @@ def register_admin_routes(app):
         state = result
         total_time = time.time() - start_time
         bot_response = state['chatbot_state'].response or "I'm here to help! How can I assist you?"
-        store_message(user_id, bot_response, is_user=False)
+        store_message(admin_user_id, bot_response, is_user=False)
         response_data = {
             'success': True,
             'response': bot_response,
@@ -262,10 +262,7 @@ def register_admin_routes(app):
             'sentiment': {
                 'label': str(state['chatbot_state'].sentiment_result.label) if state['chatbot_state'].sentiment_result else 'unknown',
                 'confidence': state['chatbot_state'].sentiment_result.confidence if state['chatbot_state'].sentiment_result else 0,
-                'emoji': get_sentiment_emoji(str(state['chatbot_state'].sentiment_result.label) if state['chatbot_state'].sentiment_result else 'neutral')
-            },
-            'intent': state['chatbot_state'].intent or 'general_info',
-            'reflection': state['chatbot_state'].context.get('reflection_prompt')
+            }
         }
         return jsonify(response_data)
 
