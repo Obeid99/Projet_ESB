@@ -1,0 +1,72 @@
+2025-06-04 15:02:21,698 - root - INFO - Logging configured successfully
+2025-06-04 15:02:21,702 - root - INFO - Logging configured successfully
+2025-06-04 15:02:24,057 - httpx - INFO - HTTP Request: GET http://127.0.0.1:11434/api/tags "HTTP/1.1 200 OK"
+2025-06-04 15:02:24,059 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with hybrid analyzer, session: fd22ae20-19ae-42ae-b329-b11718399e8b
+2025-06-04 15:02:24,063 - httpx - INFO - HTTP Request: GET http://127.0.0.1:11434/api/tags "HTTP/1.1 200 OK"
+2025-06-04 15:02:24,064 - src.agents.intent_agent - INFO - Ollama available for intent classification
+2025-06-04 15:02:24,065 - src.agents.intent_agent - INFO - IntentAgent initialized, session: aa4124b1-2d76-4c60-949e-33ec2dfd9d77
+2025-06-04 15:02:24,067 - src.agents.web_agent - INFO - WebAgent initialized, session: 0ffcd95e-49d5-4cec-b45a-30fbfdd267a6
+2025-06-04 15:02:24,071 - httpx - INFO - HTTP Request: GET http://127.0.0.1:11434/api/tags "HTTP/1.1 200 OK"
+2025-06-04 15:02:24,072 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 7b4b946b-ac25-436e-8216-a4b38cd1087f
+2025-06-04 15:02:24,072 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: a0ac1a24-aae2-4aa3-87fd-062edde2d6ac
+2025-06-04 15:02:24,204 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.19:5000
+2025-06-04 15:02:24,205 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-04 15:02:31,147 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:02:31] "GET / HTTP/1.1" 200 -
+2025-06-04 15:02:31,356 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:02:31] "GET /api/health HTTP/1.1" 200 -
+2025-06-04 15:03:26,227 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-06-04 15:03:26,269 - src.core.database - INFO - Saved sentiment record with ID: 11
+2025-06-04 15:03:26,271 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: positive
+2025-06-04 15:03:26,272 - src.agents.sentiment_agent - INFO - Updated state with sentiment: positive
+2025-06-04 15:03:26,297 - src.agents.intent_agent - INFO - Updated state with intent: IntentCategory.APPRECIATION
+2025-06-04 15:03:26,316 - src.agents.web_agent - INFO - Added 0 web results to state context
+2025-06-04 15:03:26,363 - src.agents.refiner_agent - INFO - Generated response with celebratory tone
+2025-06-04 15:03:26,384 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:03:26] "POST /api/chat HTTP/1.1" 200 -
+2025-06-04 15:03:57,127 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: what are the best programs...
+2025-06-04 15:04:19,267 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-06-04 15:04:19,273 - src.core.database - INFO - Saved sentiment record with ID: 12
+2025-06-04 15:04:19,273 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: positive
+2025-06-04 15:04:19,274 - src.agents.sentiment_agent - INFO - Updated state with sentiment: positive
+2025-06-04 15:04:19,274 - src.agents.intent_agent - INFO - IntentAgent processing message: what are the best programs...
+2025-06-04 15:04:19,275 - src.agents.intent_agent - INFO - Updated state with intent: IntentCategory.GENERAL_INFO
+2025-06-04 15:04:19,275 - src.agents.web_agent - INFO - WebAgent processing message: what are the best programs...
+2025-06-04 15:04:20,634 - src.agents.web_agent - INFO - Added 3 web results to state context
+2025-06-04 15:04:20,635 - src.agents.refiner_agent - INFO - RefinerAgent processing message: what are the best programs...
+2025-06-04 15:04:20,635 - src.agents.refiner_agent - INFO - Generated response with encouraging tone
+2025-06-04 15:04:20,635 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: what are the best programs...
+2025-06-04 15:04:20,636 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:04:20] "POST /api/chat HTTP/1.1" 200 -
+2025-06-04 15:10:33,368 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:10:33] "GET / HTTP/1.1" 200 -
+2025-06-04 15:10:33,457 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:10:33] "GET /api/health HTTP/1.1" 200 -
+2025-06-04 15:10:37,450 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: I'm frustrated with the registration system!...
+2025-06-04 15:11:12,889 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-06-04 15:11:12,900 - src.core.database - INFO - Saved sentiment record with ID: 13
+2025-06-04 15:11:12,900 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: negative
+2025-06-04 15:11:12,901 - src.agents.sentiment_agent - INFO - Updated state with sentiment: negative
+2025-06-04 15:11:12,903 - src.agents.intent_agent - INFO - IntentAgent processing message: I'm frustrated with the registration system!...
+2025-06-04 15:12:17,415 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-06-04 15:12:17,417 - src.agents.intent_agent - INFO - Updated state with intent: IntentCategory.COMPLAINT
+2025-06-04 15:12:17,418 - src.agents.web_agent - INFO - WebAgent processing message: I'm frustrated with the registration system!...
+2025-06-04 15:12:19,194 - src.agents.web_agent - INFO - Added 3 web results to state context
+2025-06-04 15:12:19,194 - src.agents.refiner_agent - INFO - RefinerAgent processing message: I'm frustrated with the registration system!...
+2025-06-04 15:12:19,195 - src.agents.refiner_agent - INFO - Generated response with empathetic tone
+2025-06-04 15:12:19,195 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: I'm frustrated with the registration system!...
+2025-06-04 15:12:19,196 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 15:12:19] "POST /api/chat HTTP/1.1" 200 -
+2025-07-03 09:25:16,798 - root - INFO - Logging configured successfully
+2025-07-03 09:25:16,799 - root - INFO - Logging configured successfully
+2025-07-03 09:25:17,505 - numexpr.utils - INFO - NumExpr defaulting to 12 threads.
+2025-07-03 09:25:19,406 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-03 09:25:19,406 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with hybrid analyzer, session: a7864e5c-13a3-4b1f-a9ff-4b3105aab087
+2025-07-03 09:25:19,424 - httpx - INFO - HTTP Request: GET http://127.0.0.1:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-03 09:25:19,424 - src.agents.intent_agent - INFO - Ollama available for intent classification
+2025-07-03 09:25:19,425 - src.agents.intent_agent - INFO - IntentAgent initialized, session: 29df0ff2-5443-415d-bd52-918d4b6b1f70
+2025-07-03 09:25:19,426 - src.agents.web_agent - INFO - WebAgent initialized, session: 4b580250-8a31-484f-82aa-72df3d690abc
+2025-07-03 09:25:19,427 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-03 09:25:19,427 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 80cd2c54-79e8-4c4c-b24e-ea23a3257dbd
+2025-07-03 09:25:19,427 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: c38a1e54-d5c6-4c7b-ac0b-01aac03e378f
+2025-07-03 09:25:19,459 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-03 09:25:19,460 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
