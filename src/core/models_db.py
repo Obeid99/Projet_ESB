@@ -2,6 +2,7 @@
 SQLAlchemy models for user authentication, chat history, and project management
 """
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash
 
 db = SQLAlchemy()
 
@@ -14,6 +15,19 @@ class User(db.Model):
     # is_admin removed
     chats = db.relationship('ChatHistory', back_populates='user')
     projects = db.relationship('Project', backref='user')
+
+# Utility to ensure a dummy admin user exists for admin chat history
+def ensure_admin_user():
+    """Ensure a dummy admin user exists in the database for admin chat history."""
+    admin = User.query.filter_by(username='admin').first()
+    if not admin:
+        admin = User(
+            username='admin',
+            password_hash=generate_password_hash('admin')
+        )
+        db.session.add(admin)
+        db.session.commit()
+    return admin.id
 
 class ChatHistory(db.Model):
     __tablename__ = 'chat_history'
