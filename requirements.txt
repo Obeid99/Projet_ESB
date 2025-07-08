@@ -16,10 +16,18 @@ httpx>=0.24.0
 
 # Database
 sqlalchemy>=2.0.0
+flask_sqlalchemy>=3.0.0
+psycopg2-binary>=2.9.0
 
 # Web scraping (for WebAgent)
 requests>=2.31.0
 beautifulsoup4>=4.12.0
+
+# Web server
+flask>=2.3.0
+flask_login>=0.6.0
+flask_wtf>=1.1.1
+flask_migrate>=4.0.0
 
 # Utilities
 python-dotenv>=1.0.0
