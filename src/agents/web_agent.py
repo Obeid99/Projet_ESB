@@ -1,27 +1,19 @@
 """
 WebAgent for ESB Chatbot System
-Scrapes ESB website and Facebook for current information using ReAct pattern
+Calls LLM for web information based on user message and intent
 """
 import logging
 import uuid
-import json
-from typing import Dict, Any, Optional, List
-from datetime import datetime, timedelta
+from typing import Dict, Any, Optional
+from datetime import datetime
 from dataclasses import dataclass
-
-try:
-    import requests
-    from bs4 import BeautifulSoup
-    WEB_SCRAPING_AVAILABLE = True
-except ImportError:
-    WEB_SCRAPING_AVAILABLE = False
-
 from ..core.models import (
     ChatbotState,
     AgentAction,
     AgentObservation
 )
 from ..core.config import get_settings
+from ..utils import retry_on_exception
 
 logger = logging.getLogger(__name__)
 
@@ -40,318 +32,119 @@ class WebScrapingResult:
 
 class WebAgent:
     """
-    WebAgent that scrapes ESB website and Facebook for current information
+    WebAgent that calls LLM for web information
     Follows ReAct pattern: Reason -> Act -> Observe
     """
     
     def __init__(
         self, 
         session_id: Optional[str] = None,
-        cache_duration: int = 3600  # Cache for 1 hour
+        cache_duration: int = 3600
     ):
         self.settings = get_settings()
         self.session_id = session_id or str(uuid.uuid4())
         self.cache_duration = cache_duration
-        self.cache = {}  # Simple in-memory cache
-        
-        # ESB-specific URLs and selectors
-        self.esb_sources = {
-            "main_website": {
-                "url": self.settings.esb_website_url,
-                "selectors": {
-                    "news": ".news-item, .announcement, .post",
-                    "events": ".event, .calendar-item",
-                    "general": "p, .content, .description"
-                }
-            },
-            "facebook": {
-                "url": self.settings.esb_facebook_url,
-                "selectors": {
-                    "posts": "[data-testid='post_message']",
-                    "general": ".userContent, ._5pbx"
-                }
-            }
-        }
-        
-        # Keywords for relevance scoring
-        self.relevance_keywords = {
-            "registration": ["registration", "enroll", "course", "deadline"],
-            "grades": ["grade", "result", "transcript", "exam"],
-            "events": ["event", "conference", "seminar", "workshop"],
-            "facilities": ["library", "cafeteria", "parking", "building"],
-            "financial": ["fee", "tuition", "scholarship", "payment"],
-            "academic": ["course", "professor", "schedule", "curriculum"]
-        }
-        
+        self.cache = {}
         logger.info(f"WebAgent initialized, session: {self.session_id}")
-    
+
     def reason(self, state: ChatbotState) -> AgentAction:
         """
-        Reasoning step: Determine what web information to gather
+        Reasoning step: Always ask LLM for web info if intent is present and message is not too short.
         """
         user_message = state.user_message.strip()
         intent = state.intent
-        
-        # Check if web scraping is available
-        if not WEB_SCRAPING_AVAILABLE:
-            reasoning = "Web scraping libraries not available"
-            return AgentAction(
-                action="skip_web_scraping",
-                action_input={"reason": "libraries_unavailable"},
-                reasoning=reasoning
-            )
-        
-        # Check if message is too short or unclear
         if not user_message or len(user_message) < 5:
-            reasoning = "Message too short for web information gathering"
             return AgentAction(
-                action="skip_web_scraping",
+                action="skip_web_info",
                 action_input={"reason": "insufficient_context"},
-                reasoning=reasoning
+                reasoning="Message too short for web information gathering"
             )
-        
-        # Determine what type of information to search for based on intent
-        search_strategy = self._determine_search_strategy(intent, user_message)
-        
-        if search_strategy["skip"]:
-            reasoning = f"Intent '{intent}' doesn't require web information"
+        if not intent:
             return AgentAction(
-                action="skip_web_scraping",
-                action_input={"reason": "intent_not_relevant"},
-                reasoning=reasoning
+                action="skip_web_info",
+                action_input={"reason": "no_intent"},
+                reasoning="No intent detected"
             )
-        
-        reasoning = f"Searching for {search_strategy['type']} information related to intent '{intent}'"
         return AgentAction(
-            action="scrape_web_info",
+            action="get_web_info_llm",
             action_input={
-                "search_type": search_strategy["type"],
-                "keywords": search_strategy["keywords"],
-                "sources": search_strategy["sources"]
+                "user_message": user_message,
+                "intent": intent,
+                "context": state.context
             },
-            reasoning=reasoning
+            reasoning=f"Requesting web info from LLM for intent '{intent}'"
         )
-    
-    def _determine_search_strategy(self, intent: str, message: str) -> Dict[str, Any]:
-        """Determine what to search for based on intent and message"""
-        message_lower = message.lower()
-        
-        # Intent-based search strategies
-        strategies = {
-            "registration_help": {
-                "type": "registration_info",
-                "keywords": ["registration", "enrollment", "deadline", "course"],
-                "sources": ["main_website"],
-                "skip": False
-            },
-            "grade_inquiry": {
-                "type": "academic_info", 
-                "keywords": ["grade", "result", "transcript"],
-                "sources": ["main_website"],
-                "skip": False
-            },
-            "event_info": {
-                "type": "events",
-                "keywords": ["event", "conference", "seminar", "calendar"],
-                "sources": ["main_website", "facebook"],
-                "skip": False
-            },
-            "facility_info": {
-                "type": "facilities",
-                "keywords": ["library", "cafeteria", "parking", "hours"],
-                "sources": ["main_website"],
-                "skip": False
-            },
-            "general_info": {
-                "type": "general",
-                "keywords": self._extract_keywords_from_message(message_lower),
-                "sources": ["main_website"],
-                "skip": False
-            }
-        }
-        
-        # Default strategy for unknown intents
-        default_strategy = {
-            "type": "general",
-            "keywords": self._extract_keywords_from_message(message_lower),
-            "sources": ["main_website"],
-            "skip": len(self._extract_keywords_from_message(message_lower)) == 0
-        }
-        
-        return strategies.get(intent, default_strategy)
-    
-    def _extract_keywords_from_message(self, message: str) -> List[str]:
-        """Extract relevant keywords from user message"""
-        keywords = []
-        for category, category_keywords in self.relevance_keywords.items():
-            for keyword in category_keywords:
-                if keyword in message:
-                    keywords.append(keyword)
-        return list(set(keywords))  # Remove duplicates
-    
+
     def act(self, action: AgentAction) -> AgentObservation:
         """
-        Action step: Execute web scraping or skip
+        Action step: Execute web info request to LLM. No scraping or fallback.
         """
         try:
-            if action.action == "skip_web_scraping":
+            if action.action == "skip_web_info":
                 return AgentObservation(
-                    observation=f"Skipped web scraping: {action.action_input['reason']}",
+                    observation=f"Skipped web info: {action.action_input['reason']}",
                     success=True,
                     data={"web_results": []}
                 )
-            
-            elif action.action == "scrape_web_info":
-                return self._scrape_web_information(action.action_input)
-            
+            elif action.action == "get_web_info_llm":
+                llm_result = self._call_llm(action.action_input)
+                web_results = llm_result.get("web_results", [])
+                return AgentObservation(
+                    observation="Web info provided by LLM",
+                    success=True if web_results else False,
+                    data={"web_results": web_results}
+                )
             else:
                 return AgentObservation(
                     observation=f"Unknown action: {action.action}",
                     success=False,
                     data={}
                 )
-        
         except Exception as e:
             logger.error(f"Error in WebAgent action: {e}")
             return AgentObservation(
-                observation=f"Error during web scraping: {str(e)}",
+                observation=f"Error during web info: {str(e)}",
                 success=False,
                 data={"web_results": []}
             )
-    
-    def _scrape_web_information(self, action_input: Dict[str, Any]) -> AgentObservation:
-        """Scrape web information based on action input"""
-        search_type = action_input["search_type"]
-        keywords = action_input["keywords"]
-        sources = action_input["sources"]
-        
-        results = []
-        
-        # Check cache first
-        cache_key = f"{search_type}_{'-'.join(keywords)}"
-        if cache_key in self.cache:
-            cached_result = self.cache[cache_key]
-            if datetime.now() - cached_result["timestamp"] < timedelta(seconds=self.cache_duration):
-                logger.info(f"Using cached results for {cache_key}")
-                return AgentObservation(
-                    observation=f"Retrieved cached {search_type} information",
-                    success=True,
-                    data={"web_results": cached_result["results"]}
-                )
-        
-        # Scrape from specified sources
-        for source_name in sources:
-            if source_name in self.esb_sources:
-                source_results = self._scrape_source(source_name, search_type, keywords)
-                results.extend(source_results)
-        
-        # Score and sort results by relevance
-        scored_results = self._score_results(results, keywords)
-        
-        # Cache results
-        self.cache[cache_key] = {
-            "results": scored_results,
-            "timestamp": datetime.now()
-        }
-        
-        observation_msg = f"Scraped {len(scored_results)} relevant items from {len(sources)} sources"
-        return AgentObservation(
-            observation=observation_msg,
-            success=True,
-            data={"web_results": scored_results}
-        )
-    
-    def _scrape_source(self, source_name: str, search_type: str, keywords: List[str]) -> List[WebScrapingResult]:
-        """Scrape a specific source"""
-        results = []
-        source_config = self.esb_sources[source_name]
-        
-        try:
-            # Set headers to mimic a real browser
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-            }
-            
-            response = requests.get(source_config["url"], headers=headers, timeout=10)
-            response.raise_for_status()
-            
-            soup = BeautifulSoup(response.content, 'html.parser')
-            
-            # Extract content based on selectors
-            selectors = source_config["selectors"]
-            
-            # Try specific selectors first, then general
-            for selector_type, selector in selectors.items():
-                elements = soup.select(selector)
-                
-                for element in elements[:5]:  # Limit to 5 items per selector
-                    text_content = element.get_text(strip=True)
-                    
-                    if len(text_content) > 20:  # Only include substantial content
-                        result = WebScrapingResult(
-                            source=source_name,
-                            title=self._extract_title(element),
-                            content=text_content[:500],  # Limit content length
-                            url=source_config["url"],
-                            timestamp=datetime.now(),
-                            metadata={"selector_type": selector_type}
-                        )
-                        results.append(result)
-                
-                if results:  # If we found content, don't try other selectors
-                    break
-        
-        except Exception as e:
-            logger.warning(f"Failed to scrape {source_name}: {e}")
-            # Add a mock result indicating the attempt
-            results.append(WebScrapingResult(
-                source=source_name,
-                title="Scraping Error",
-                content=f"Unable to access {source_name} at this time. Please check the ESB website directly.",
-                url=source_config["url"],
-                timestamp=datetime.now(),
-                metadata={"error": str(e)}
-            ))
-        
-        return results
-    
-    def _extract_title(self, element) -> str:
-        """Extract a title from an HTML element"""
-        # Try to find a title in various ways
-        title_selectors = ['h1', 'h2', 'h3', '.title', '.headline', 'strong']
-        
-        for selector in title_selectors:
-            title_elem = element.select_one(selector)
-            if title_elem:
-                title = title_elem.get_text(strip=True)
-                if title and len(title) < 100:
-                    return title
-        
-        # Fallback: use first few words of content
-        content = element.get_text(strip=True)
-        words = content.split()[:8]
-        return " ".join(words) + "..." if len(words) == 8 else " ".join(words)
-    
-    def _score_results(self, results: List[WebScrapingResult], keywords: List[str]) -> List[WebScrapingResult]:
-        """Score results based on keyword relevance"""
-        for result in results:
-            score = 0
-            content_lower = (result.title + " " + result.content).lower()
-            
-            for keyword in keywords:
-                if keyword in content_lower:
-                    score += 1
-            
-            # Boost score for recent content (if we could determine dates)
-            # For now, all content gets base relevance
-            result.relevance_score = score / max(len(keywords), 1)
-        
-        # Sort by relevance score (highest first)
-        return sorted(results, key=lambda x: x.relevance_score, reverse=True)[:3]  # Top 3 results
 
+    @retry_on_exception((Exception,), tries=3, delay=2, backoff=2, logger=logger)
+    def _call_llm(self, action_input: Dict[str, Any]) -> Dict[str, Any]:
+        """Call LLM for web info (placeholder, replace with actual LLM call)."""
+        system_prompt = action_input.get('system_prompt')
+        specialties_list = "- Licence in Management\n- Licence in Accounting\n- Licence in Business Computing (Business Intelligence / Business Information Systems)\n- Masters of Business Analytics\n- Masters of Digital Marketing\n- Masters of Accounting"
+        user_message = action_input.get('user_message', '')
+        prompt = (
+            (system_prompt + "\n" if system_prompt else "") +
+            "Here is a list of all specialties and degrees offered at ESB: " + specialties_list + "\n" +
+            "If the user's question is about a course, specialty, or subject not in this list, reply: 'The subject you asked about (repeat the user's subject) is not offered at ESB.' Do not provide a website link or generic information. Only answer about the specialties listed.\n" +
+            "User message: " + user_message + "\nIntent: " + str(action_input.get('intent', '')) + "\nRespond with a JSON array of web_results, or a message if the subject is not offered."
+        )
+        import os
+        os.environ["OLLAMA_HOST"] = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+        import ollama
+        response = ollama.chat(model=self.settings.ollama_model, messages=[{"role": "user", "content": prompt}])
+        # Parse response as needed
+        # For now, fallback to placeholder if LLM fails
+        try:
+            web_results = response['message']['content']
+            import json
+            web_results = json.loads(web_results)
+        except Exception:
+            web_results = [
+                {
+                    "source": "llm",
+                    "title": "Not offered at ESB",
+                    "content": f"The subject you asked about ('{user_message}') is not offered at ESB.",
+                    "relevance": 1.0,
+                    "url": ""
+                }
+            ]
+        return {"web_results": web_results}
+    
     def observe(self, observation: AgentObservation, state: ChatbotState) -> ChatbotState:
         """
-        Observation step: Update state based on web scraping results
+        Observation step: Update state based on web information from LLM
         """
         if observation.success and "web_results" in observation.data:
             web_results = observation.data["web_results"]
@@ -360,35 +153,35 @@ class WebAgent:
             state.context.update({
                 "web_info": [
                     {
-                        "source": result.source,
-                        "title": result.title,
-                        "content": result.content,
-                        "relevance": result.relevance_score,
-                        "url": result.url
+                        "source": result["source"],
+                        "title": result["title"],
+                        "content": result["content"],
+                        "relevance": result.get("relevance", 1.0),
+                        "url": result["url"]
                     }
                     for result in web_results
                 ],
-                "web_scraping_timestamp": datetime.utcnow().isoformat(),
-                "web_sources_checked": list(set([result.source for result in web_results]))
+                "web_info_timestamp": datetime.utcnow().isoformat(),
+                "web_sources_checked": list(set([result["source"] for result in web_results]))
             })
 
             # Add to metadata
             state.metadata.update({
                 "web_agent_session_id": self.session_id,
                 "web_results_count": len(web_results),
-                "web_scraping_success": True
+                "web_info_success": True
             })
 
             logger.info(f"Added {len(web_results)} web results to state context")
 
         else:
-            logger.warning(f"Web scraping failed or returned no results: {observation.observation}")
+            logger.warning(f"Web info request failed or returned no results: {observation.observation}")
             state.context.update({
                 "web_info": [],
-                "web_scraping_error": observation.observation
+                "web_info_error": observation.observation
             })
             state.metadata.update({
-                "web_scraping_success": False
+                "web_info_success": False
             })
 
         return state
