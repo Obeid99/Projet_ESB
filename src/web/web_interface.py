@@ -359,15 +359,32 @@ def chat():
         store_message(user_id, user_message, is_user=True)
         # Fetch recent chat history for context
         chat_history = get_recent_history(user_id)
-        # Optionally, format chat_history for the chatbot (e.g., as a string)
-        history_text = '\n'.join([
-            ("User: " if h['is_user'] else "Bot: ") + h['message'] for h in chat_history
-        ])
+        conversation_history = []
+        for h in chat_history:
+            role = "user" if h['is_user'] else "system"
+            conversation_history.append({"role": role, "content": h['message']})
+
+        # SYSTEM PROMPT for all LLM calls
+        SYSTEM_PROMPT = (
+            "You are an assistant for ESPRIT School of Business (ESB) in Tunisia. "
+            "Never refer to any other school or institution. "
+            "All information, responses, and context are about ESPRIT School of Business only. "
+            "Here is a list of all specialties and degrees offered at ESB: "
+            "- Licence in Management\n"
+            "- Licence in Accounting\n"
+            "- Licence in Business Computing (Business Intelligence / Business Information Systems)\n"
+            "- Masters of Business Analytics\n"
+            "- Masters of Digital Marketing\n"
+            "- Masters of Accounting\n"
+            "If a user asks about a course, specialty, or subject not in this list, politely inform them that it is not offered at ESB and do not make up information."
+        )
+
         start_time = time.time()
         # Build the graph (reuse agents from global scope)
         graph = build_esb_graph(sentiment_agent, intent_agent, web_agent, refiner_agent, reflection_agent)
-        # Initialize state as a dict, include history
-        chatbot_state = ChatbotState(user_message=user_message, chat_history=history_text)
+        # Pass conversation_history to ChatbotState
+        chatbot_state = ChatbotState(user_message=user_message, conversation_history=conversation_history)
+        chatbot_state.context['system_prompt'] = SYSTEM_PROMPT
         state = {"user_message": user_message, "chatbot_state": chatbot_state}
         # Run the graph using .invoke()
         result = graph.invoke(state)
