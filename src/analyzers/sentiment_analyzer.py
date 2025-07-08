@@ -4,6 +4,10 @@ Sentiment analysis utilities for ESB Chatbot System
 import logging
 from typing import Dict, Optional
 from abc import ABC, abstractmethod
+import os
+
+# Set OLLAMA_HOST from OLLAMA_BASE_URL
+os.environ["OLLAMA_HOST"] = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 
 # Sentiment analysis libraries
 from textblob import TextBlob
