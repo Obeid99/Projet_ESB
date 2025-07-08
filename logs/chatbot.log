@@ -70,3 +70,1165 @@
  * Running on http://127.0.0.1:5000
  * Running on http://10.100.41.91:5000
 2025-07-03 09:25:19,460 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 12:59:43,612 - root - INFO - Logging configured successfully
+2025-07-08 12:59:45,150 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 12:59:45,151 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 12:59:45,152 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 12:59:45,154 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 975e70ae-fc36-498f-b83e-85a8319e77f5
+2025-07-08 12:59:45,160 - src.agents.intent_agent - WARNING - Ollama not available: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 12:59:45,162 - src.agents.web_agent - INFO - WebAgent initialized, session: cafc92d4-fc65-45e8-898f-0bb0b82168bb
+2025-07-08 12:59:45,165 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 12:59:45,166 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 036d13e7-353b-4e86-a199-92c591aca2ac
+2025-07-08 12:59:45,168 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: c73605bc-3a77-4613-bcdc-94b3b2bad714
+2025-07-08 12:59:48,601 - root - INFO - Logging configured successfully
+2025-07-08 12:59:49,603 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 12:59:49,603 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 12:59:49,604 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 12:59:49,605 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: bb3c269a-c6db-4f6d-a29d-241ff2d92ca9
+2025-07-08 12:59:49,608 - src.agents.intent_agent - WARNING - Ollama not available: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 12:59:49,609 - src.agents.web_agent - INFO - WebAgent initialized, session: ea95db68-2a03-418a-afed-b468632fe18e
+2025-07-08 12:59:49,610 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 12:59:49,611 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 878f3208-32c2-4534-ba37-28610cb5e790
+2025-07-08 12:59:49,613 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 8d7b2f4b-4501-4b6d-8cd2-83c623ca614e
+2025-07-08 12:59:49,624 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 12:59:49,625 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 12:59:51,450 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 12:59:51] "GET / HTTP/1.1" 200 -
+2025-07-08 12:59:54,831 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 12:59:54] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 12:59:54,900 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 12:59:54] "GET /chat HTTP/1.1" 200 -
+2025-07-08 12:59:55,018 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 12:59:55] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 12:59:55,132 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 12:59:55] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 12:59:55,178 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 12:59:55] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 13:00:04,897 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:00:04,898 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: hello i have a problem with the way courses are being taught in esb, especially machine learning one
+2025-07-08 13:00:04,900 - src.analyzers.sentiment_analyzer - ERROR - Ollama analysis error: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:00:04,900 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.0 scores={} reasoning='Error in Ollama analysis: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download'
+2025-07-08 13:00:04,901 - src.agents.sentiment_agent - INFO - [SentimentAgent] Overriding neutral to negative due to strong negative words (EN/FR).
+2025-07-08 13:00:04,914 - src.core.database - INFO - Saved sentiment record with ID: 145
+2025-07-08 13:00:04,915 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: SentimentLabel.NEGATIVE
+2025-07-08 13:00:04,915 - src.agents.sentiment_agent - INFO - Updated state with sentiment: SentimentLabel.NEGATIVE
+2025-07-08 13:00:04,918 - src.agents.intent_agent - ERROR - LLM intent detection failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:00:04,920 - src.agents.web_agent - INFO - WebAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:00:04,922 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:00:04,924 - src.agents.refiner_agent - INFO - RefinerAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:00:04,926 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:00:04,928 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:00:04,934 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:00:04] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:01:37,599 - root - INFO - Logging configured successfully
+2025-07-08 13:01:38,231 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:01:38,232 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:01:38,234 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:01:38,235 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 37cc549b-1d27-46cd-bc58-391164a4891f
+2025-07-08 13:01:38,238 - src.agents.intent_agent - WARNING - Ollama not available: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:01:38,239 - src.agents.web_agent - INFO - WebAgent initialized, session: eec636ac-7c7d-43b8-a8fd-d8c0334af3cd
+2025-07-08 13:01:38,240 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:01:38,241 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 8dca556b-4057-4f66-ac63-2ee5a8034d90
+2025-07-08 13:01:38,242 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 25409516-1e34-43ea-a877-bb91e20419db
+2025-07-08 13:01:39,548 - root - INFO - Logging configured successfully
+2025-07-08 13:01:39,957 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:01:39,957 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:01:39,958 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:01:39,958 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: c2a125d2-9a12-4ded-9fa2-73e5e7b8e971
+2025-07-08 13:01:39,960 - src.agents.intent_agent - WARNING - Ollama not available: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:01:39,960 - src.agents.web_agent - INFO - WebAgent initialized, session: ea523c0a-2d50-4f52-b9ea-d4ed3edb573d
+2025-07-08 13:01:39,961 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:01:39,961 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: bd3699b8-b6fa-4903-b2ff-5ea81c98613f
+2025-07-08 13:01:39,962 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 3a3c7ecd-dd36-47c3-8dcf-526cdd637ba2
+2025-07-08 13:01:39,968 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 13:01:39,969 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 13:01:41,991 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:01:41] "GET / HTTP/1.1" 200 -
+2025-07-08 13:01:44,461 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:01:44] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 13:01:44,526 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:01:44] "GET /chat HTTP/1.1" 200 -
+2025-07-08 13:01:44,630 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:01:44] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:01:44,730 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:01:44] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:01:44,768 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:01:44] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 13:02:12,633 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:02:12,634 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: hello i have a problem with the way courses are being taught in esb, especially machine learning one
+2025-07-08 13:02:12,635 - src.analyzers.sentiment_analyzer - ERROR - Ollama analysis error: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:02:12,636 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.0 scores={} reasoning='Error in Ollama analysis: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download'
+2025-07-08 13:02:12,636 - src.agents.sentiment_agent - INFO - [SentimentAgent] Overriding neutral to negative due to strong negative words (EN/FR).
+2025-07-08 13:02:12,645 - src.core.database - INFO - Saved sentiment record with ID: 178
+2025-07-08 13:02:12,646 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: SentimentLabel.NEGATIVE
+2025-07-08 13:02:12,647 - src.agents.sentiment_agent - INFO - Updated state with sentiment: SentimentLabel.NEGATIVE
+2025-07-08 13:02:12,649 - src.agents.intent_agent - ERROR - LLM intent detection failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:02:12,650 - src.agents.web_agent - INFO - WebAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:02:12,650 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:02:12,651 - src.agents.refiner_agent - INFO - RefinerAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:02:12,652 - src.agents.refiner_agent - WARNING - _call_llm failed with Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download, retrying in 2s... (2 tries left)
+2025-07-08 13:02:14,655 - src.agents.refiner_agent - WARNING - _call_llm failed with Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download, retrying in 4s... (1 tries left)
+2025-07-08 13:02:18,668 - src.agents.refiner_agent - ERROR - Error in RefinerAgent action: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:02:18,676 - src.agents.refiner_agent - WARNING - Response generation failed: Error during response generation: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:02:18,678 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:02:18,685 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:02:18] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:04:35,011 - root - INFO - Logging configured successfully
+2025-07-08 13:04:35,568 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:04:35,568 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:04:35,570 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:04:35,570 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: a374cba2-a16a-43b0-9de1-a638b0fd6fb9
+2025-07-08 13:04:35,572 - src.agents.intent_agent - WARNING - Ollama not available: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:04:35,572 - src.agents.web_agent - INFO - WebAgent initialized, session: 8ce56bc5-890c-43f8-a818-001a82b42c87
+2025-07-08 13:04:35,573 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:04:35,573 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: f7452e5f-d09a-47e4-847b-834fd586b9b9
+2025-07-08 13:04:35,573 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 2b3ec2eb-34ef-4117-864a-24f7b0f1ddd6
+2025-07-08 13:04:36,973 - root - INFO - Logging configured successfully
+2025-07-08 13:04:37,450 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:04:37,451 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:04:37,451 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:04:37,452 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 32375b00-5dce-4b1a-9968-a76b4b409955
+2025-07-08 13:04:37,453 - src.agents.intent_agent - WARNING - Ollama not available: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:04:37,454 - src.agents.web_agent - INFO - WebAgent initialized, session: 4da9b82c-c050-481d-a8f0-27c845259ed5
+2025-07-08 13:04:37,454 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:04:37,455 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 4fdc0b0e-a505-401b-84e2-777e33b0f8f7
+2025-07-08 13:04:37,455 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: fa943d4a-e9a6-4cac-ba10-b9b7dfc2b9a9
+2025-07-08 13:04:37,462 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 13:04:37,465 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 13:04:39,264 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:04:39] "GET / HTTP/1.1" 200 -
+2025-07-08 13:04:42,865 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:04:42] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 13:04:42,930 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:04:42] "GET /chat HTTP/1.1" 200 -
+2025-07-08 13:04:43,037 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:04:43] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:04:43,213 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:04:43] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:04:43,249 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:04:43] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 13:04:51,665 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:04:51,665 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: hello i have a problem with the way courses are being taught in esb, especially machine learning one
+2025-07-08 13:04:51,666 - src.analyzers.sentiment_analyzer - ERROR - Ollama analysis error: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:04:51,667 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.0 scores={} reasoning='Error in Ollama analysis: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download'
+2025-07-08 13:04:51,668 - src.agents.sentiment_agent - INFO - [SentimentAgent] Overriding neutral to negative due to strong negative words (EN/FR).
+2025-07-08 13:04:51,676 - src.core.database - INFO - Saved sentiment record with ID: 211
+2025-07-08 13:04:51,677 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: SentimentLabel.NEGATIVE
+2025-07-08 13:04:51,677 - src.agents.sentiment_agent - INFO - Updated state with sentiment: SentimentLabel.NEGATIVE
+2025-07-08 13:04:51,678 - src.agents.intent_agent - ERROR - LLM intent detection failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:04:51,679 - src.agents.web_agent - INFO - WebAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:04:51,680 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:04:51,681 - src.agents.refiner_agent - INFO - RefinerAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:04:51,682 - src.agents.refiner_agent - WARNING - _call_llm failed with Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download, retrying in 2s... (2 tries left)
+2025-07-08 13:04:53,686 - src.agents.refiner_agent - WARNING - _call_llm failed with Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download, retrying in 4s... (1 tries left)
+2025-07-08 13:04:57,690 - src.agents.refiner_agent - ERROR - Error in RefinerAgent action: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:04:57,696 - src.agents.refiner_agent - WARNING - Response generation failed: Error during response generation: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:04:57,698 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:04:57,707 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:04:57] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:07:53,469 - root - INFO - Logging configured successfully
+2025-07-08 13:07:54,820 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:07:54,821 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:07:54,822 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:07:54,823 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 10e83443-5e50-420f-8fe7-5fb3c8a4044d
+2025-07-08 13:07:54,827 - src.agents.intent_agent - WARNING - Ollama not available: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:07:54,828 - src.agents.web_agent - INFO - WebAgent initialized, session: 47b95fde-47a2-43b7-88d8-26715a129c4b
+2025-07-08 13:07:54,829 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:07:54,830 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 1b6afda3-66a0-4751-94f2-b439062d4b0f
+2025-07-08 13:07:54,831 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 383ce1b9-d801-4a3b-a1ac-afdf1ce8d0a0
+2025-07-08 13:07:57,759 - root - INFO - Logging configured successfully
+2025-07-08 13:07:58,623 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:07:58,624 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:07:58,625 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:07:58,626 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: e7544f3d-b3eb-4bda-8918-adf80fbf119f
+2025-07-08 13:07:58,628 - src.agents.intent_agent - WARNING - Ollama not available: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:07:58,629 - src.agents.web_agent - INFO - WebAgent initialized, session: 797c7409-e697-4230-9205-5ee23c9387b6
+2025-07-08 13:07:58,629 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:07:58,631 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 96dcc956-b6e3-40ab-a66d-ac9cb34f050e
+2025-07-08 13:07:58,632 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: b3aeff96-3f74-4e11-ab1c-9dcf0e36584f
+2025-07-08 13:07:58,643 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 13:07:58,644 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 13:08:01,131 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:08:01] "GET / HTTP/1.1" 200 -
+2025-07-08 13:08:03,809 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:08:03] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 13:08:03,853 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:08:03] "GET /chat HTTP/1.1" 200 -
+2025-07-08 13:08:03,953 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:08:03] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:08:04,087 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:08:04] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:08:04,129 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:08:04] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 13:08:19,181 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:08:19,182 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: hello i have a problem with the way courses are being taught in esb, especially machine learning one
+2025-07-08 13:08:19,185 - src.analyzers.sentiment_analyzer - ERROR - Ollama analysis error: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:08:19,186 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.0 scores={} reasoning='Error in Ollama analysis: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download'
+2025-07-08 13:08:19,187 - src.agents.sentiment_agent - INFO - [SentimentAgent] Overriding neutral to negative due to strong negative words (EN/FR).
+2025-07-08 13:08:19,200 - src.core.database - INFO - Saved sentiment record with ID: 244
+2025-07-08 13:08:19,204 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: SentimentLabel.NEGATIVE
+2025-07-08 13:08:19,205 - src.agents.sentiment_agent - INFO - Updated state with sentiment: SentimentLabel.NEGATIVE
+2025-07-08 13:08:19,209 - src.agents.intent_agent - ERROR - LLM intent detection failed: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:08:19,214 - src.agents.web_agent - INFO - WebAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:08:19,224 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:08:19,229 - src.agents.refiner_agent - INFO - RefinerAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:08:19,238 - src.agents.refiner_agent - WARNING - _call_llm failed with Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download, retrying in 2s... (2 tries left)
+2025-07-08 13:08:21,241 - src.agents.refiner_agent - WARNING - _call_llm failed with Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download, retrying in 4s... (1 tries left)
+2025-07-08 13:08:25,244 - src.agents.refiner_agent - ERROR - Error in RefinerAgent action: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:08:25,246 - src.agents.refiner_agent - WARNING - Response generation failed: Error during response generation: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download
+2025-07-08 13:08:25,246 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:08:25,250 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:08:25] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:09:34,916 - root - INFO - Logging configured successfully
+2025-07-08 13:09:35,343 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:09:35,343 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:09:35,344 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:09:35,344 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: ee062426-1c67-475d-9a12-889ca8577670
+2025-07-08 13:09:35,366 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:09:35,368 - src.agents.web_agent - INFO - WebAgent initialized, session: 53501335-f852-4026-b418-4502d7abd9bd
+2025-07-08 13:09:35,368 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:09:35,369 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: c8ecd7c3-1986-43c9-90b5-9cdf46c0b2a9
+2025-07-08 13:09:35,369 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 5a9bb558-61e4-4806-a923-5ea3496a3001
+2025-07-08 13:09:36,938 - root - INFO - Logging configured successfully
+2025-07-08 13:09:37,375 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:09:37,378 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:09:37,378 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:09:37,379 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 08e3f411-9730-401f-9384-d87f2715f3bd
+2025-07-08 13:09:37,400 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:09:37,401 - src.agents.web_agent - INFO - WebAgent initialized, session: 3731ca41-7689-45a4-9df0-f6d6638a2cd2
+2025-07-08 13:09:37,402 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:09:37,403 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 3efebed5-8b9d-4bd7-ac15-0b25f7bc1b64
+2025-07-08 13:09:37,403 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 45c2fee2-7304-44cb-949e-1c96c3e6111c
+2025-07-08 13:09:37,408 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 13:09:37,410 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 13:09:42,142 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:09:42] "GET / HTTP/1.1" 200 -
+2025-07-08 13:09:49,618 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:09:49] "GET / HTTP/1.1" 200 -
+2025-07-08 13:09:51,312 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:09:51] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 13:09:51,412 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:09:51] "GET /chat HTTP/1.1" 200 -
+2025-07-08 13:09:51,524 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:09:51] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:09:51,664 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:09:51] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:09:51,713 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:09:51] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 13:10:05,521 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:10:05] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 13:10:05,541 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:10:05] "GET /chat HTTP/1.1" 200 -
+2025-07-08 13:10:05,680 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:10:05] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:10:05,713 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:10:05] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:10:05,720 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:10:05] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 13:10:27,394 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: *hello i have a problem with the way courses are b...
+2025-07-08 13:10:27,395 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: *hello i have a problem with the way courses are being taught in esb, especially machine learning one
+2025-07-08 13:10:53,027 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:10:53,030 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='negative' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning='The text expresses dissatisfaction with the teaching method of a specific course, indicating a negative sentiment.'
+2025-07-08 13:10:53,049 - src.core.database - INFO - Saved sentiment record with ID: 277
+2025-07-08 13:10:53,051 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: negative
+2025-07-08 13:10:53,053 - src.agents.sentiment_agent - INFO - Updated state with sentiment: negative
+2025-07-08 13:11:22,225 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:11:22,226 - src.agents.intent_agent - ERROR - LLM intent detection failed: Expecting value: line 1 column 1 (char 0)
+2025-07-08 13:11:22,228 - src.agents.web_agent - INFO - WebAgent processing message: *hello i have a problem with the way courses are b...
+2025-07-08 13:11:22,228 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:11:22,229 - src.agents.refiner_agent - INFO - RefinerAgent processing message: *hello i have a problem with the way courses are b...
+2025-07-08 13:12:20,567 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:12:20,569 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:12:20,570 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: *hello i have a problem with the way courses are b...
+2025-07-08 13:12:20,575 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:12:20] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:13:42,763 - root - INFO - Logging configured successfully
+2025-07-08 13:13:43,497 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:13:43,498 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:13:43,498 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:13:43,499 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 55daf4af-582a-443b-b4b9-eec00ac4f061
+2025-07-08 13:13:43,526 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:13:43,530 - src.agents.web_agent - INFO - WebAgent initialized, session: 3860680b-f4f8-456c-975d-6a9a8d9f7781
+2025-07-08 13:13:43,532 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:13:43,533 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 4004be87-8461-43cd-aa0b-e569671c0733
+2025-07-08 13:13:43,534 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 316e935c-9a0c-4962-aae8-4f96301597af
+2025-07-08 13:13:45,290 - root - INFO - Logging configured successfully
+2025-07-08 13:13:45,745 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:13:45,746 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:13:45,746 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:13:45,747 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: c15c0d95-e581-4625-9d27-5f300828f32f
+2025-07-08 13:13:45,760 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:13:45,764 - src.agents.web_agent - INFO - WebAgent initialized, session: 9976308f-950e-4dba-903e-f18d701c3bf1
+2025-07-08 13:13:45,765 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:13:45,766 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 01149734-eeaf-42ed-93a5-e277a89bc376
+2025-07-08 13:13:45,769 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: f2c26a11-6840-469e-82ee-ebb94a579099
+2025-07-08 13:13:45,777 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 13:13:45,777 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 13:13:52,119 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:13:52] "GET / HTTP/1.1" 200 -
+2025-07-08 13:13:54,319 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:13:54] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 13:13:54,374 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:13:54] "GET /chat HTTP/1.1" 200 -
+2025-07-08 13:13:54,495 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:13:54] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:13:54,800 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:13:54] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:13:54,846 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:13:54] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 13:14:12,396 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:14:12,397 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: hello i have a problem with the way courses are being taught in esb, especially machine learning one
+2025-07-08 13:14:29,005 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:14:29,007 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='negative' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning='The text expresses dissatisfaction with the teaching method in a specific course, indicating a negative sentiment.'
+2025-07-08 13:14:29,022 - src.core.database - INFO - Saved sentiment record with ID: 310
+2025-07-08 13:14:29,024 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: negative
+2025-07-08 13:14:29,026 - src.agents.sentiment_agent - INFO - Updated state with sentiment: negative
+2025-07-08 13:14:56,217 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:14:56,220 - src.agents.intent_agent - INFO - LLM raw response: '{\n  "primary_intent": "complaint",\n  "confidence": 0.9,\n  "secondary_intents": ["request_for_change"],\n  "entities": {\n    "location": "ESB"\n  },\n  "reasoning": "The user is expressing dissatisfaction with the teaching method, specifically mentioning machine learning courses. This suggests a complaint and possibly an intent to request a change in how these courses are taught."\n}'
+2025-07-08 13:14:56,221 - src.agents.web_agent - INFO - WebAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:14:56,222 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:14:56,224 - src.agents.refiner_agent - INFO - RefinerAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:15:44,229 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:15:44,231 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:15:44,232 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: hello i have a problem with the way courses are be...
+2025-07-08 13:15:44,238 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:15:44] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:16:35,988 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: it is the professor...
+2025-07-08 13:16:35,989 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: it is the professor
+2025-07-08 13:16:51,094 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:16:51,095 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning="The statement is a simple declaration without emotional tone or connotation, indicating a factual description of someone's title."
+2025-07-08 13:16:51,103 - src.core.database - INFO - Saved sentiment record with ID: 311
+2025-07-08 13:16:51,105 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: neutral
+2025-07-08 13:16:51,105 - src.agents.sentiment_agent - INFO - Updated state with sentiment: neutral
+2025-07-08 13:17:12,017 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:17:12,018 - src.agents.intent_agent - INFO - LLM raw response: '{"primary_intent": "clarification", "confidence": 0.8, "secondary_intents": ["question_answer"], "entities": {"entity": "professor"}, "reasoning": "The user is confirming or questioning the identity of a person referred to as \'the professor\'."}'
+2025-07-08 13:17:12,019 - src.agents.web_agent - INFO - WebAgent processing message: it is the professor...
+2025-07-08 13:17:12,020 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:17:12,021 - src.agents.refiner_agent - INFO - RefinerAgent processing message: it is the professor...
+2025-07-08 13:17:40,248 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:17:40,249 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:17:40,250 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: it is the professor...
+2025-07-08 13:17:40,257 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:17:40] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:27:43,581 - root - INFO - Logging configured successfully
+2025-07-08 13:27:44,075 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:27:44,076 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:27:44,077 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:27:44,077 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: b0459fff-ca23-4af5-b71b-62a23f15aac9
+2025-07-08 13:27:44,098 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:27:44,099 - src.agents.web_agent - INFO - WebAgent initialized, session: 47b064b6-9529-41b7-97b6-2ca8fa0c309c
+2025-07-08 13:27:44,100 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:27:44,100 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 2e262ec2-9c31-4726-853d-9c5cb31210c7
+2025-07-08 13:27:44,101 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 689c3d28-5151-4f1b-882a-2375371aa771
+2025-07-08 13:27:45,427 - root - INFO - Logging configured successfully
+2025-07-08 13:27:45,877 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:27:45,878 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:27:45,878 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:27:45,879 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 825d39e2-1d3a-46eb-92aa-7fe8728e9130
+2025-07-08 13:27:45,917 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:27:45,918 - src.agents.web_agent - INFO - WebAgent initialized, session: 95a9d01d-f53d-4aff-b580-6154da737a7b
+2025-07-08 13:27:45,918 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:27:45,918 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: bf229dd1-63c9-4979-85db-1ed99fd20223
+2025-07-08 13:27:45,919 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: ad55a4f2-3b03-476e-b8e3-144c76dd5344
+2025-07-08 13:27:45,927 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 13:27:45,928 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 13:27:47,870 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:27:47] "GET / HTTP/1.1" 200 -
+2025-07-08 13:27:50,424 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:27:50] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 13:27:50,479 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:27:50] "GET /chat HTTP/1.1" 200 -
+2025-07-08 13:27:50,562 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:27:50] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:27:50,687 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:27:50] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:27:50,730 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:27:50] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 13:28:11,524 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: the way courses are taught at esb is too shitty....
+2025-07-08 13:28:11,524 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: the way courses are taught at esb is too shitty.
+2025-07-08 13:28:37,439 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:28:37,441 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='negative' confidence=0.9 scores={'ollama_confidence': 0.9} reasoning="The text contains strong negative language ('shitty'), indicating a strongly unfavorable opinion about the teaching methods at ESB."
+2025-07-08 13:28:37,459 - src.core.database - INFO - Saved sentiment record with ID: 312
+2025-07-08 13:28:37,460 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: negative
+2025-07-08 13:28:37,461 - src.agents.sentiment_agent - INFO - Updated state with sentiment: negative
+2025-07-08 13:28:47,449 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:28:47,450 - src.agents.intent_agent - INFO - LLM raw response: ''
+2025-07-08 13:28:47,452 - src.agents.intent_agent - WARNING - LLM returned empty response for intent detection.
+2025-07-08 13:28:47,453 - src.agents.web_agent - INFO - WebAgent processing message: the way courses are taught at esb is too shitty....
+2025-07-08 13:28:47,454 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:28:47,455 - src.agents.refiner_agent - INFO - RefinerAgent processing message: the way courses are taught at esb is too shitty....
+2025-07-08 13:29:29,080 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:29:29,082 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:29:29,084 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: the way courses are taught at esb is too shitty....
+2025-07-08 13:29:29,091 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:29:29] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:30:31,510 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: the professors don't even know how to teach man, t...
+2025-07-08 13:30:31,511 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: the professors don't even know how to teach man, they so annoying
+2025-07-08 13:30:50,025 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:30:50,026 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='negative' confidence=0.9 scores={'ollama_confidence': 0.9} reasoning="The text expresses strong dissatisfaction with the professors' teaching abilities, using phrases like 'don't even know how to teach man' and 'so annoying', indicating a negative sentiment."
+2025-07-08 13:30:50,034 - src.core.database - INFO - Saved sentiment record with ID: 313
+2025-07-08 13:30:50,034 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: negative
+2025-07-08 13:30:50,035 - src.agents.sentiment_agent - INFO - Updated state with sentiment: negative
+2025-07-08 13:31:00,192 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:31:00,194 - src.agents.intent_agent - INFO - LLM raw response: ''
+2025-07-08 13:31:00,194 - src.agents.intent_agent - WARNING - LLM returned empty response for intent detection.
+2025-07-08 13:31:00,195 - src.agents.web_agent - INFO - WebAgent processing message: the professors don't even know how to teach man, t...
+2025-07-08 13:31:00,196 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:31:00,197 - src.agents.refiner_agent - INFO - RefinerAgent processing message: the professors don't even know how to teach man, t...
+2025-07-08 13:31:40,255 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:31:40,257 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:31:40,260 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: the professors don't even know how to teach man, t...
+2025-07-08 13:31:40,275 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:31:40] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:32:01,239 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: well machine learing i an examle...
+2025-07-08 13:32:01,240 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: well machine learing i an examle
+2025-07-08 13:32:18,128 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:32:18,130 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning='The text contains a mix of grammatical errors and informal language, but no overtly positive or negative sentiment.'
+2025-07-08 13:32:18,142 - src.core.database - INFO - Saved sentiment record with ID: 314
+2025-07-08 13:32:18,144 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: neutral
+2025-07-08 13:32:18,145 - src.agents.sentiment_agent - INFO - Updated state with sentiment: neutral
+2025-07-08 13:32:28,966 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:32:28,967 - src.agents.intent_agent - INFO - LLM raw response: ''
+2025-07-08 13:32:28,968 - src.agents.intent_agent - WARNING - LLM returned empty response for intent detection.
+2025-07-08 13:32:28,969 - src.agents.web_agent - INFO - WebAgent processing message: well machine learing i an examle...
+2025-07-08 13:32:28,970 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:32:28,972 - src.agents.refiner_agent - INFO - RefinerAgent processing message: well machine learing i an examle...
+2025-07-08 13:32:59,008 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:32:59,009 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:32:59,010 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: well machine learing i an examle...
+2025-07-08 13:32:59,017 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:32:59] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:37:04,526 - root - INFO - Logging configured successfully
+2025-07-08 13:37:05,039 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:37:05,039 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:37:05,040 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:37:05,040 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 535e405f-d93b-4975-81cb-3e1d1bd046d4
+2025-07-08 13:37:05,058 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:37:05,059 - src.agents.web_agent - INFO - WebAgent initialized, session: e803dac7-c06e-4d29-9121-e4de444bafe9
+2025-07-08 13:37:05,059 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:37:05,060 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 67c07e5c-1b7d-4baf-9361-6d0067873b8d
+2025-07-08 13:37:05,060 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 65291d86-76c6-4ad6-ab48-f0b8835f0a3d
+2025-07-08 13:37:06,293 - root - INFO - Logging configured successfully
+2025-07-08 13:37:06,714 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:37:06,715 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:37:06,715 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:37:06,716 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: ee33d5bf-8f6c-4ac1-8bcc-35ac2f436aaf
+2025-07-08 13:37:06,740 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:37:06,741 - src.agents.web_agent - INFO - WebAgent initialized, session: 32624788-c60d-45e4-8754-eb3f3715b345
+2025-07-08 13:37:06,741 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:37:06,742 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 5d607055-75cd-4898-967d-d75d4f558f07
+2025-07-08 13:37:06,742 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 8b8186a9-4b45-43e1-b7ab-029a94d24776
+2025-07-08 13:37:06,750 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 13:37:06,751 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 13:37:38,695 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:37:38] "GET / HTTP/1.1" 200 -
+2025-07-08 13:37:41,417 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:37:41] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 13:37:41,491 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:37:41] "GET /chat HTTP/1.1" 200 -
+2025-07-08 13:37:41,610 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:37:41] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:37:41,758 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:37:41] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:37:41,833 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:37:41] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 13:38:00,532 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: the vibe is so horrible at esb...
+2025-07-08 13:38:00,533 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: the vibe is so horrible at esb
+2025-07-08 13:38:22,283 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:38:22,285 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='negative' confidence=0.9 scores={'ollama_confidence': 0.9} reasoning="The use of 'horrible' indicates a strong negative emotion towards the environment at ESB."
+2025-07-08 13:38:22,309 - src.core.database - INFO - Saved sentiment record with ID: 315
+2025-07-08 13:38:22,311 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: negative
+2025-07-08 13:38:22,312 - src.agents.sentiment_agent - INFO - Updated state with sentiment: negative
+2025-07-08 13:38:31,674 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:38:31,676 - src.agents.intent_agent - INFO - LLM raw response: ''
+2025-07-08 13:38:31,676 - src.agents.intent_agent - WARNING - LLM returned empty response for intent detection.
+2025-07-08 13:38:31,677 - src.agents.web_agent - INFO - WebAgent processing message: the vibe is so horrible at esb...
+2025-07-08 13:38:31,678 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:38:31,679 - src.agents.refiner_agent - INFO - RefinerAgent processing message: the vibe is so horrible at esb...
+2025-07-08 13:38:59,617 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:38:59,619 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:38:59,620 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: the vibe is so horrible at esb...
+2025-07-08 13:38:59,631 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:38:59] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:39:20,819 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: i am talking about teachers...
+2025-07-08 13:39:20,820 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: i am talking about teachers
+2025-07-08 13:39:34,682 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:39:34,684 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning='The text is a statement of fact without emotional tone or connotation.'
+2025-07-08 13:39:34,691 - src.core.database - INFO - Saved sentiment record with ID: 316
+2025-07-08 13:39:34,691 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: neutral
+2025-07-08 13:39:34,692 - src.agents.sentiment_agent - INFO - Updated state with sentiment: neutral
+2025-07-08 13:39:43,638 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:39:43,639 - src.agents.intent_agent - INFO - LLM raw response: ''
+2025-07-08 13:39:43,641 - src.agents.intent_agent - WARNING - LLM returned empty response for intent detection.
+2025-07-08 13:39:43,642 - src.agents.web_agent - INFO - WebAgent processing message: i am talking about teachers...
+2025-07-08 13:39:43,643 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:39:43,644 - src.agents.refiner_agent - INFO - RefinerAgent processing message: i am talking about teachers...
+2025-07-08 13:40:11,178 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:40:11,179 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:40:11,181 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: i am talking about teachers...
+2025-07-08 13:40:11,185 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:40:11] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:42:47,581 - root - INFO - Logging configured successfully
+2025-07-08 13:42:48,143 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:42:48,143 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:42:48,144 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:42:48,144 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 9a6245dc-8eae-4f6b-9cc7-2b7fd5e84bbe
+2025-07-08 13:42:48,172 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:42:48,173 - src.agents.web_agent - INFO - WebAgent initialized, session: d98455a0-5edf-49d8-8b6a-63b61e2e1f1d
+2025-07-08 13:42:48,174 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:42:48,175 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 93131401-89e6-4311-8146-aa3f9d57bd8b
+2025-07-08 13:42:48,177 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 1e6f6b3e-e9e6-41d7-8ced-bbbc06ab63ab
+2025-07-08 13:42:49,633 - root - INFO - Logging configured successfully
+2025-07-08 13:42:50,148 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:42:50,150 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:42:50,151 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:42:50,152 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 3852605d-db56-4feb-9a14-d31c8539499c
+2025-07-08 13:42:50,163 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:42:50,165 - src.agents.web_agent - INFO - WebAgent initialized, session: 2c9cf726-f3e0-4244-a3ee-1d5bebbb0253
+2025-07-08 13:42:50,167 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:42:50,168 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 617f7685-7318-4fa1-ac06-19e0b399811b
+2025-07-08 13:42:50,169 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 333fb520-6581-48c1-b3d5-12b87cdc9c62
+2025-07-08 13:42:50,177 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 13:42:50,177 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 13:42:52,347 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:42:52] "GET / HTTP/1.1" 200 -
+2025-07-08 13:42:55,345 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:42:55] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 13:42:55,436 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:42:55] "GET /chat HTTP/1.1" 200 -
+2025-07-08 13:42:55,558 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:42:55] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:42:55,669 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:42:55] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:42:55,713 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:42:55] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 13:43:04,149 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: hey i don't like the vide at esb...
+2025-07-08 13:43:04,150 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: hey i don't like the vide at esb
+2025-07-08 13:43:23,192 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:43:23,196 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='negative' confidence=0.9 scores={'ollama_confidence': 0.9} reasoning="The text contains the phrase 'I don't like', which is a clear indicator of negative sentiment."
+2025-07-08 13:43:23,223 - src.core.database - INFO - Saved sentiment record with ID: 348
+2025-07-08 13:43:23,225 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: negative
+2025-07-08 13:43:23,227 - src.agents.sentiment_agent - INFO - Updated state with sentiment: negative
+2025-07-08 13:43:23,236 - src.agents.intent_agent - INFO - LLM intent prompt: Given the following conversation transcript, detect the user's intent. Respond ONLY with a flat JSON object like: {"primary_intent": <intent>, "confidence": <float>, "secondary_intents": [<str>], "entities": {<key>: <value>}, "reasoning": <str>}Transcript:
+User: hey i don't like the vide at esb
+Respond ONLY with valid JSON, no explanation, no markdown.
+2025-07-08 13:43:32,906 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:43:32,908 - src.agents.intent_agent - INFO - LLM raw response: ''
+2025-07-08 13:43:32,908 - src.agents.intent_agent - WARNING - LLM returned empty response for intent detection.
+2025-07-08 13:43:32,911 - src.agents.web_agent - INFO - WebAgent processing message: hey i don't like the vide at esb...
+2025-07-08 13:43:32,913 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:43:32,914 - src.agents.refiner_agent - INFO - RefinerAgent processing message: hey i don't like the vide at esb...
+2025-07-08 13:44:07,418 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:44:07,419 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:44:07,420 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: hey i don't like the vide at esb...
+2025-07-08 13:44:07,432 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:44:07] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:44:24,464 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: the professors...
+2025-07-08 13:44:24,464 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: the professors
+2025-07-08 13:44:43,878 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:44:43,886 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning='The text is a noun phrase referring to a group of people, lacking emotional connotation or tone.'
+2025-07-08 13:44:43,896 - src.core.database - INFO - Saved sentiment record with ID: 349
+2025-07-08 13:44:43,897 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: neutral
+2025-07-08 13:44:43,898 - src.agents.sentiment_agent - INFO - Updated state with sentiment: neutral
+2025-07-08 13:44:43,899 - src.agents.intent_agent - INFO - LLM intent prompt: Given the following conversation transcript, detect the user's intent. Respond ONLY with a flat JSON object like: {"primary_intent": <intent>, "confidence": <float>, "secondary_intents": [<str>], "entities": {<key>: <value>}, "reasoning": <str>}Transcript:
+User: the professors
+Respond ONLY with valid JSON, no explanation, no markdown.
+2025-07-08 13:44:52,656 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:44:52,657 - src.agents.intent_agent - INFO - LLM raw response: ''
+2025-07-08 13:44:52,658 - src.agents.intent_agent - WARNING - LLM returned empty response for intent detection.
+2025-07-08 13:44:52,659 - src.agents.web_agent - INFO - WebAgent processing message: the professors...
+2025-07-08 13:44:52,660 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:44:52,662 - src.agents.refiner_agent - INFO - RefinerAgent processing message: the professors...
+2025-07-08 13:45:46,555 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:45:46,558 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:45:46,562 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: the professors...
+2025-07-08 13:45:46,579 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:45:46] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:47:21,359 - root - INFO - Logging configured successfully
+2025-07-08 13:47:22,880 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:47:22,882 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:47:22,883 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:47:22,885 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: f1f04580-0aeb-4d63-8675-26be852f5c00
+2025-07-08 13:47:22,917 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:47:22,920 - src.agents.web_agent - INFO - WebAgent initialized, session: a5f5dad7-183c-4e22-99f6-2f31e3ed6133
+2025-07-08 13:47:22,924 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:47:22,925 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: c87f31dd-f21e-4648-bd35-0db37fe17ece
+2025-07-08 13:47:22,926 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 3800d31c-e86d-424b-b8bb-38af548fee47
+2025-07-08 13:47:25,312 - root - INFO - Logging configured successfully
+2025-07-08 13:47:26,502 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:47:26,503 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:47:26,504 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:47:26,505 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 2816f873-138e-489f-8a25-3c782aeab137
+2025-07-08 13:47:26,531 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:47:26,533 - src.agents.web_agent - INFO - WebAgent initialized, session: 1fe8c88c-d2a0-48ea-9e56-609427bb9f53
+2025-07-08 13:47:26,534 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:47:26,535 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 22a3fbc9-eee8-458a-8908-2296093cd1ff
+2025-07-08 13:47:26,536 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 03eeb5e4-df48-43a9-8b5d-82ec2adfb611
+2025-07-08 13:47:26,555 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 13:47:26,557 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 13:47:32,975 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:47:32] "GET / HTTP/1.1" 200 -
+2025-07-08 13:47:38,988 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:47:38] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 13:47:39,067 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:47:39] "GET /chat HTTP/1.1" 200 -
+2025-07-08 13:47:39,210 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:47:39] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:47:39,367 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:47:39] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:47:39,438 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:47:39] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 13:47:43,148 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: hey i don't like the vibe at esb...
+2025-07-08 13:47:43,149 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: hey i don't like the vibe at esb
+2025-07-08 13:48:03,410 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:48:03,414 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='negative' confidence=0.9 scores={'ollama_confidence': 0.9} reasoning="The text contains a clear expression of dislike ('I don't like') towards the vibe at ESB."
+2025-07-08 13:48:03,433 - src.core.database - INFO - Saved sentiment record with ID: 381
+2025-07-08 13:48:03,435 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: negative
+2025-07-08 13:48:03,436 - src.agents.sentiment_agent - INFO - Updated state with sentiment: negative
+2025-07-08 13:48:03,438 - src.agents.intent_agent - INFO - LLM intent prompt: Given the following conversation transcript, detect the user's intent. Respond with a JSON object with the following fields: {"primary_intent": string, "confidence": float, "secondary_intents": [string], "entities": {string: string}, "reasoning": string}Transcript:
+User: hey i don't like the vibe at esb
+Respond with valid JSON only. No explanation, no markdown.
+2025-07-08 13:48:11,718 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:48:11,719 - src.agents.intent_agent - INFO - LLM raw response: ''
+2025-07-08 13:48:11,720 - src.agents.intent_agent - WARNING - LLM returned empty response for intent detection.
+2025-07-08 13:48:11,723 - src.agents.web_agent - INFO - WebAgent processing message: hey i don't like the vibe at esb...
+2025-07-08 13:48:11,724 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:48:11,726 - src.agents.refiner_agent - INFO - RefinerAgent processing message: hey i don't like the vibe at esb...
+2025-07-08 13:48:50,318 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:48:50,319 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:48:50,321 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: hey i don't like the vibe at esb...
+2025-07-08 13:48:50,329 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:48:50] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:49:52,475 - root - INFO - Logging configured successfully
+2025-07-08 13:49:53,552 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:49:53,553 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:49:53,554 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:49:53,554 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 35fb216e-1268-41ab-aa99-09fb7ac62b92
+2025-07-08 13:49:53,583 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:49:53,587 - src.agents.web_agent - INFO - WebAgent initialized, session: cee72cdb-d20f-497c-8e1d-30b719bd5d1d
+2025-07-08 13:49:53,588 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:49:53,589 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: c8d150a7-a377-46eb-b014-078179edc37e
+2025-07-08 13:49:53,590 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 62e10aae-754d-4ab0-82a7-ae6fbe54fcca
+2025-07-08 13:49:56,596 - root - INFO - Logging configured successfully
+2025-07-08 13:49:57,072 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:49:57,072 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:49:57,073 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:49:57,073 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: c772af77-c60b-47b0-ab65-2399fd19b826
+2025-07-08 13:49:57,092 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:49:57,093 - src.agents.web_agent - INFO - WebAgent initialized, session: daa1225c-ac93-4cf9-b68c-af6e0138ede8
+2025-07-08 13:49:57,093 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:49:57,094 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 195633ff-8205-4845-a139-bba3687ac287
+2025-07-08 13:49:57,094 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 85960b14-ea03-4a41-9a9d-77745a5c08dd
+2025-07-08 13:49:57,101 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 13:49:57,102 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 13:49:58,913 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:49:58] "GET / HTTP/1.1" 200 -
+2025-07-08 13:50:01,320 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:50:01] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 13:50:01,360 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:50:01] "GET /chat HTTP/1.1" 200 -
+2025-07-08 13:50:01,483 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:50:01] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:50:01,607 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:50:01] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:50:01,657 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:50:01] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 13:50:08,609 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: i don't like the vibe at esb...
+2025-07-08 13:50:08,609 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: i don't like the vibe at esb
+2025-07-08 13:50:26,169 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:50:26,170 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='negative' confidence=0.9 scores={'ollama_confidence': 0.9} reasoning="The use of 'don't like' indicates a negative sentiment towards the environment at ESB."
+2025-07-08 13:50:26,182 - src.core.database - INFO - Saved sentiment record with ID: 414
+2025-07-08 13:50:26,183 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: negative
+2025-07-08 13:50:26,184 - src.agents.sentiment_agent - INFO - Updated state with sentiment: negative
+2025-07-08 13:50:26,186 - src.agents.intent_agent - INFO - LLM intent prompt: Given the following conversation transcript, what is the user's intent? Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning.
+Transcript:
+User: i don't like the vibe at esb
+Respond with valid JSON only.
+2025-07-08 13:50:46,846 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:50:46,847 - src.agents.intent_agent - INFO - LLM raw response: '```\n{\n  "primary_intent": "complaint",\n  "confidence": 0.9,\n  "secondary_intents": ["comment"],\n  "entities": {\n    "location": "ESB"\n  },\n  "reasoning": "User is expressing dissatisfaction with the atmosphere at a specific location, ESB."\n}\n```'
+2025-07-08 13:50:46,848 - src.agents.web_agent - INFO - WebAgent processing message: i don't like the vibe at esb...
+2025-07-08 13:50:46,849 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:50:46,850 - src.agents.refiner_agent - INFO - RefinerAgent processing message: i don't like the vibe at esb...
+2025-07-08 13:51:19,485 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:51:19,486 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:51:19,488 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: i don't like the vibe at esb...
+2025-07-08 13:51:19,495 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:51:19] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:54:58,723 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: yeah the professors man...
+2025-07-08 13:54:58,724 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: yeah the professors man
+2025-07-08 13:55:14,093 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:55:14,094 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning="The text is a short phrase with no clear emotional tone or sentiment, but the use of 'yeah' suggests a neutral or casual tone."
+2025-07-08 13:55:14,101 - src.core.database - INFO - Saved sentiment record with ID: 415
+2025-07-08 13:55:14,102 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: neutral
+2025-07-08 13:55:14,102 - src.agents.sentiment_agent - INFO - Updated state with sentiment: neutral
+2025-07-08 13:55:14,103 - src.agents.intent_agent - INFO - LLM intent prompt: Given the following conversation transcript, what is the user's intent? Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning.
+Transcript:
+User: yeah the professors man
+Respond with valid JSON only.
+2025-07-08 13:55:31,114 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:55:31,115 - src.agents.intent_agent - INFO - LLM raw response: '```\n{\n  "primary_intent": null,\n  "confidence": 0,\n  "secondary_intents": [],\n  "entities": {},\n  "reasoning": "Insufficient context to determine user\'s intent"\n}\n```'
+2025-07-08 13:55:31,116 - src.agents.web_agent - INFO - WebAgent processing message: yeah the professors man...
+2025-07-08 13:55:31,117 - src.agents.web_agent - INFO - Added 0 web results to state context
+2025-07-08 13:55:31,118 - src.agents.refiner_agent - INFO - RefinerAgent processing message: yeah the professors man...
+2025-07-08 13:55:54,931 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:55:54,933 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:55:54,934 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: yeah the professors man...
+2025-07-08 13:55:54,941 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:55:54] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:56:58,624 - root - INFO - Logging configured successfully
+2025-07-08 13:56:59,199 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:56:59,199 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:56:59,200 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:56:59,200 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 04177e61-eb2f-4af5-9183-d2dd603f1ee4
+2025-07-08 13:56:59,218 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:56:59,219 - src.agents.web_agent - INFO - WebAgent initialized, session: 66510152-b0fb-48f1-aab7-ee35388703af
+2025-07-08 13:56:59,220 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:56:59,220 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 1a2e355d-3a07-4c19-bde3-4a28c1e71e74
+2025-07-08 13:56:59,221 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 302a3f42-d7e6-42c6-bac2-c9be95c6bd28
+2025-07-08 13:57:00,772 - root - INFO - Logging configured successfully
+2025-07-08 13:57:01,252 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 13:57:01,252 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:57:01,253 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 13:57:01,254 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 28411e86-75f2-4dd3-9079-132f9dd4446a
+2025-07-08 13:57:01,269 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 13:57:01,270 - src.agents.web_agent - INFO - WebAgent initialized, session: 9f8b926f-35ce-4625-8b4c-bbc7e1a79fec
+2025-07-08 13:57:01,271 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 13:57:01,272 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 5b759617-6ab7-4efe-8217-729fd4b6987e
+2025-07-08 13:57:01,274 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: e81590c3-6763-4b80-be59-48f75ca7431c
+2025-07-08 13:57:01,280 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 13:57:01,281 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 13:57:02,820 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:57:02] "GET / HTTP/1.1" 200 -
+2025-07-08 13:57:05,656 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:57:05] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 13:57:05,712 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:57:05] "GET /chat HTTP/1.1" 200 -
+2025-07-08 13:57:05,790 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:57:05] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:57:05,948 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:57:05] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 13:57:06,019 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:57:06] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 13:57:14,220 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: i don't like the vibe at esb...
+2025-07-08 13:57:14,221 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: i don't like the vibe at esb
+2025-07-08 13:57:36,216 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:57:36,220 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='negative' confidence=0.9 scores={'ollama_confidence': 0.9} reasoning="The use of 'don't like' indicates a negative sentiment towards the environment at ESB."
+2025-07-08 13:57:36,244 - src.core.database - INFO - Saved sentiment record with ID: 448
+2025-07-08 13:57:36,247 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: negative
+2025-07-08 13:57:36,249 - src.agents.sentiment_agent - INFO - Updated state with sentiment: negative
+2025-07-08 13:57:36,255 - src.agents.intent_agent - INFO - LLM intent prompt: Given the following conversation transcript, what is the user's intent? Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning.
+Transcript:
+User: i don't like the vibe at esb
+Respond with valid JSON only.
+2025-07-08 13:58:20,390 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:58:20,392 - src.agents.intent_agent - INFO - LLM raw response: '```\n{\n  "primary_intent": "suggestion",\n  "confidence": 0.8,\n  "secondary_intents": ["complaint"],\n  "entities": {\n    "location": "Esb"\n  },\n  "reasoning": "The user starts with a negative phrase (\'I don\'t like\') which indicates a complaint. However, the rest of the sentence implies they are looking for an alternative or solution, making \'suggestion\' the primary intent."\n}\n```'
+2025-07-08 13:58:20,395 - src.agents.web_agent - INFO - WebAgent processing message: i don't like the vibe at esb...
+2025-07-08 13:58:20,396 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 13:58:20,397 - src.agents.refiner_agent - INFO - RefinerAgent processing message: i don't like the vibe at esb...
+2025-07-08 13:59:10,127 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:59:10,128 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 13:59:10,130 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: i don't like the vibe at esb...
+2025-07-08 13:59:10,137 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 13:59:10] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 13:59:43,264 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: i am not looking for suggestions !!!...
+2025-07-08 13:59:43,265 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: i am not looking for suggestions !!!
+2025-07-08 13:59:58,350 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 13:59:58,351 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='negative' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning="The use of multiple exclamation points and the phrase 'not looking for suggestions' implies frustration and annoyance."
+2025-07-08 13:59:58,358 - src.core.database - INFO - Saved sentiment record with ID: 449
+2025-07-08 13:59:58,359 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: negative
+2025-07-08 13:59:58,359 - src.agents.sentiment_agent - INFO - Updated state with sentiment: negative
+2025-07-08 13:59:58,360 - src.agents.intent_agent - INFO - LLM intent prompt: Given the following conversation transcript, what is the user's intent? Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning.
+Transcript:
+User: i am not looking for suggestions !!!
+Respond with valid JSON only.
+2025-07-08 14:00:14,650 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:00:14,652 - src.agents.intent_agent - INFO - LLM raw response: '{\n  "primary_intent": "expressing_frustration",\n  "confidence": 1,\n  "secondary_intents": [],\n  "entities": {},\n  "reasoning": {\n    "match": "exact_match"\n  }\n}'
+2025-07-08 14:00:14,653 - src.agents.web_agent - INFO - WebAgent processing message: i am not looking for suggestions !!!...
+2025-07-08 14:00:14,654 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 14:00:14,655 - src.agents.refiner_agent - INFO - RefinerAgent processing message: i am not looking for suggestions !!!...
+2025-07-08 14:00:45,416 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:00:45,417 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 14:00:45,418 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: i am not looking for suggestions !!!...
+2025-07-08 14:00:45,423 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:00:45] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 14:04:46,425 - root - INFO - Logging configured successfully
+2025-07-08 14:04:47,050 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 14:04:47,051 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:04:47,052 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 14:04:47,053 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: df9405fc-1efc-4c9a-a92e-bace9d714f3e
+2025-07-08 14:04:47,074 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 14:04:47,076 - src.agents.web_agent - INFO - WebAgent initialized, session: f0bd5925-d74b-45bf-a539-9bcfefb8f0e3
+2025-07-08 14:04:47,077 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:04:47,077 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 40bb61b4-4e36-492a-80ff-05d46b2986f6
+2025-07-08 14:04:47,078 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 5c1c580a-1f8b-4a7f-8b61-8576b784db4f
+2025-07-08 14:04:48,560 - root - INFO - Logging configured successfully
+2025-07-08 14:04:49,028 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 14:04:49,028 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:04:49,029 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 14:04:49,029 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 1ec45a30-b4dd-4209-a9d3-d9ef52d65dd4
+2025-07-08 14:04:49,050 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 14:04:49,051 - src.agents.web_agent - INFO - WebAgent initialized, session: 73f814b6-d8de-4f01-a844-0d8f2bc83d53
+2025-07-08 14:04:49,052 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:04:49,053 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 4cc460bf-5a1b-4147-bf37-cbab9036ae39
+2025-07-08 14:04:49,054 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: d7ba51da-46c9-4479-9af3-54625e512c4b
+2025-07-08 14:04:49,062 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 14:04:49,063 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 14:04:50,870 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:04:50] "GET / HTTP/1.1" 200 -
+2025-07-08 14:04:54,091 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:04:54] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 14:04:54,160 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:04:54] "GET /chat HTTP/1.1" 200 -
+2025-07-08 14:04:54,262 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:04:54] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:04:54,385 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:04:54] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:04:54,441 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:04:54] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 14:05:05,193 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: esb is awesome...
+2025-07-08 14:05:05,194 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: esb is awesome
+2025-07-08 14:05:21,069 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:05:21,071 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='positive' confidence=0.9 scores={'ollama_confidence': 0.9} reasoning="The text contains the word 'awesome', which is a strongly positive adjective."
+2025-07-08 14:05:21,097 - src.core.database - INFO - Saved sentiment record with ID: 450
+2025-07-08 14:05:21,099 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: positive
+2025-07-08 14:05:21,100 - src.agents.sentiment_agent - INFO - Updated state with sentiment: positive
+2025-07-08 14:05:21,104 - src.agents.intent_agent - INFO - LLM intent prompt: Given the following conversation transcript, what is the user's intent? Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning.
+Transcript:
+User: i don't like the vibe at esb
+System: I'm sorry to hear that you don't like the vibe at ESB. Can I help you identify what specifically isn't meeting your expectations? Is it something about the environment, the people, or perhaps a particular aspect of our school culture? Let's work together to understand and address your concerns.
+User: yeah the professors man
+System: It sounds like you're referring to the professors in general. If you'd like, I can provide some information about our faculty members or their teaching styles. We also have a professor of the quarter award that recognizes outstanding contributions by our instructors. Would you like more details on either of these topics?
+User: i don't like the vibe at esb
+System: I'd like to help you explore ways to improve the vibe at ESB. Since you're looking for suggestions, I've found some information from our internal knowledge base that might be helpful. It seems there are various initiatives and resources available on campus, such as student clubs, cultural events, and wellness programs.
+
+Would you like me to guide you through these options or perhaps recommend a specific resource that aligns with your interests? This way, you can get involved and contribute to creating a more positive atmosphere at ESB.
+User: i am not looking for suggestions !!!
+System: I apologize if my previous response came across as suggesting something you didn't want. It seems like you're going through a frustrating situation and need to express your emotions. I'm here to listen and provide support, but not offer unsolicited advice. Can you tell me more about what's causing this frustration?
+User: esb is awesome
+User: esb is awesome
+Respond with valid JSON only.
+2025-07-08 14:07:08,720 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:07:08,722 - src.agents.intent_agent - INFO - LLM raw response: '```\n{\n  "primary_intent": "expressing_frustration",\n  "confidence": 0.8,\n  "secondary_intents": [\n    "complaining"\n  ],\n  "entities": {\n    "institution": "ESB"\n  },\n  "reasoning": "The user\'s intent is to express frustration and dissatisfaction with the professors at ESB, which is a recurring theme throughout the conversation."\n}\n```\n\nNote: The confidence level is subjective and based on my analysis of the conversation. It can be adjusted according to specific requirements.\n\nReasoning:\n\n* The primary intent is "expressing_frustration" because the user repeatedly mentions that they don\'t like the vibe at ESB, specifically citing the professors as a reason.\n* The secondary intents are "complaining" and possibly "requesting_help", but since the user explicitly states they\'re not looking for suggestions, it\'s less likely to be the primary intent.\n* The entity is "ESB", which is mentioned multiple times throughout the conversation as the institution in question.\n* The system attempts to provide support and listen to the user\'s concerns, rather than offering unsolicited advice.'
+2025-07-08 14:07:08,723 - src.agents.intent_agent - ERROR - Failed to parse LLM response as JSON: Extra data: line 14 column 1 (char 332). Raw: '{\n  "primary_intent": "expressing_frustration",\n  "confidence": 0.8,\n  "secondary_intents": [\n    "complaining"\n  ],\n  "entities": {\n    "institution": "ESB"\n  },\n  "reasoning": "The user\'s intent is to express frustration and dissatisfaction with the professors at ESB, which is a recurring theme throughout the conversation."\n}\n\n\nNote: The confidence level is subjective and based on my analysis of the conversation. It can be adjusted according to specific requirements.\n\nReasoning:\n\n* The primary intent is "expressing_frustration" because the user repeatedly mentions that they don\'t like the vibe at ESB, specifically citing the professors as a reason.\n* The secondary intents are "complaining" and possibly "requesting_help", but since the user explicitly states they\'re not looking for suggestions, it\'s less likely to be the primary intent.\n* The entity is "ESB", which is mentioned multiple times throughout the conversation as the institution in question.\n* The system attempts to provide support and listen to the user\'s concerns, rather than offering unsolicited advice.'
+2025-07-08 14:07:08,726 - src.agents.web_agent - INFO - WebAgent processing message: esb is awesome...
+2025-07-08 14:07:08,727 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 14:07:08,728 - src.agents.refiner_agent - INFO - RefinerAgent processing message: esb is awesome...
+2025-07-08 14:07:44,209 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:07:44,212 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 14:07:44,215 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: esb is awesome...
+2025-07-08 14:07:44,229 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:07:44] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 14:09:30,993 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: hey esb not esc XD...
+2025-07-08 14:09:30,994 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: hey esb not esc XD
+2025-07-08 14:09:50,151 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:09:50,164 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning='The text contains a casual tone with an emoticon, but no explicit sentiment or opinion is expressed.'
+2025-07-08 14:09:50,176 - src.core.database - INFO - Saved sentiment record with ID: 451
+2025-07-08 14:09:50,186 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: neutral
+2025-07-08 14:09:50,190 - src.agents.sentiment_agent - INFO - Updated state with sentiment: neutral
+2025-07-08 14:09:50,204 - src.agents.intent_agent - INFO - LLM intent prompt: Given the following conversation transcript, what is the user's intent? Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning.
+Transcript:
+User: yeah the professors man
+System: It sounds like you're referring to the professors in general. If you'd like, I can provide some information about our faculty members or their teaching styles. We also have a professor of the quarter award that recognizes outstanding contributions by our instructors. Would you like more details on either of these topics?
+User: i don't like the vibe at esb
+System: I'd like to help you explore ways to improve the vibe at ESB. Since you're looking for suggestions, I've found some information from our internal knowledge base that might be helpful. It seems there are various initiatives and resources available on campus, such as student clubs, cultural events, and wellness programs.
+
+Would you like me to guide you through these options or perhaps recommend a specific resource that aligns with your interests? This way, you can get involved and contribute to creating a more positive atmosphere at ESB.
+User: i am not looking for suggestions !!!
+System: I apologize if my previous response came across as suggesting something you didn't want. It seems like you're going through a frustrating situation and need to express your emotions. I'm here to listen and provide support, but not offer unsolicited advice. Can you tell me more about what's causing this frustration?
+User: esb is awesome
+System: It sounds like you have a great appreciation for the Ecole Supérieure de Commerce (ESB) - what aspect of it do you find particularly awesome? Would you like to explore its curriculum, campus facilities, or something else?
+User: hey esb not esc XD
+User: hey esb not esc XD
+Respond with valid JSON only.
+2025-07-08 14:11:48,275 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:11:48,277 - src.agents.intent_agent - INFO - LLM raw response: 'Here is the output in JSON format:\n\n```\n{\n  "primary_intent": "express_emotion",\n  "confidence": 0.8,\n  "secondary_intents": [\n    "general_inquiry"\n  ],\n  "entities": {\n    "location": ["ESB"]\n  },\n  "reasoning": "The user\'s intent is to express their emotions and frustration about the vibe at ESB, rather than seeking suggestions or information. The mention of \'yeah the professors man\' and \'i don\'t like the vibe\' indicate a negative sentiment, while the second conversation indicates that the user has changed their opinion and now thinks ESB is awesome."\n}\n```\n\nNote: I have assumed that "express_emotion" is the primary intent, but in some cases it could be argued that the primary intent is "general_inquiry". The confidence score of 0.8 reflects a moderate level of certainty. The secondary intents include both "general_inquiry" and "express_emotion", as the conversation involves both asking questions and expressing emotions.'
+2025-07-08 14:11:48,278 - src.agents.intent_agent - ERROR - Failed to parse LLM response as JSON: Expecting value: line 1 column 1 (char 0). Raw: 'Here is the output in JSON format:\n\n\n{\n  "primary_intent": "express_emotion",\n  "confidence": 0.8,\n  "secondary_intents": [\n    "general_inquiry"\n  ],\n  "entities": {\n    "location": ["ESB"]\n  },\n  "reasoning": "The user\'s intent is to express their emotions and frustration about the vibe at ESB, rather than seeking suggestions or information. The mention of \'yeah the professors man\' and \'i don\'t like the vibe\' indicate a negative sentiment, while the second conversation indicates that the user has changed their opinion and now thinks ESB is awesome."\n}\n\n\nNote: I have assumed that "express_emotion" is the primary intent, but in some cases it could be argued that the primary intent is "general_inquiry". The confidence score of 0.8 reflects a moderate level of certainty. The secondary intents include both "general_inquiry" and "express_emotion", as the conversation involves both asking questions and expressing emotions.'
+2025-07-08 14:11:48,279 - src.agents.web_agent - INFO - WebAgent processing message: hey esb not esc XD...
+2025-07-08 14:11:48,280 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 14:11:48,281 - src.agents.refiner_agent - INFO - RefinerAgent processing message: hey esb not esc XD...
+2025-07-08 14:12:19,736 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:12:19,738 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 14:12:19,739 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: hey esb not esc XD...
+2025-07-08 14:12:19,750 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:12:19] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 14:16:16,646 - root - INFO - Logging configured successfully
+2025-07-08 14:16:17,358 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 14:16:17,359 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:16:17,360 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 14:16:17,360 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 064516ac-542d-46b9-a2fd-906636ce148c
+2025-07-08 14:16:17,382 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 14:16:17,383 - src.agents.web_agent - INFO - WebAgent initialized, session: 6714f80e-22ce-4656-af5d-84f54c2d41bd
+2025-07-08 14:16:17,383 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:16:17,384 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: e3c37170-62aa-4cf6-9206-0f1463da4418
+2025-07-08 14:16:17,384 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: a3d1c8d7-3950-461b-bace-0c2dcde975b9
+2025-07-08 14:16:18,798 - root - INFO - Logging configured successfully
+2025-07-08 14:16:19,214 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 14:16:19,214 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:16:19,218 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 14:16:19,218 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 58009b21-1de3-40cc-921f-2d6254296184
+2025-07-08 14:16:19,241 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 14:16:19,242 - src.agents.web_agent - INFO - WebAgent initialized, session: cb551132-aad7-4c9b-a2ed-15e506811c07
+2025-07-08 14:16:19,242 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:16:19,243 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 5070ec95-2fac-41da-9843-5edd817850d9
+2025-07-08 14:16:19,243 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 4548188c-e3fc-4fc0-bfd1-c8c89a22152d
+2025-07-08 14:16:19,248 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 14:16:19,250 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 14:16:22,526 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:22] "GET / HTTP/1.1" 200 -
+2025-07-08 14:16:24,668 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:24] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 14:16:24,710 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:24] "GET /chat HTTP/1.1" 200 -
+2025-07-08 14:16:24,813 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:24] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:16:25,115 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:25] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:16:25,142 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:25] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 14:16:27,053 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:27] "POST /auth/logout HTTP/1.1" 200 -
+2025-07-08 14:16:27,088 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:27] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:16:30,695 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:30] "POST /auth/logout HTTP/1.1" 200 -
+2025-07-08 14:16:30,713 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:30] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:16:41,042 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:41] "POST /auth/logout HTTP/1.1" 200 -
+2025-07-08 14:16:41,055 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:41] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:16:41,576 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:41] "POST /auth/logout HTTP/1.1" 200 -
+2025-07-08 14:16:41,594 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:41] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:16:41,732 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:41] "POST /auth/logout HTTP/1.1" 200 -
+2025-07-08 14:16:41,744 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:41] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:16:41,947 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:41] "POST /auth/logout HTTP/1.1" 200 -
+2025-07-08 14:16:41,958 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:41] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:16:45,140 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:45] "GET / HTTP/1.1" 200 -
+2025-07-08 14:16:47,664 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:47] "GET /login HTTP/1.1" 200 -
+2025-07-08 14:16:50,382 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:16:50] "GET /register HTTP/1.1" 200 -
+2025-07-08 14:17:03,552 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:17:03] "POST /auth/register HTTP/1.1" 200 -
+2025-07-08 14:17:03,592 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:17:03] "[32mGET /chat HTTP/1.1[0m" 302 -
+2025-07-08 14:17:03,651 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:17:03] "GET /login HTTP/1.1" 200 -
+2025-07-08 14:17:14,554 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:17:14] "POST /auth/login HTTP/1.1" 200 -
+2025-07-08 14:17:14,648 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:17:14] "GET /chat HTTP/1.1" 200 -
+2025-07-08 14:17:14,802 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:17:14] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:17:14,963 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:17:14] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:17:14,979 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:17:14] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 14:17:32,704 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: hey sir i don't really like the way of teaching at...
+2025-07-08 14:17:32,704 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: hey sir i don't really like the way of teaching at esb
+2025-07-08 14:17:59,682 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:17:59,688 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='negative' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning="The text expresses dislike towards the teaching method at ESB, using phrases like 'I don't really like'. The tone is critical and negative."
+2025-07-08 14:17:59,719 - src.core.database - INFO - Saved sentiment record with ID: 452
+2025-07-08 14:17:59,725 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: negative
+2025-07-08 14:17:59,726 - src.agents.sentiment_agent - INFO - Updated state with sentiment: negative
+2025-07-08 14:17:59,736 - src.agents.intent_agent - INFO - LLM intent prompt: You are an assistant for ESPRIT School of Business (ESB) in Tunisia. Never refer to any other school or institution. All information, responses, and context are about ESPRIT School of Business only.
+Given the following conversation transcript, what is the user's intent? Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning.
+Transcript:
+User: hey sir i don't really like the way of teaching at esb
+User: hey sir i don't really like the way of teaching at esb
+Respond with valid JSON only.
+2025-07-08 14:18:36,089 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:18:36,091 - src.agents.intent_agent - INFO - LLM raw response: '```json\n{\n  "primary_intent": "negative_feedback",\n  "confidence": 0.9,\n  "secondary_intents": ["complaint", "suggestion"],\n  "entities": {\n    "institution": "ESPRIT School of Business"\n  },\n  "reasoning": "The user\'s message expresses dissatisfaction with the teaching method at ESB, indicating a complaint or suggestion for improvement."\n}\n```'
+2025-07-08 14:18:36,093 - src.agents.web_agent - INFO - WebAgent processing message: hey sir i don't really like the way of teaching at...
+2025-07-08 14:18:53,084 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:18:53,086 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 14:18:53,087 - src.agents.refiner_agent - INFO - RefinerAgent processing message: hey sir i don't really like the way of teaching at...
+2025-07-08 14:19:29,677 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:19:29,679 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 14:19:29,680 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: hey sir i don't really like the way of teaching at...
+2025-07-08 14:19:29,688 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:19:29] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 14:21:53,416 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: geography isn't taught very well at esb...
+2025-07-08 14:21:53,417 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: geography isn't taught very well at esb
+2025-07-08 14:22:09,421 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:22:09,423 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='negative' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning='The text expresses a critical opinion about the teaching of geography at ESB, indicating a negative sentiment.'
+2025-07-08 14:22:09,430 - src.core.database - INFO - Saved sentiment record with ID: 453
+2025-07-08 14:22:09,432 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: negative
+2025-07-08 14:22:09,432 - src.agents.sentiment_agent - INFO - Updated state with sentiment: negative
+2025-07-08 14:22:09,435 - src.agents.intent_agent - INFO - LLM intent prompt: You are an assistant for ESPRIT School of Business (ESB) in Tunisia. Never refer to any other school or institution. All information, responses, and context are about ESPRIT School of Business only.
+Given the following conversation transcript, what is the user's intent? Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning.
+Transcript:
+User: hey sir i don't really like the way of teaching at esb
+System: I'm sorry to hear that you're not satisfied with the teaching style at ESPRIT School of Business. I appreciate your feedback and would like to know more about what specifically isn't working for you. Is it the pace of the classes, the communication between professors and students, or something else? Your input will help us improve our services. Would you like some information from the school's website regarding their policies on student feedback?
+User: geography isn't taught very well at esb
+User: geography isn't taught very well at esb
+Respond with valid JSON only.
+2025-07-08 14:22:58,973 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:22:58,974 - src.agents.intent_agent - INFO - LLM raw response: '```json\n{\n  "primary_intent": "provide_feedback",\n  "confidence": 0.8,\n  "secondary_intents": ["improve_teaching_style"],\n  "entities": {\n    "subject_area": "geography"\n  },\n  "reasoning": "The user\'s statements indicate dissatisfaction with the teaching at ESPRIT School of Business, specifically mentioning geography as an area where improvement is needed. The tone and language used suggest a desire to provide feedback rather than make a complaint."\n}\n```'
+2025-07-08 14:22:58,979 - src.agents.web_agent - INFO - WebAgent processing message: geography isn't taught very well at esb...
+2025-07-08 14:24:07,230 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:24:07,232 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 14:24:07,234 - src.agents.refiner_agent - INFO - RefinerAgent processing message: geography isn't taught very well at esb...
+2025-07-08 14:24:39,023 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:24:39,024 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 14:24:39,026 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: geography isn't taught very well at esb...
+2025-07-08 14:24:39,033 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:24:39] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 14:28:46,795 - root - INFO - Logging configured successfully
+2025-07-08 14:28:48,687 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 14:28:48,689 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:28:48,690 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 14:28:48,691 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 45a26ecb-9c9d-436c-bd5f-352258be2586
+2025-07-08 14:28:48,728 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 14:28:48,731 - src.agents.web_agent - INFO - WebAgent initialized, session: f29ef723-6079-40d1-9438-58bb2c82d603
+2025-07-08 14:28:48,733 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:28:48,734 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 255fe7fb-30ff-487b-ac3d-71928ade63f6
+2025-07-08 14:28:48,735 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 3ed06e08-376d-4426-bd42-62c393ade503
+2025-07-08 14:28:51,992 - root - INFO - Logging configured successfully
+2025-07-08 14:28:52,896 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 14:28:52,897 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:28:52,898 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 14:28:52,899 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 53512634-0432-4b00-96e8-824e2f44b263
+2025-07-08 14:28:52,926 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 14:28:52,928 - src.agents.web_agent - INFO - WebAgent initialized, session: 5960b9d5-c62c-45fe-a3eb-5852e0f36b20
+2025-07-08 14:28:52,929 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:28:52,929 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 4d8837ae-1ba5-4488-9003-f28a158d5b03
+2025-07-08 14:28:52,931 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: b8a0c175-d57f-4d83-8259-92f846658326
+2025-07-08 14:28:52,952 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 14:28:52,953 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 14:28:54,849 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:28:54] "GET / HTTP/1.1" 200 -
+2025-07-08 14:28:58,426 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:28:58] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 14:28:58,499 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:28:58] "GET /chat HTTP/1.1" 200 -
+2025-07-08 14:28:58,637 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:28:58] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:28:58,892 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:28:58] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:28:58,996 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:28:58] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 14:29:15,937 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: hey is geography taught well at esb ?...
+2025-07-08 14:29:15,937 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: hey is geography taught well at esb ?
+2025-07-08 14:29:36,275 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:29:36,277 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning='The text is a question with no emotional tone, inquiring about the quality of geography teaching at ESB.'
+2025-07-08 14:29:36,298 - src.core.database - INFO - Saved sentiment record with ID: 454
+2025-07-08 14:29:36,299 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: neutral
+2025-07-08 14:29:36,301 - src.agents.sentiment_agent - INFO - Updated state with sentiment: neutral
+2025-07-08 14:29:36,305 - src.agents.intent_agent - INFO - LLM intent prompt: You are an assistant for ESPRIT School of Business (ESB) in Tunisia. Never refer to any other school or institution. All information, responses, and context are about ESPRIT School of Business only. Here is a list of all specialties and degrees offered at ESB: - Licence in Management
+- Licence in Accounting
+- Licence in Business Computing (Business Intelligence / Business Information Systems)
+- Masters of Business Analytics
+- Masters of Digital Marketing
+- Masters of Accounting
+If a user asks about a course, specialty, or subject not in this list, politely inform them that it is not offered at ESB and do not make up information.
+Given the following conversation transcript, what is the user's intent? Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning.
+Transcript:
+User: hey sir i don't really like the way of teaching at esb
+System: I'm sorry to hear that you're not satisfied with the teaching style at ESPRIT School of Business. I appreciate your feedback and would like to know more about what specifically isn't working for you. Is it the pace of the classes, the communication between professors and students, or something else? Your input will help us improve our services. Would you like some information from the school's website regarding their policies on student feedback?
+User: geography isn't taught very well at esb
+System: I'm sorry to hear that you feel geography isn't being taught well at ESPIRIT School of Business (ESB). Can you tell me more about what specifically is not meeting your expectations? Was it the content, teaching methods, or something else?
+User: hey is geography taught well at esb ?
+User: hey is geography taught well at esb ?
+Respond with valid JSON only.
+2025-07-08 14:30:41,319 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:30:41,321 - src.agents.intent_agent - INFO - LLM raw response: '```\n{\n  "primary_intent": "complaint",\n  "confidence": 1,\n  "secondary_intents": ["feedback", "information"],\n  "entities": {\n    "school_name": "ESPRIT School of Business"\n  },\n  "reasoning": "The user expresses dissatisfaction with the teaching style and specifically mentions geography, which is not a subject offered by ESB."\n}\n```'
+2025-07-08 14:30:41,324 - src.agents.web_agent - INFO - WebAgent processing message: hey is geography taught well at esb ?...
+2025-07-08 14:31:49,122 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:31:49,125 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 14:31:49,127 - src.agents.refiner_agent - INFO - RefinerAgent processing message: hey is geography taught well at esb ?...
+2025-07-08 14:32:29,749 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:32:29,750 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 14:32:29,752 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: hey is geography taught well at esb ?...
+2025-07-08 14:32:29,763 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:32:29] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 14:32:51,647 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: so what should i study at esb ? i already got a li...
+2025-07-08 14:32:51,648 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: so what should i study at esb ? i already got a licence in business intelligence.
+2025-07-08 14:33:17,065 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:33:17,066 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning='The text is a question seeking advice, indicating a neutral sentiment. The mention of already having a license in business intelligence suggests a positive aspect, but the overall tone is inquiry-based.'
+2025-07-08 14:33:17,073 - src.core.database - INFO - Saved sentiment record with ID: 455
+2025-07-08 14:33:17,074 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: neutral
+2025-07-08 14:33:17,075 - src.agents.sentiment_agent - INFO - Updated state with sentiment: neutral
+2025-07-08 14:33:17,076 - src.agents.intent_agent - INFO - LLM intent prompt: You are an assistant for ESPRIT School of Business (ESB) in Tunisia. Never refer to any other school or institution. All information, responses, and context are about ESPRIT School of Business only. Here is a list of all specialties and degrees offered at ESB: - Licence in Management
+- Licence in Accounting
+- Licence in Business Computing (Business Intelligence / Business Information Systems)
+- Masters of Business Analytics
+- Masters of Digital Marketing
+- Masters of Accounting
+If a user asks about a course, specialty, or subject not in this list, politely inform them that it is not offered at ESB and do not make up information.
+Given the following conversation transcript, what is the user's intent? Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning.
+Transcript:
+User: hey sir i don't really like the way of teaching at esb
+System: I'm sorry to hear that you're not satisfied with the teaching style at ESPRIT School of Business. I appreciate your feedback and would like to know more about what specifically isn't working for you. Is it the pace of the classes, the communication between professors and students, or something else? Your input will help us improve our services. Would you like some information from the school's website regarding their policies on student feedback?
+User: geography isn't taught very well at esb
+System: I'm sorry to hear that you feel geography isn't being taught well at ESPIRIT School of Business (ESB). Can you tell me more about what specifically is not meeting your expectations? Was it the content, teaching methods, or something else?
+User: hey is geography taught well at esb ?
+System: I see that you're concerned about the quality of geography education at ESPRIT School of Business. I've looked up some information from our database and found a link to the school's official website, which may provide more insight into their curriculum and teaching methods.
+
+You can check out the following link for more information: https://esprit.tn/. The website includes details about the school's courses and programs, as well as contact information if you'd like to reach out directly.
+User: so what should i study at esb ? i already got a licence in business intelligence.
+User: so what should i study at esb ? i already got a licence in business intelligence.
+Respond with valid JSON only.
+2025-07-08 14:34:54,617 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:34:54,620 - src.agents.intent_agent - INFO - LLM raw response: '```\n{\n  "primary_intent": "course_advice",\n  "confidence": 0.8,\n  "secondary_intents": ["curriculum", "career_progress"],\n  "entities": {\n    "school": "ESPIRIT School of Business (ESB)",\n    "user_degree": "Licence in Business Intelligence"\n  },\n  "reasoning": "The user has already completed a degree at ESB and is seeking advice on what to study next. The mention of \'already got a licence in business intelligence\' suggests that they are looking for further guidance on their academic path."\n}\n```'
+2025-07-08 14:34:54,624 - src.agents.web_agent - INFO - WebAgent processing message: so what should i study at esb ? i already got a li...
+2025-07-08 14:36:14,556 - root - INFO - Logging configured successfully
+2025-07-08 14:37:07,522 - root - INFO - Logging configured successfully
+2025-07-08 14:37:08,291 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 14:37:08,291 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:37:08,292 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 14:37:08,292 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 7a8e0720-9162-4450-a618-cc3e571e6849
+2025-07-08 14:37:08,317 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 14:37:08,321 - src.agents.web_agent - INFO - WebAgent initialized, session: 562a0844-c1fe-4510-8d47-171aaff608cd
+2025-07-08 14:37:08,322 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:37:08,323 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 3dab7bc1-72d8-4b5a-9e85-d1815c7073e5
+2025-07-08 14:37:08,324 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 787bae87-1516-4528-b0eb-5d7632a2003f
+2025-07-08 14:37:09,817 - root - INFO - Logging configured successfully
+2025-07-08 14:37:10,351 - src.agents.sentiment_agent - INFO - [SentimentAgent] Trying Ollama analyzer...
+2025-07-08 14:37:10,352 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:37:10,353 - src.agents.sentiment_agent - INFO - [SentimentAgent] Using Ollama analyzer.
+2025-07-08 14:37:10,353 - src.agents.sentiment_agent - INFO - SentimentAgent initialized with analyzer: OllamaAnalyzer, session: 773e804e-dd78-4741-bf9b-8bd1b39dc427
+2025-07-08 14:37:10,377 - httpx - INFO - HTTP Request: GET http://host.docker.internal:11434/api/tags "HTTP/1.1 200 OK"
+2025-07-08 14:37:10,378 - src.agents.web_agent - INFO - WebAgent initialized, session: fdb84cbe-db1e-4beb-9db7-e2670858a1a5
+2025-07-08 14:37:10,380 - src.analyzers.sentiment_analyzer - INFO - OllamaAnalyzer initialized with model: llama3.1:8b
+2025-07-08 14:37:10,382 - src.agents.refiner_agent - INFO - RefinerAgent initialized, session: 5346d983-54c4-4b11-91dd-537819fc6d70
+2025-07-08 14:37:10,384 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent initialized, session: 5ea75b8f-7807-456e-b2a9-bc5c9819360f
+2025-07-08 14:37:10,396 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.3:5000
+2025-07-08 14:37:10,398 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 14:37:11,993 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:37:11] "GET / HTTP/1.1" 200 -
+2025-07-08 14:37:14,439 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:37:14] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-07-08 14:37:14,515 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:37:14] "GET /chat HTTP/1.1" 200 -
+2025-07-08 14:37:14,651 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:37:14] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:37:14,799 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:37:14] "GET /api/health HTTP/1.1" 200 -
+2025-07-08 14:37:14,850 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:37:14] "GET /api/projects HTTP/1.1" 200 -
+2025-07-08 14:37:27,427 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: should i study history at esb ?*...
+2025-07-08 14:37:27,427 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: should i study history at esb ?*
+2025-07-08 14:37:49,627 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:37:49,629 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning='The text is a question, indicating indecision or uncertainty about studying history at ESB, without expressing a clear sentiment.'
+2025-07-08 14:37:49,644 - src.core.database - INFO - Saved sentiment record with ID: 456
+2025-07-08 14:37:49,645 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: neutral
+2025-07-08 14:37:49,647 - src.agents.sentiment_agent - INFO - Updated state with sentiment: neutral
+2025-07-08 14:37:49,648 - src.agents.intent_agent - INFO - LLM intent prompt: You are an assistant for ESPRIT School of Business (ESB) in Tunisia. Never refer to any other school or institution. All information, responses, and context are about ESPRIT School of Business only. Here is a list of all specialties and degrees offered at ESB: - Licence in Management
+- Licence in Accounting
+- Licence in Business Computing (Business Intelligence / Business Information Systems)
+- Masters of Business Analytics
+- Masters of Digital Marketing
+- Masters of Accounting
+If a user asks about a course, specialty, or subject not in this list, politely inform them that it is not offered at ESB and do not make up information.
+Given the following conversation transcript, what is the user's intent? Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning.
+Transcript:
+User: hey sir i don't really like the way of teaching at esb
+System: I'm sorry to hear that you're not satisfied with the teaching style at ESPRIT School of Business. I appreciate your feedback and would like to know more about what specifically isn't working for you. Is it the pace of the classes, the communication between professors and students, or something else? Your input will help us improve our services. Would you like some information from the school's website regarding their policies on student feedback?
+User: geography isn't taught very well at esb
+System: I'm sorry to hear that you feel geography isn't being taught well at ESPIRIT School of Business (ESB). Can you tell me more about what specifically is not meeting your expectations? Was it the content, teaching methods, or something else?
+User: hey is geography taught well at esb ?
+System: I see that you're concerned about the quality of geography education at ESPRIT School of Business. I've looked up some information from our database and found a link to the school's official website, which may provide more insight into their curriculum and teaching methods.
+
+You can check out the following link for more information: https://esprit.tn/. The website includes details about the school's courses and programs, as well as contact information if you'd like to reach out directly.
+User: so what should i study at esb ? i already got a licence in business intelligence.
+User: should i study history at esb ?*
+User: should i study history at esb ?*
+Respond with valid JSON only.
+2025-07-08 14:39:43,129 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:39:43,131 - src.agents.intent_agent - INFO - LLM raw response: 'Here is the JSON object representing the user\'s intent:\n\n```json\n{\n  "primary_intent": "get advice on courses to take",\n  "confidence": 0.8,\n  "secondary_intents": ["express dissatisfaction", "ask about specific subject"],\n  "entities": {\n    "school": "ESPRIT School of Business (ESB)",\n    "subject": ["geography", "history"]\n  },\n  "reasoning": "The user has expressed dissatisfaction with the teaching style and quality of certain subjects at ESB. They have also asked about the suitability of studying specific subjects (history) after already completing a Licence in Business Intelligence."\n}\n```\n\nNote: The confidence level is subjective and based on my analysis of the conversation transcript.\n\nExplanation:\n\n* The primary intent is to get advice on courses to take, as the user has asked for recommendations after mentioning that they have a Licence in Business Intelligence.\n* The secondary intents are to express dissatisfaction with the teaching style and quality of certain subjects (geography and history).\n* The entities extracted are the school (ESPRIT School of Business) and specific subjects mentioned by the user (geography and history).'
+2025-07-08 14:39:43,132 - src.agents.intent_agent - ERROR - Failed to parse LLM response as JSON: Expecting value: line 1 column 1 (char 0). Raw: 'Here is the JSON object representing the user\'s intent:\n\n\n{\n  "primary_intent": "get advice on courses to take",\n  "confidence": 0.8,\n  "secondary_intents": ["express dissatisfaction", "ask about specific subject"],\n  "entities": {\n    "school": "ESPRIT School of Business (ESB)",\n    "subject": ["geography", "history"]\n  },\n  "reasoning": "The user has expressed dissatisfaction with the teaching style and quality of certain subjects at ESB. They have also asked about the suitability of studying specific subjects (history) after already completing a Licence in Business Intelligence."\n}\n\n\nNote: The confidence level is subjective and based on my analysis of the conversation transcript.\n\nExplanation:\n\n* The primary intent is to get advice on courses to take, as the user has asked for recommendations after mentioning that they have a Licence in Business Intelligence.\n* The secondary intents are to express dissatisfaction with the teaching style and quality of certain subjects (geography and history).\n* The entities extracted are the school (ESPRIT School of Business) and specific subjects mentioned by the user (geography and history).'
+2025-07-08 14:39:43,134 - src.agents.web_agent - INFO - WebAgent processing message: should i study history at esb ?*...
+2025-07-08 14:40:02,982 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:40:02,983 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 14:40:02,985 - src.agents.refiner_agent - INFO - RefinerAgent processing message: should i study history at esb ?*...
+2025-07-08 14:40:36,946 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:40:36,948 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 14:40:36,950 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: should i study history at esb ?*...
+2025-07-08 14:40:36,960 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:40:36] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 14:41:09,955 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: so boss what do you recommend i study ?...
+2025-07-08 14:41:09,956 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: so boss what do you recommend i study ?
+2025-07-08 14:41:25,713 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:41:25,715 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning='The text is a question seeking advice, indicating a neutral sentiment with no apparent emotional tone or bias.'
+2025-07-08 14:41:25,723 - src.core.database - INFO - Saved sentiment record with ID: 457
+2025-07-08 14:41:25,724 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: neutral
+2025-07-08 14:41:25,725 - src.agents.sentiment_agent - INFO - Updated state with sentiment: neutral
+2025-07-08 14:41:25,726 - src.agents.intent_agent - INFO - LLM intent prompt: You are an assistant for ESPRIT School of Business (ESB) in Tunisia. Never refer to any other school or institution. All information, responses, and context are about ESPRIT School of Business only. Here is a list of all specialties and degrees offered at ESB: - Licence in Management
+- Licence in Accounting
+- Licence in Business Computing (Business Intelligence / Business Information Systems)
+- Masters of Business Analytics
+- Masters of Digital Marketing
+- Masters of Accounting
+If a user asks about a course, specialty, or subject not in this list, politely inform them that it is not offered at ESB and do not make up information.
+Given the following conversation transcript, what is the user's intent? Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning.
+Transcript:
+System: I'm sorry to hear that you're not satisfied with the teaching style at ESPRIT School of Business. I appreciate your feedback and would like to know more about what specifically isn't working for you. Is it the pace of the classes, the communication between professors and students, or something else? Your input will help us improve our services. Would you like some information from the school's website regarding their policies on student feedback?
+User: geography isn't taught very well at esb
+System: I'm sorry to hear that you feel geography isn't being taught well at ESPIRIT School of Business (ESB). Can you tell me more about what specifically is not meeting your expectations? Was it the content, teaching methods, or something else?
+User: hey is geography taught well at esb ?
+System: I see that you're concerned about the quality of geography education at ESPRIT School of Business. I've looked up some information from our database and found a link to the school's official website, which may provide more insight into their curriculum and teaching methods.
+
+You can check out the following link for more information: https://esprit.tn/. The website includes details about the school's courses and programs, as well as contact information if you'd like to reach out directly.
+User: so what should i study at esb ? i already got a licence in business intelligence.
+User: should i study history at esb ?*
+System: It seems like you're considering studying history at our institution. However, according to the available information, it doesn't appear that we offer a program or course in history. If you'd like to explore other academic options or discuss possible courses of study with one of our advisors, I can help facilitate that conversation for you.
+User: so boss what do you recommend i study ?
+User: so boss what do you recommend i study ?
+Respond with valid JSON only.
+2025-07-08 14:43:35,046 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:43:35,048 - src.agents.intent_agent - INFO - LLM raw response: 'Here is the analysis of the user\'s intent:\n\n```\n{\n  "primary_intent": "Course/Specialty Inquiry",\n  "confidence": 0.9,\n  "secondary_intents": ["Satisfaction/Frustration", "Recommendation"],\n  "entities": {\n    "institute": "ESPRIT School of Business (ESB)",\n    "field_of_study": "geography, history"\n  },\n  "reasoning":\n    The user\'s intent is primarily to inquire about the availability of a specific course or specialty at ESB. They mention geography and history, which are not listed in the available courses. They also express frustration with the teaching style in one instance, but this is secondary to their primary inquiry.\n}\n```\n\nThe reasoning behind the analysis is as follows:\n\n* The user\'s primary intent is to inquire about specific courses or specialties at ESB, as evident from their questions about geography and history.\n* Secondary intentions include expressing satisfaction/frustration with the teaching style (only in one instance) and seeking a recommendation for what to study.\n* The entities involved are the institute (ESB) and the fields of study (geography and history).\n* The confidence level is 0.9, indicating that while the user\'s primary intent is clear, there may be some ambiguity in their secondary intentions.'
+2025-07-08 14:43:35,049 - src.agents.intent_agent - ERROR - Failed to parse LLM response as JSON: Expecting value: line 1 column 1 (char 0). Raw: 'Here is the analysis of the user\'s intent:\n\n\n{\n  "primary_intent": "Course/Specialty Inquiry",\n  "confidence": 0.9,\n  "secondary_intents": ["Satisfaction/Frustration", "Recommendation"],\n  "entities": {\n    "institute": "ESPRIT School of Business (ESB)",\n    "field_of_study": "geography, history"\n  },\n  "reasoning":\n    The user\'s intent is primarily to inquire about the availability of a specific course or specialty at ESB. They mention geography and history, which are not listed in the available courses. They also express frustration with the teaching style in one instance, but this is secondary to their primary inquiry.\n}\n\n\nThe reasoning behind the analysis is as follows:\n\n* The user\'s primary intent is to inquire about specific courses or specialties at ESB, as evident from their questions about geography and history.\n* Secondary intentions include expressing satisfaction/frustration with the teaching style (only in one instance) and seeking a recommendation for what to study.\n* The entities involved are the institute (ESB) and the fields of study (geography and history).\n* The confidence level is 0.9, indicating that while the user\'s primary intent is clear, there may be some ambiguity in their secondary intentions.'
+2025-07-08 14:43:35,050 - src.agents.web_agent - INFO - WebAgent processing message: so boss what do you recommend i study ?...
+2025-07-08 14:44:09,012 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:44:09,026 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 14:44:09,049 - src.agents.refiner_agent - INFO - RefinerAgent processing message: so boss what do you recommend i study ?...
+2025-07-08 14:44:41,837 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:44:41,838 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 14:44:41,839 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: so boss what do you recommend i study ?...
+2025-07-08 14:44:41,848 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:44:41] "POST /api/chat HTTP/1.1" 200 -
+2025-07-08 14:45:06,737 - src.agents.sentiment_agent - INFO - SentimentAgent processing message: something to do with it maybe ?...
+2025-07-08 14:45:06,737 - src.agents.sentiment_agent - INFO - [SentimentAgent] Analyzing text: something to do with it maybe ?
+2025-07-08 14:45:24,162 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:45:24,163 - src.agents.sentiment_agent - INFO - [SentimentAgent] Raw analyzer output: label='neutral' confidence=0.8 scores={'ollama_confidence': 0.8} reasoning='The text is a question with a hint of uncertainty, indicating a lack of strong emotions or opinions.'
+2025-07-08 14:45:24,170 - src.core.database - INFO - Saved sentiment record with ID: 458
+2025-07-08 14:45:24,171 - src.agents.sentiment_agent - INFO - Saved sentiment result to database: neutral
+2025-07-08 14:45:24,171 - src.agents.sentiment_agent - INFO - Updated state with sentiment: neutral
+2025-07-08 14:45:24,173 - src.agents.intent_agent - INFO - LLM intent prompt: You are an assistant for ESPRIT School of Business (ESB) in Tunisia. Never refer to any other school or institution. All information, responses, and context are about ESPRIT School of Business only. Here is a list of all specialties and degrees offered at ESB: - Licence in Management
+- Licence in Accounting
+- Licence in Business Computing (Business Intelligence / Business Information Systems)
+- Masters of Business Analytics
+- Masters of Digital Marketing
+- Masters of Accounting
+If a user asks about a course, specialty, or subject not in this list, politely inform them that it is not offered at ESB and do not make up information.
+Given the following conversation transcript, what is the user's intent? Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning.
+Transcript:
+System: I'm sorry to hear that you feel geography isn't being taught well at ESPIRIT School of Business (ESB). Can you tell me more about what specifically is not meeting your expectations? Was it the content, teaching methods, or something else?
+User: hey is geography taught well at esb ?
+System: I see that you're concerned about the quality of geography education at ESPRIT School of Business. I've looked up some information from our database and found a link to the school's official website, which may provide more insight into their curriculum and teaching methods.
+
+You can check out the following link for more information: https://esprit.tn/. The website includes details about the school's courses and programs, as well as contact information if you'd like to reach out directly.
+User: so what should i study at esb ? i already got a licence in business intelligence.
+User: should i study history at esb ?*
+System: It seems like you're considering studying history at our institution. However, according to the available information, it doesn't appear that we offer a program or course in history. If you'd like to explore other academic options or discuss possible courses of study with one of our advisors, I can help facilitate that conversation for you.
+User: so boss what do you recommend i study ?
+System: So you're looking for some guidance on what to study? That's a great question! Since I'm an assistant at ESB, I'd be happy to help you explore our courses. However, before we dive into specific subjects, can you tell me what interests you or what you think might be relevant to your career goals?
+User: something to do with it maybe ?
+User: something to do with it maybe ?
+Respond with valid JSON only.
+2025-07-08 14:47:03,697 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:47:03,699 - src.agents.intent_agent - INFO - LLM raw response: 'Here is the analysis of the user\'s intent:\n\n```json\n{\n  "primary_intent": "get_advice_on_courses",\n  "confidence": 0.9,\n  "secondary_intents": ["consider_course_options", "inquire_about_specific_course"],\n  "entities": {\n    "institution": "ESPRIT School of Business (ESB)",\n    "user_interests": "history"\n  },\n  "reasoning":\n    The user has already obtained a Licence in Business Intelligence and is seeking advice on what to study next. They have also expressed interest in history, which ESB does not offer.\n}\n```\n\nNote: The confidence score of 0.9 indicates that while the primary intent can be determined with high certainty, there are some ambiguous responses from the user ("something to do with it maybe?") that make the analysis less precise.'
+2025-07-08 14:47:03,701 - src.agents.intent_agent - ERROR - Failed to parse LLM response as JSON: Expecting value: line 1 column 1 (char 0). Raw: 'Here is the analysis of the user\'s intent:\n\n\n{\n  "primary_intent": "get_advice_on_courses",\n  "confidence": 0.9,\n  "secondary_intents": ["consider_course_options", "inquire_about_specific_course"],\n  "entities": {\n    "institution": "ESPRIT School of Business (ESB)",\n    "user_interests": "history"\n  },\n  "reasoning":\n    The user has already obtained a Licence in Business Intelligence and is seeking advice on what to study next. They have also expressed interest in history, which ESB does not offer.\n}\n\n\nNote: The confidence score of 0.9 indicates that while the primary intent can be determined with high certainty, there are some ambiguous responses from the user ("something to do with it maybe?") that make the analysis less precise.'
+2025-07-08 14:47:03,703 - src.agents.web_agent - INFO - WebAgent processing message: something to do with it maybe ?...
+2025-07-08 14:47:23,566 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:47:23,567 - src.agents.web_agent - INFO - Added 1 web results to state context
+2025-07-08 14:47:23,569 - src.agents.refiner_agent - INFO - RefinerAgent processing message: something to do with it maybe ?...
+2025-07-08 14:47:58,320 - httpx - INFO - HTTP Request: POST http://host.docker.internal:11434/api/chat "HTTP/1.1 200 OK"
+2025-07-08 14:47:58,321 - src.agents.refiner_agent - INFO - Generated response with llm_generated tone
+2025-07-08 14:47:58,322 - src.agents.self_reflection_agent - INFO - SelfReflectionAgent processing message: something to do with it maybe ?...
+2025-07-08 14:47:58,330 - werkzeug - INFO - 172.18.0.1 - - [08/Jul/2025 14:47:58] "POST /api/chat HTTP/1.1" 200 -
