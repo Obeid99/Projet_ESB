@@ -1,17 +1,55 @@
 # response_agent.py (or in web_interface.py if preferred)
 
 import logging
-from typing import Optional
+from typing import Optional, List
+import json
 
 from ..agents.intent_agent import IntentAgent
 from ..agents.web_agent import WebAgent
 from ..core.models import ChatbotState
+from ..utils import retry_on_exception
 
 logger = logging.getLogger(__name__)
 
-def generate_response(user_input: str, session_id: Optional[str] = None) -> str:
+def _format_llm_context(state):
+    """Format all relevant state/context for LLM prompt."""
+    context = {
+        "intent": state.intent,
+        "entities": state.context.get("intent_entities", {}),
+        "sentiment": state.context.get("sentiment_label", ""),
+        "web_info": state.context.get("web_info", []),
+        "user_message": state.user_message,
+        "session_id": state.session_id,
+        "reasoning": state.context.get("intent_reasoning", ""),
+        # Add conversation history for turnover
+        "conversation_history": state.conversation_history,
+    }
+    return json.dumps(context, ensure_ascii=False)
+
+@retry_on_exception((Exception,), tries=3, delay=2, backoff=2, logger=logger)
+def _call_llm_response(state):
+    import os
+    os.environ["OLLAMA_HOST"] = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+    import ollama
+    # Use conversation history for context
+    history = state.conversation_history[-6:] if len(state.conversation_history) > 6 else state.conversation_history[:]
+    # Add the latest user message if not already present
+    if not history or history[-1].get("content") != state.user_message:
+        history.append({"role": "user", "content": state.user_message})
+    prompt = (
+        "You are an ESB school assistant chatbot. "
+        "Given the following conversation history and context as JSON, generate a helpful, natural, and context-aware response for the user. "
+        "Do not use templates or fallback phrases. Only use the information provided.\n"
+        f"Context: {_format_llm_context(state)}\n"
+        "Conversation history: " + json.dumps(history, ensure_ascii=False) + "\n"
+        "Response:"
+    )
+    response = ollama.chat(model="llama3.1:8b", messages=[{"role": "user", "content": prompt}])
+    return response['message']['content'].strip()
+
+def generate_response(user_input, session_id=None):
     """
-    Main chatbot response pipeline: Intent → Web info → Response generation.
+    Main chatbot response pipeline: Intent → Web info → LLM response generation.
     """
     # Initialize chatbot state
     state = ChatbotState(user_message=user_input.strip(), session_id=session_id)
@@ -19,77 +57,18 @@ def generate_response(user_input: str, session_id: Optional[str] = None) -> str:
     # Step 1: Intent Detection
     intent_agent = IntentAgent()
     state = intent_agent.process(state)
-    intent = state.intent
-    logger.info(f"Detected intent: {intent}")
+    logger.info(f"Detected intent: {state.intent}")
 
     # Step 2: Web Info (if relevant intent)
-    if intent in [
+    if state.intent in [
         "registration_help", "event_info", "facility_info",
         "general_info", "course_info", "schedule_inquiry"
     ]:
         web_agent = WebAgent(session_id=session_id)
         state = web_agent.process(state)
 
-    # Step 3: Response Generation
-    web_info = state.context.get("web_info", [])
-    confidence = state.context.get("intent_confidence", 0.0)
-    reasoning = state.context.get("intent_reasoning", "No reasoning provided.")
-
-    # 🔹 Examples of response patterns
-    # Handle negative sentiment or complaint about a course (e.g., "I hate maths")
-    intent_entities = state.context.get("intent_entities", {})
-    sentiment = state.context.get("sentiment_label", "")
-    # Try to extract course name from user input if not present in entities
-    def extract_course_name(text):
-        course_keywords = [
-            "math", "mathematics", "maths", "algebra", "geometry", "calculus", "statistics", "trigonometry", "probability", "equation", "formule", "cours", "professeur"
-        ]
-        for word in course_keywords:
-            if word in text.lower():
-                return word
-        return None
-
-    if intent == "course_info":
-        if intent_entities.get("negative_course") or sentiment == "NEGATIVE":
-            course_name = intent_entities.get("course")
-            if not course_name:
-                course_name = extract_course_name(user_input)
-            if course_name:
-                return f"I'm sorry to hear you're having trouble with {course_name}. Would you like help finding a support contact, tutoring, or academic resources?"
-            return "I'm sorry you're having trouble with a course. Would you like help finding a support contact, tutoring, or academic resources?"
-        return "Let me help you with course information. Do you need schedules, instructors, or course materials?"
-
-    elif intent == "event_info":
-        if web_info:
-            return f"I found {len(web_info)} event(s):\n" + "\n".join(
-                f"- {item['title']} ({item['url']})" for item in web_info
-            )
-        return "I couldn't find any current events. Try checking the ESB website or Facebook page."
-
-    elif intent == "registration_help":
-        if web_info:
-            top = web_info[0]
-            return f"Here's something that might help with registration:\n“{top['title']}” – {top['content']}\nMore info: {top['url']}"
-        return "I didn’t find current registration details. Would you like to speak to the registrar’s office?"
-
-    elif intent == "facility_info":
-        if web_info:
-            return f"I found information about ESB facilities:\n" + "\n".join(
-                f"- {item['title']}: {item['content'][:100]}..." for item in web_info
-            )
-        return "Sorry, I couldn’t find updated information on facilities. Try asking about a specific place (library, cafeteria, etc.)."
-
-    elif intent == "general_info" and web_info:
-        return f"Here's something general I found:\n“{web_info[0]['title']}”\n{web_info[0]['content']}\n{web_info[0]['url']}"
-
-    elif intent == "complaint":
-        return "I'm here to listen. Could you describe the problem in more detail so I can help or pass it along?"
-
-    elif intent == "appreciation":
-        return "Thank you! Your kind words mean a lot 😊"
-
-    elif intent == "unclear":
-        return "I'm not sure I understood. Could you try rephrasing your question or being more specific?"
-
-    # Default fallback
-    return "I'm still learning. Could you clarify or ask in a different way?"
+    # Step 3: LLM Response Generation (no templates, no fallback)
+    llm_response = _call_llm_response(state)
+    # Add LLM response to conversation history for turnover
+    state.add_to_history("system", llm_response)
+    return llm_response
