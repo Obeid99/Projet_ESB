@@ -15,6 +15,7 @@ from ..core.models import (
     AgentObservation
 )
 from ..core.config import get_settings
+from ..utils import retry_on_exception
 
 logger = logging.getLogger(__name__)
 
@@ -72,70 +73,8 @@ class SelfReflectionAgent:
         logger.info(f"SelfReflectionAgent initialized, session: {self.session_id}")
     
     def _initialize_reflection_prompts(self) -> Dict[str, Dict[str, ReflectionPrompt]]:
-        """Initialize reflection prompts for different scenarios"""
-        return {
-            "negative": {
-                "complaint": ReflectionPrompt(
-                    reflection_type=ReflectionType.PROBLEM_SOLVING,
-                    prompt_text="I understand this situation is frustrating. Let's think through this together:",
-                    follow_up_questions=[
-                        "What specific aspect of this situation bothers you most?",
-                        "Have you encountered similar challenges before? How did you handle them?",
-                        "What would an ideal solution look like to you?",
-                        "What steps could you take to address this issue?"
-                    ],
-                    guidance="Sometimes breaking down a problem helps us find better solutions."
-                ),
-                "academic_support": ReflectionPrompt(
-                    reflection_type=ReflectionType.LEARNING_REFLECTION,
-                    prompt_text="Academic challenges can be tough, but they're also opportunities for growth:",
-                    follow_up_questions=[
-                        "What specific part of this subject/course is most challenging?",
-                        "What study methods have you tried so far?",
-                        "When do you feel most confident in your learning?",
-                        "What resources or support might help you succeed?"
-                    ],
-                    guidance="Reflecting on your learning process can help identify the best strategies for you."
-                )
-            },
-            "neutral": {
-                "career_guidance": ReflectionPrompt(
-                    reflection_type=ReflectionType.GOAL_SETTING,
-                    prompt_text="Career planning is an exciting journey of self-discovery:",
-                    follow_up_questions=[
-                        "What activities or subjects energize you most?",
-                        "What kind of impact do you want to make in your career?",
-                        "What skills do you feel confident about?",
-                        "What areas would you like to develop further?"
-                    ],
-                    guidance="Understanding yourself is the first step to finding a fulfilling career path."
-                ),
-                "decision_making": ReflectionPrompt(
-                    reflection_type=ReflectionType.DECISION_MAKING,
-                    prompt_text="Making important decisions can feel overwhelming. Let's explore this thoughtfully:",
-                    follow_up_questions=[
-                        "What are the main options you're considering?",
-                        "What factors are most important to you in this decision?",
-                        "What are your concerns about each option?",
-                        "How does each option align with your long-term goals?"
-                    ],
-                    guidance="Good decisions come from understanding both your options and your values."
-                )
-            },
-            "positive": {
-                "appreciation": ReflectionPrompt(
-                    reflection_type=ReflectionType.LEARNING_REFLECTION,
-                    prompt_text="It's wonderful to hear about your positive experience! Let's reflect on what made it special:",
-                    follow_up_questions=[
-                        "What specific aspects contributed to this positive experience?",
-                        "How can you apply what you learned to other situations?",
-                        "What does this success tell you about your strengths?",
-                        "How might you help others have similar positive experiences?"
-                    ],
-                    guidance="Reflecting on positive experiences helps us understand what works well for us."
-                )
-            }
-        }
+        """No-op: LLM handles all reflection prompts now."""
+        return {}
     
     def reason(self, state: ChatbotState) -> AgentAction:
         """
@@ -225,84 +164,51 @@ class SelfReflectionAgent:
             )
     
     def _generate_reflection_prompt(self, action_input: Dict[str, Any]) -> AgentObservation:
-        """Generate appropriate reflection prompt"""
-        sentiment = action_input["sentiment"]
-        intent = action_input["intent"]
-        user_message = action_input["user_message"]
-        
-        # Get appropriate reflection prompt
-        reflection_prompt = self._get_reflection_prompt(sentiment, intent)
-        
-        if not reflection_prompt:
+        """Generate reflection prompt using LLM only (no static templates)"""
+        llm_result = self._call_llm(action_input)
+        if not llm_result or not llm_result.get("reflection_prompt"):
             return AgentObservation(
-                observation="No suitable reflection prompt found",
-                success=True,
+                observation="LLM did not return a reflection prompt",
+                success=False,
                 data={"reflection_provided": False}
             )
-        
-        # Customize prompt based on user message
-        customized_prompt = self._customize_prompt(reflection_prompt, user_message)
-        
         return AgentObservation(
-            observation=f"Generated {reflection_prompt.reflection_type} reflection prompt",
+            observation="Generated reflection prompt via LLM",
             success=True,
             data={
                 "reflection_provided": True,
-                "reflection_prompt": customized_prompt,
-                "reflection_type": reflection_prompt.reflection_type.value
+                "reflection_prompt": llm_result["reflection_prompt"],
+                "reflection_type": llm_result.get("reflection_type", "unknown")
             }
         )
-    
-    def _get_reflection_prompt(self, sentiment: str, intent: str) -> Optional[ReflectionPrompt]:
-        """Get appropriate reflection prompt for sentiment and intent"""
-        # Normalize sentiment
-        if sentiment not in self.reflection_prompts:
-            sentiment = "neutral"
-        
-        # Get prompts for sentiment
-        sentiment_prompts = self.reflection_prompts[sentiment]
-        
-        # Try to find specific intent prompt
-        if intent in sentiment_prompts:
-            return sentiment_prompts[intent]
-        
-        # Fallback to general prompts
-        fallback_mapping = {
-            "negative": "complaint",
-            "neutral": "decision_making", 
-            "positive": "appreciation"
-        }
-        
-        fallback_intent = fallback_mapping.get(sentiment)
-        if fallback_intent and fallback_intent in sentiment_prompts:
-            return sentiment_prompts[fallback_intent]
-        
-        return None
-    
-    def _customize_prompt(self, prompt: ReflectionPrompt, user_message: str) -> Dict[str, Any]:
-        """Customize reflection prompt based on user message"""
-        # Extract key themes from user message for personalization
-        message_lower = user_message.lower()
-        
-        # Simple keyword-based customization
-        customizations = []
-        if "stress" in message_lower or "pressure" in message_lower:
-            customizations.append("I notice you mentioned feeling stressed.")
-        if "confused" in message_lower or "don't know" in message_lower:
-            customizations.append("It sounds like you're looking for clarity.")
-        if "help" in message_lower:
-            customizations.append("I can see you're seeking support.")
-        
-        # Build customized prompt
-        intro = " ".join(customizations) + " " if customizations else ""
-        
-        return {
-            "intro": intro,
-            "main_prompt": prompt.prompt_text,
-            "questions": prompt.follow_up_questions,
-            "guidance": prompt.guidance,
-            "type": prompt.reflection_type.value
-        }
+
+    @retry_on_exception((Exception,), tries=3, delay=2, backoff=2, logger=logger)
+    def _call_llm(self, action_input: Dict[str, Any]) -> Dict[str, Any]:
+        """Call LLM for self-reflection prompt (placeholder, replace with actual LLM call)"""
+        system_prompt = action_input.get('system_prompt')
+        prompt = (
+            (system_prompt + "\n" if system_prompt else "") +
+            f"You are an ESB school assistant chatbot. Generate a self-reflection prompt for the following user message: '{action_input.get('user_message', '')}'. Respond with a JSON object containing a reflection_prompt."
+        )
+        import os
+        os.environ["OLLAMA_HOST"] = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+        import ollama
+        response = ollama.chat(model=self.settings.ollama_model, messages=[{"role": "user", "content": prompt}])
+        # Parse response as needed
+        # For now, fallback to placeholder if LLM fails
+        try:
+            reflection_prompt = response['message']['content']
+            import json
+            reflection_prompt = json.loads(reflection_prompt)
+        except Exception:
+            reflection_prompt = {
+                "intro": "Let's reflect together.",
+                "main_prompt": f"Based on your message: '{action_input.get('user_message', '')}', what are your thoughts?",
+                "questions": ["What stands out to you?", "What would you like to change?"],
+                "guidance": "Take your time to think it through.",
+                "type": "llm_generated"
+            }
+        return {"reflection_prompt": reflection_prompt, "reflection_type": "llm_generated"}
     
     def observe(self, observation: AgentObservation, state: ChatbotState) -> ChatbotState:
         """
@@ -357,6 +263,14 @@ class SelfReflectionAgent:
         updated_state = self.observe(observation, state)
         
         return updated_state
+    
+    def _get_reflection_prompt(self, sentiment: str, intent: str) -> Optional[ReflectionPrompt]:
+        """No-op: LLM handles all reflection prompts now."""
+        return None
+
+    def _customize_prompt(self, prompt: ReflectionPrompt, user_message: str) -> Dict[str, Any]:
+        """No-op: LLM handles all customization now."""
+        return {}
 
 
 # LangGraph integration functions
