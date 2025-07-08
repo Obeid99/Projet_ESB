@@ -1,3 +1,10 @@
+import builtins
+Exception = builtins.Exception
+isinstance = builtins.isinstance
+dict = builtins.dict
+float = builtins.float
+str = builtins.str
+
 import logging
 import uuid
 from typing import Dict, Any, Optional, List
@@ -6,11 +13,12 @@ import re
 
 from ..core.models import ChatbotState, AgentAction, AgentObservation
 from ..core.config import get_settings
+from ..utils import retry_on_exception
 
 logger = logging.getLogger(__name__)
 
 class IntentResult:
-    def __init__(self, primary_intent: str, confidence: float, secondary_intents: List[str] = None, entities: Dict[str, Any] = None, reasoning: str = ""):
+    def __init__(self, primary_intent, confidence, secondary_intents=None, entities=None, reasoning=""):
         self.primary_intent = primary_intent
         self.confidence = confidence
         self.secondary_intents = secondary_intents or []
@@ -18,7 +26,7 @@ class IntentResult:
         self.reasoning = reasoning
 
 class IntentAgent:
-    def __init__(self, use_ollama: bool = True, session_id: Optional[str] = None):
+    def __init__(self, use_ollama=True, session_id=None):
         self.settings = get_settings()
         self.use_ollama = use_ollama
         self.session_id = session_id or str(uuid.uuid4())
@@ -55,24 +63,67 @@ class IntentAgent:
             logger.error(f"Error: {e}")
             return AgentObservation(observation="LLM intent detection failed", success=False, data={"error": str(e)})
 
-    def _llm_intent_detection(self, text: str) -> AgentObservation:
+    @retry_on_exception((Exception,), tries=3, delay=2, backoff=2, logger=logger)
+    def _llm_intent_detection(self, text) -> AgentObservation:
         try:
+            import os
+            os.environ["OLLAMA_HOST"] = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
             import ollama
             import json
+            # Use the full conversation history from the global ChatbotState
+            if hasattr(self, 'state') and self.state and hasattr(self.state, 'conversation_history'):
+                full_history = self.state.conversation_history[:]
+            else:
+                full_history = []
+            # Add the latest user message if not already present
+            if not full_history or full_history[-1].get("content") != text:
+                full_history.append({"role": "user", "content": text})
+            # Limit to last 10 turns for LLM stability
+            history_to_use = full_history[-10:]
+            # Inject system_prompt from state.context into the LLM prompt for intent detection, if present.
+            system_prompt = self.state.context.get('system_prompt')
+            # Format as readable transcript
+            transcript = "\n".join([
+                f"{msg['role'].capitalize()}: {msg['content']}" for msg in history_to_use
+            ])
             prompt = (
-                "What is the user's intent in this message: '" + text + "'? "
-                "Respond ONLY with a flat JSON object like: "
-                "{\"primary_intent\": <intent>, \"confidence\": <float>, \"secondary_intents\": [<str>], \"entities\": {<key>: <value>}, \"reasoning\": <str>}"
+                (system_prompt + "\n" if system_prompt else "") +
+                "Given the following conversation transcript, what is the user's intent? "
+                "Return a JSON object with these fields: primary_intent, confidence (0-1), secondary_intents (list), entities (dict), and reasoning."
+                f"\nTranscript:\n{transcript}\n"
+                "Respond with valid JSON only."
             )
-            response = ollama.chat(model=self.settings.ollama_model, messages=[{"role": "user", "content": prompt}])
+            logger.info(f"LLM intent prompt: {prompt}")
+            ollama_messages = [
+                {"role": "user", "content": prompt}
+            ]
+            response = ollama.chat(model=self.settings.ollama_model, messages=ollama_messages)
             raw = response['message']['content']
-            print("LLM raw response:", raw)
-            # Remove markdown code block formatting if present
+            logger.info(f"LLM raw response: {raw!r}")
+            if not raw.strip():
+                # Fallback: try a minimal prompt
+                fallback_prompt = (
+                    (system_prompt + "\n" if system_prompt else "") +
+                    f"What is the user's intent in this conversation?\nTranscript:\n{transcript}\nRespond with a JSON object."
+                )
+                logger.warning("LLM returned empty response, retrying with fallback prompt.")
+                ollama_messages = [
+                    {"role": "user", "content": fallback_prompt}
+                ]
+                response = ollama.chat(model=self.settings.ollama_model, messages=ollama_messages)
+                raw = response['message']['content']
+                logger.info(f"LLM fallback raw response: {raw!r}")
             if '```' in raw:
-                raw = raw.split('```')[1] if len(raw.split('```')) > 1 else raw
-                raw = raw.strip()
-            # Try to parse as JSON
-            result = json.loads(raw)
+                raw = raw.replace('```json', '').replace('```', '').strip()
+            raw = raw.strip()
+            if not raw:
+                logger.warning("LLM returned empty response for intent detection.")
+                return AgentObservation(observation="LLM returned empty response", success=False, data={"intent_result": IntentResult("unclear", 0.0, reasoning="Empty LLM response")})
+            try:
+                result = json.loads(raw)
+            except Exception as e:
+                logger.error(f"Failed to parse LLM response as JSON: {e}. Raw: {raw!r}")
+                return AgentObservation(observation="LLM returned invalid JSON", success=False, data={"intent_result": IntentResult("unclear", 0.0, reasoning="Invalid LLM JSON")})
             # If nested intent, flatten
             if 'intent' in result and isinstance(result['intent'], dict):
                 intent = result['intent']
@@ -121,6 +172,14 @@ class IntentAgent:
         return state
 
     def process(self, state: ChatbotState) -> ChatbotState:
+        # Ensure the agent has access to the full conversation history
+        self.state = state
+        # Add user message to conversation history
+        state.add_to_history("user", state.user_message)
         action = self.reason(state)
         observation = self.act(action)
+        # If intent detected, add to history as system message
+        if observation.success and "intent_result" in observation.data:
+            intent_result = observation.data["intent_result"]
+            state.add_to_history("system", f"Intent detected: {intent_result.primary_intent}")
         return self.observe(observation, state)
