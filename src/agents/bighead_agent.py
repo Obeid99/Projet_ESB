@@ -328,7 +328,7 @@ class BigHeadAgent:
         )
     
     def _simulate_agent_execution(self, agent_name: str, state: ChatbotState) -> Dict[str, Any]:
-        """Simulate agent execution (placeholder for actual agent calls)"""
+        """Simulate agent execution (LLM for all except sentiment_agent)"""
         import time
         import random
         
@@ -336,8 +336,8 @@ class BigHeadAgent:
         processing_time = random.uniform(0.5, 2.0)
         time.sleep(min(processing_time, 0.1))  # Actual sleep limited for demo
         
-        # Simulate results based on agent type
         if agent_name == "sentiment_agent":
+            # Keep the sentiment agent as is (not LLM-based)
             return {
                 "success": True,
                 "execution_time": processing_time,
@@ -346,43 +346,29 @@ class BigHeadAgent:
                     "confidence": 0.85
                 }
             }
-        elif agent_name == "intent_agent":
+        else:
+            # All other agents rely solely on LLM
+            llm_result = self._call_llm(agent_name, state)
             return {
-                "success": True,
+                "success": llm_result.get("success", True),
                 "execution_time": processing_time,
-                "output": {
-                    "intent": "general_info",
-                    "confidence": 0.75
-                }
+                "output": llm_result.get("output", {})
             }
+
+    def _call_llm(self, agent_name: str, state: ChatbotState) -> Dict[str, Any]:
+        """Call LLM for agent output (placeholder, replace with actual LLM call)"""
+        # This is a placeholder. Integrate your LLM API here.
+        # You can use agent_name and state to craft the prompt.
+        # Example return structure:
+        if agent_name == "intent_agent":
+            return {"output": {"intent": "general_info", "confidence": 0.75}}
         elif agent_name == "web_agent":
-            return {
-                "success": True,
-                "execution_time": processing_time,
-                "output": {
-                    "web_results": [
-                        {"title": "ESB News", "content": "Latest updates from ESB"}
-                    ]
-                }
-            }
+            return {"output": {"web_results": [{"title": "ESB News", "content": "Latest updates from ESB"}]}}
         elif agent_name == "refiner_agent":
-            return {
-                "success": True,
-                "execution_time": processing_time,
-                "output": {
-                    "response": "Thank you for your message! I'm here to help you with any questions about ESB."
-                }
-            }
+            return {"output": {"response": "Thank you for your message! I'm here to help you with any questions about ESB."}}
         elif agent_name == "self_reflection_agent":
-            return {
-                "success": True,
-                "execution_time": processing_time,
-                "output": {
-                    "reflection_prompt": "What specific aspect would you like to explore further?"
-                }
-            }
-        
-        return {"success": False, "execution_time": processing_time, "output": {}}
+            return {"output": {"reflection_prompt": "What specific aspect would you like to explore further?"}}
+        return {"output": {}}
     
     def _update_state_with_agent_result(self, state: ChatbotState, agent_name: str, result: Dict[str, Any]) -> ChatbotState:
         """Update state with agent execution results"""
