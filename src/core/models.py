@@ -40,6 +40,9 @@ class ChatbotState(BaseModel):
     response: Optional[str] = None
     metadata: Dict[str, Any] = Field(default_factory=dict)
     
+    def add_to_history(self, role: str, content: str):
+        self.conversation_history.append({"role": role, "content": content})
+    
     class Config:
         arbitrary_types_allowed = True
 
