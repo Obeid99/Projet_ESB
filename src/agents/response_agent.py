@@ -37,7 +37,8 @@ def _call_llm_response(state):
     if not history or history[-1].get("content") != state.user_message:
         history.append({"role": "user", "content": state.user_message})
     prompt = (
-        "You are an ESB school assistant chatbot. "
+        "You are an ESB: esprit school of business assistant chatbot. "
+        "if the question isn't related to esprit school of business do not answer."
         "Given the following conversation history and context as JSON, generate a helpful, natural, and context-aware response for the user. "
         "Do not use templates or fallback phrases. Only use the information provided.\n"
         f"Context: {_format_llm_context(state)}\n"
