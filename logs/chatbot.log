@@ -1413,3 +1413,462 @@ Respond with valid JSON only.
 2025-07-09 18:45:56,895 - werkzeug - INFO - 172.20.0.1 - - [09/Jul/2025 18:45:56] "GET /login HTTP/1.1" 200 -
 2025-07-09 18:46:12,256 - werkzeug - INFO - 172.20.0.1 - - [09/Jul/2025 18:46:12] "GET / HTTP/1.1" 200 -
 2025-07-09 18:46:13,071 - werkzeug - INFO - 172.20.0.1 - - [09/Jul/2025 18:46:13] "GET / HTTP/1.1" 200 -
+2025-07-10 11:24:42,313 - root - INFO - Logging configured successfully
+2025-07-10 11:25:07,355 - root - INFO - Logging configured successfully
+2025-07-10 11:25:17,428 - root - INFO - Logging configured successfully
+2025-07-10 11:25:29,586 - root - INFO - Logging configured successfully
+2025-07-10 11:25:44,116 - root - INFO - Logging configured successfully
+2025-07-10 11:25:52,048 - root - INFO - Logging configured successfully
+2025-07-10 11:26:27,929 - root - INFO - Logging configured successfully
+2025-07-10 11:26:53,610 - root - INFO - Logging configured successfully
+2025-07-10 11:27:21,411 - root - INFO - Logging configured successfully
+2025-07-10 11:27:28,225 - root - INFO - Logging configured successfully
+2025-07-10 11:28:21,263 - root - INFO - Logging configured successfully
+2025-07-10 11:28:58,652 - root - INFO - Logging configured successfully
+2025-07-10 11:29:13,872 - root - INFO - Logging configured successfully
+2025-07-10 11:29:20,719 - root - INFO - Logging configured successfully
+2025-07-10 11:29:50,336 - root - INFO - Logging configured successfully
+2025-07-10 11:30:23,580 - root - INFO - Logging configured successfully
+2025-07-10 11:30:29,899 - root - INFO - Logging configured successfully
+2025-07-10 11:31:10,476 - root - INFO - Logging configured successfully
+2025-07-10 11:31:37,551 - root - INFO - Logging configured successfully
+2025-07-10 11:32:16,070 - root - INFO - Logging configured successfully
+2025-07-10 11:32:16,443 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 11:32:16,444 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 11:32:20,427 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:32:20] "GET / HTTP/1.1" 200 -
+2025-07-10 11:32:22,172 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:32:22] "GET /login HTTP/1.1" 200 -
+2025-07-10 11:32:28,644 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:32:28] "POST /auth/login HTTP/1.1" 200 -
+2025-07-10 11:32:28,691 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:32:28] "GET /chat HTTP/1.1" 200 -
+2025-07-10 11:32:28,897 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:32:28] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 11:32:29,035 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:32:29] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:32:29,100 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:32:29] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:32:51,537 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:32:51] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 11:33:52,287 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:33:52] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 11:34:11,295 - root - INFO - Logging configured successfully
+2025-07-10 11:34:12,462 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 11:34:12,462 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 11:34:18,116 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:34:18] "GET /chat HTTP/1.1" 200 -
+2025-07-10 11:34:18,489 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:34:18] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 11:34:18,716 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:34:18] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:34:18,793 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:34:18] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:34:27,900 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:34:27] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 11:35:26,719 - root - INFO - Logging configured successfully
+2025-07-10 11:35:43,793 - root - INFO - Logging configured successfully
+2025-07-10 11:35:44,525 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 11:35:44,527 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 11:35:47,631 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:35:47] "GET /chat HTTP/1.1" 200 -
+2025-07-10 11:35:47,862 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:35:47] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 11:35:47,983 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:35:47] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:35:48,166 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:35:48] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:36:01,051 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:36:01] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 11:36:42,764 - root - INFO - Logging configured successfully
+2025-07-10 11:36:43,694 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 11:36:43,696 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 11:36:46,636 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:36:46] "GET /chat HTTP/1.1" 200 -
+2025-07-10 11:36:46,863 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:36:46] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 11:36:46,965 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:36:46] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:36:47,028 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:36:47] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:36:52,823 - src.web.web_interface - INFO - [INTENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' intent=greeting confidence=0.8 reasoning=The message is a casual greeting and does not contain any specific information or inquiry about ESB or its programs.
+2025-07-10 11:36:53,389 - src.web.web_interface - INFO - [SENTIMENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x00000221A6777B30>
+2025-07-10 11:36:53,573 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:36:53] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 11:38:02,532 - root - INFO - Logging configured successfully
+2025-07-10 11:38:03,181 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 11:38:03,181 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 11:38:08,324 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:38:08] "GET /chat HTTP/1.1" 200 -
+2025-07-10 11:38:08,455 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:38:08] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 11:38:09,297 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:38:09] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:38:09,532 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:38:09] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:38:11,786 - src.web.web_interface - INFO - [INTENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' intent=greeting confidence=0.8 reasoning=The message is a casual greeting and does not contain any specific information or inquiry about ESB or its programs.
+2025-07-10 11:38:12,391 - src.web.web_interface - INFO - [SENTIMENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x0000017BD8CD6690>
+2025-07-10 11:38:13,140 - src.agents.response_agent - INFO - Detected intent: out_of_scope
+2025-07-10 11:38:13,140 - src.agents.response_agent - WARNING - _call_llm_response failed with 'ChatbotState' object has no attribute 'session_id', retrying in 2s... (2 tries left)
+2025-07-10 11:38:15,143 - src.agents.response_agent - WARNING - _call_llm_response failed with 'ChatbotState' object has no attribute 'session_id', retrying in 4s... (1 tries left)
+2025-07-10 11:38:19,153 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:38:19] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 11:40:14,827 - root - INFO - Logging configured successfully
+2025-07-10 11:40:15,320 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 11:40:15,320 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 11:40:18,310 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:40:18] "GET /chat HTTP/1.1" 200 -
+2025-07-10 11:40:18,435 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:40:18] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 11:40:18,570 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:40:18] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:40:18,642 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:40:18] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:40:21,451 - src.web.web_interface - INFO - [INTENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' intent=greeting confidence=0.8 reasoning=The message is a casual greeting with a mention of ESB, but it doesn't contain any specific question or inquiry about ESB programs or information.
+2025-07-10 11:40:21,988 - src.web.web_interface - INFO - [SENTIMENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x00000236167CE5A0>
+2025-07-10 11:40:22,267 - src.agents.response_agent - INFO - Detected intent: out_of_scope
+2025-07-10 11:40:22,379 - src.agents.response_agent - WARNING - _call_llm_response failed with 404 Client Error: Not Found for url: https://api.groq.com/openai/v1/chat/completions, retrying in 2s... (2 tries left)
+2025-07-10 11:40:24,497 - src.agents.response_agent - WARNING - _call_llm_response failed with 404 Client Error: Not Found for url: https://api.groq.com/openai/v1/chat/completions, retrying in 4s... (1 tries left)
+2025-07-10 11:40:28,617 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:40:28] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 11:45:43,768 - root - INFO - Logging configured successfully
+2025-07-10 11:45:44,386 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 11:45:44,386 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 11:45:47,105 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:45:47] "GET /chat HTTP/1.1" 200 -
+2025-07-10 11:45:47,345 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:45:47] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 11:45:47,499 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:45:47] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:45:47,561 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:45:47] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:45:49,694 - src.web.web_interface - INFO - [INTENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' intent=out_of_scope confidence=0.0 reasoning=None
+2025-07-10 11:45:49,885 - src.web.web_interface - INFO - [SENTIMENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x0000020FE56C6180>
+2025-07-10 11:45:50,566 - src.agents.response_agent - INFO - Detected intent: out_of_scope
+2025-07-10 11:45:50,696 - src.agents.response_agent - WARNING - _call_llm_response failed with 404 Client Error: Not Found for url: https://api.groq.com/openai/v1/chat/completions, retrying in 2s... (2 tries left)
+2025-07-10 11:45:52,812 - src.agents.response_agent - WARNING - _call_llm_response failed with 404 Client Error: Not Found for url: https://api.groq.com/openai/v1/chat/completions, retrying in 4s... (1 tries left)
+2025-07-10 11:45:57,056 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:45:57] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 11:47:43,724 - root - INFO - Logging configured successfully
+2025-07-10 11:47:44,135 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 11:47:44,135 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 11:47:47,932 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:47:47] "GET /chat HTTP/1.1" 200 -
+2025-07-10 11:47:48,048 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:47:48] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 11:47:48,210 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:47:48] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:47:48,261 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:47:48] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:47:49,974 - src.web.web_interface - INFO - [INTENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' intent=out_of_scope confidence=0.0 reasoning=None
+2025-07-10 11:47:50,111 - src.web.web_interface - INFO - [SENTIMENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001987522C500>
+2025-07-10 11:47:50,440 - src.agents.response_agent - INFO - Detected intent: out_of_scope
+2025-07-10 11:47:50,568 - src.agents.response_agent - WARNING - _call_llm_response failed with 404 Client Error: Not Found for url: https://api.groq.com/openai/v1/chat/completions, retrying in 2s... (2 tries left)
+2025-07-10 11:47:52,674 - src.agents.response_agent - WARNING - _call_llm_response failed with 404 Client Error: Not Found for url: https://api.groq.com/openai/v1/chat/completions, retrying in 4s... (1 tries left)
+2025-07-10 11:47:57,950 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:47:57] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 11:50:50,369 - root - INFO - Logging configured successfully
+2025-07-10 11:50:52,411 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 11:50:52,413 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 11:50:57,974 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:50:57] "GET /chat HTTP/1.1" 200 -
+2025-07-10 11:50:58,109 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:50:58] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 11:50:58,502 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:50:58] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:50:58,565 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:50:58] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 11:51:01,667 - src.web.web_interface - INFO - [INTENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' intent=greeting confidence=0.8 reasoning=The message starts with an informal greeting ('hey boss') and expresses a positive sentiment about ESB, but does not contain a specific question or request for information, suggesting it is a casual greeting rather than a query about ESB programs or official information.
+2025-07-10 11:51:02,252 - src.web.web_interface - INFO - [SENTIMENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x00000218B392E510>
+2025-07-10 11:51:03,485 - src.agents.response_agent - INFO - Detected intent: greeting
+2025-07-10 11:51:04,808 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 11:51:05,198 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 11:51:05] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 12:51:02,694 - root - INFO - Logging configured successfully
+2025-07-10 12:51:21,070 - root - INFO - Logging configured successfully
+2025-07-10 12:51:22,512 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 12:51:22,512 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 12:51:28,683 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:51:28] "GET /chat HTTP/1.1" 200 -
+2025-07-10 12:51:28,927 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:51:28] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 12:51:29,312 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:51:29] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 12:51:29,426 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:51:29] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 12:51:32,362 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:51:32,370 - src.web.web_interface - INFO - [INTENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' intent=greeting confidence=0.8 reasoning=The user starts with a casual greeting ('hey boss') and expresses a positive sentiment towards ESB, indicating a friendly and informal intent.
+2025-07-10 12:51:33,059 - src.web.web_interface - INFO - [SENTIMENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001EAD49DDB50>
+2025-07-10 12:51:33,729 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:51:33,742 - src.agents.response_agent - INFO - Detected intent: greeting
+2025-07-10 12:51:34,520 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:51:34,556 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:51:34] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 12:53:13,720 - root - INFO - Logging configured successfully
+2025-07-10 12:53:15,587 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 12:53:15,589 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 12:53:17,220 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:53:17] "GET /chat HTTP/1.1" 200 -
+2025-07-10 12:53:17,369 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:53:17] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 12:53:17,589 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:53:17] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 12:53:17,661 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:53:17] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 12:53:20,643 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:53:20,648 - src.web.web_interface - INFO - [INTENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' intent=feedback confidence=0.8 reasoning=The user expresses a positive opinion about ESB, indicating a feedback intent.
+2025-07-10 12:53:21,655 - src.web.web_interface - INFO - [SENTIMENT] user_id=686f8b25f331f57237228b29 username=student message='hey boss, as i said esb is so awesome' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001CF84AF9EB0>
+2025-07-10 12:53:22,723 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:53:22,723 - src.agents.response_agent - INFO - Detected intent: feedback
+2025-07-10 12:53:23,528 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:53:23,566 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:53:23] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 12:53:57,605 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:53:57,605 - src.web.web_interface - INFO - [INTENT] user_id=686f8b25f331f57237228b29 username=student message='how can i continue masters there ?' intent=ask_admission confidence=0.8 reasoning=The user is asking about continuing their master's studies at ESB, which implies they are seeking information about the admission process or requirements for a master's program.
+2025-07-10 12:53:58,192 - src.web.web_interface - INFO - [SENTIMENT] user_id=686f8b25f331f57237228b29 username=student message='how can i continue masters there ?' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001CF84B16C00>
+2025-07-10 12:53:58,907 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:53:58,911 - src.agents.response_agent - INFO - Detected intent: ask_admission
+2025-07-10 12:53:59,087 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 12:53:59,088 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 10.000000 seconds
+2025-07-10 12:54:10,987 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:54:11,431 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:11] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 12:54:40,151 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:40] "POST /auth/logout HTTP/1.1" 200 -
+2025-07-10 12:54:40,249 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:40] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 12:54:41,015 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:41] "POST /auth/logout HTTP/1.1" 200 -
+2025-07-10 12:54:41,106 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:41] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 12:54:41,191 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:41] "POST /auth/logout HTTP/1.1" 200 -
+2025-07-10 12:54:41,322 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:41] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 12:54:42,961 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:42] "GET / HTTP/1.1" 200 -
+2025-07-10 12:54:44,655 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:44] "GET /login HTTP/1.1" 200 -
+2025-07-10 12:54:46,448 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:46] "GET /register HTTP/1.1" 200 -
+2025-07-10 12:54:52,348 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:52] "POST /auth/register HTTP/1.1" 200 -
+2025-07-10 12:54:52,392 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:52] "[32mGET /chat HTTP/1.1[0m" 302 -
+2025-07-10 12:54:52,420 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:52] "GET /login HTTP/1.1" 200 -
+2025-07-10 12:54:59,134 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:59] "POST /auth/login HTTP/1.1" 200 -
+2025-07-10 12:54:59,169 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:59] "GET /chat HTTP/1.1" 200 -
+2025-07-10 12:54:59,406 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:59] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 12:54:59,476 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:59] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 12:54:59,540 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:54:59] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 12:55:04,352 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:55:04,353 - src.web.web_interface - INFO - [INTENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='hello' intent=greeting confidence=1.0 reasoning=The message only contains a greeting.
+2025-07-10 12:55:05,417 - src.web.web_interface - INFO - [SENTIMENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='hello' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001CF84B3BCB0>
+2025-07-10 12:55:06,245 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:55:06,249 - src.agents.response_agent - INFO - Detected intent: greeting
+2025-07-10 12:55:07,024 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:55:07,065 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:55:07] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 12:55:28,537 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:55:28,538 - src.web.web_interface - INFO - [INTENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='boss i don't like it at all at esb :(' intent=complaint confidence=0.8 reasoning=The user expresses a negative sentiment towards their experience at ESB, indicating a complaint.
+2025-07-10 12:55:28,837 - src.web.web_interface - INFO - [SENTIMENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='boss i don't like it at all at esb :(' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001CF849DA750>
+2025-07-10 12:55:29,456 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 12:55:29,458 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+2025-07-10 12:55:32,149 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:55:32,152 - src.agents.response_agent - INFO - Detected intent: complaint
+2025-07-10 12:55:32,507 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 12:55:32,509 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 12.000000 seconds
+2025-07-10 12:55:45,528 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:55:45,630 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:55:45] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 12:56:42,221 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:56:42,223 - src.web.web_interface - INFO - [INTENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='the professors are the problem man' intent=complaint confidence=0.8 reasoning=The user's message expresses a negative sentiment towards the professors, indicating a complaint about the academic staff at ESB.
+2025-07-10 12:56:42,797 - src.web.web_interface - INFO - [SENTIMENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='the professors are the problem man' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001CF84B4A180>
+2025-07-10 12:56:43,664 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:56:43,666 - src.agents.response_agent - INFO - Detected intent: complaint
+2025-07-10 12:56:44,503 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:56:44,699 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:56:44] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 12:57:02,784 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:57:02,786 - src.web.web_interface - INFO - [INTENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='they are not teaching well, and they aren't polite at all' intent=complaint confidence=0.9 reasoning=the user is expressing a negative opinion about the teaching quality and staff behavior, indicating a complaint
+2025-07-10 12:57:02,991 - src.web.web_interface - INFO - [SENTIMENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='they are not teaching well, and they aren't polite at all' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001CF84B143B0>
+2025-07-10 12:57:03,387 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 12:57:03,390 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 4.000000 seconds
+2025-07-10 12:57:07,931 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:57:07,934 - src.agents.response_agent - INFO - Detected intent: complaint
+2025-07-10 12:57:11,878 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 12:57:11,879 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 12.000000 seconds
+2025-07-10 12:57:24,789 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 12:57:24,826 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 12:57:24] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:25:16,869 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:25:16] "GET / HTTP/1.1" 200 -
+2025-07-10 13:25:19,610 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:25:19] "GET /login HTTP/1.1" 200 -
+2025-07-10 13:25:21,236 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:25:21] "GET /register HTTP/1.1" 200 -
+2025-07-10 13:25:32,895 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:25:32] "POST /auth/register HTTP/1.1" 200 -
+2025-07-10 13:25:32,934 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:25:32] "GET /chat HTTP/1.1" 200 -
+2025-07-10 13:25:33,152 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:25:33] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 13:25:33,338 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:25:33] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:25:33,770 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:25:33] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:25:58,516 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:25:58,516 - src.web.web_interface - INFO - [INTENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='i dont like history lessons' intent=complaint confidence=0.8 reasoning=The user expresses a negative sentiment towards a specific subject, which is a characteristic of a complaint.
+2025-07-10 13:25:59,012 - src.web.web_interface - INFO - [SENTIMENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='i dont like history lessons' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001CF84B59C40>
+2025-07-10 13:25:59,724 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:25:59,724 - src.agents.response_agent - INFO - Detected intent: complaint
+2025-07-10 13:26:00,520 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:26:00,625 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:26:00] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:26:29,216 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:26:29,216 - src.web.web_interface - INFO - [INTENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='do u offer history classes' intent=ask_program_info confidence=0.8 reasoning=The user is inquiring about the availability of a specific class (history), which suggests they are seeking information about the programs or courses offered by ESB.
+2025-07-10 13:26:29,902 - src.web.web_interface - INFO - [SENTIMENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='do u offer history classes' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001CF84AF9F70>
+2025-07-10 13:26:30,011 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 13:26:30,013 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 3.000000 seconds
+2025-07-10 13:26:33,766 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:26:33,766 - src.agents.response_agent - INFO - Detected intent: ask_program_info
+2025-07-10 13:26:33,967 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 13:26:33,967 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 13.000000 seconds
+2025-07-10 13:26:47,857 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:26:47,957 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:26:47] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:27:05,307 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:27:05,307 - src.web.web_interface - INFO - [INTENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='i love business computing majoor' intent=feedback confidence=0.8 reasoning=The user expressed a positive sentiment towards the business computing major, indicating a feedback intent.
+2025-07-10 13:27:05,464 - src.web.web_interface - INFO - [SENTIMENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='i love business computing majoor' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001CF84ACBB30>
+2025-07-10 13:27:05,583 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 13:27:05,583 - src.agents.response_agent - INFO - Detected intent: out_of_scope
+2025-07-10 13:27:05,706 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 13:27:05,714 - src.agents.response_agent - WARNING - _call_llm_response failed with Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jn1hn7qce369cr542q38vs3h` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99031, Requested 2465. Please try again in 21m32.124s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}, retrying in 2s... (2 tries left)
+2025-07-10 13:27:08,032 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 13:27:08,033 - src.agents.response_agent - WARNING - _call_llm_response failed with Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jn1hn7qce369cr542q38vs3h` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99029, Requested 2465. Please try again in 21m29.984s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}, retrying in 4s... (1 tries left)
+2025-07-10 13:27:12,102 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 13:27:12,115 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:27:12] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:27:47,820 - root - INFO - Logging configured successfully
+2025-07-10 13:27:48,829 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 13:27:48,829 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 13:27:50,649 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:27:50] "GET /chat HTTP/1.1" 200 -
+2025-07-10 13:27:50,807 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:27:50] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 13:27:51,468 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:27:51] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:27:51,668 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:27:51] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:27:53,769 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:27:53,770 - src.web.web_interface - INFO - [INTENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='i love business computing majoor' intent=feedback confidence=0.8 reasoning=The user expressed a positive sentiment towards the business computing major, indicating a feedback intent.
+2025-07-10 13:27:54,326 - src.web.web_interface - INFO - [SENTIMENT] user_id=686faa0c3aaf7d0d5d1b539a username=student message='i love business computing majoor' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001437FB4E5D0>
+2025-07-10 13:27:55,985 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:27:55,991 - src.agents.response_agent - INFO - Detected intent: feedback
+2025-07-10 13:27:57,506 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:27:57,610 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:27:57] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:29:32,936 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:32] "GET / HTTP/1.1" 200 -
+2025-07-10 13:29:34,517 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:34] "GET /login HTTP/1.1" 200 -
+2025-07-10 13:29:35,919 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:35] "GET /register HTTP/1.1" 200 -
+2025-07-10 13:29:43,816 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:43] "POST /auth/register HTTP/1.1" 200 -
+2025-07-10 13:29:43,863 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:43] "GET /chat HTTP/1.1" 200 -
+2025-07-10 13:29:44,030 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:44] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:29:44,137 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:44] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 13:29:44,168 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:44] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:29:52,209 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:52] "GET / HTTP/1.1" 200 -
+2025-07-10 13:29:53,755 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:53] "GET /login HTTP/1.1" 200 -
+2025-07-10 13:29:55,271 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:55] "GET /register HTTP/1.1" 200 -
+2025-07-10 13:29:56,677 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:56] "[31m[1mPOST /auth/register HTTP/1.1[0m" 409 -
+2025-07-10 13:29:57,825 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:57] "GET /login HTTP/1.1" 200 -
+2025-07-10 13:29:59,250 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:59] "POST /auth/login HTTP/1.1" 200 -
+2025-07-10 13:29:59,288 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:59] "GET /chat HTTP/1.1" 200 -
+2025-07-10 13:29:59,434 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:59] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:29:59,548 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:59] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 13:29:59,657 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:29:59] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:30:27,179 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:30:27,179 - src.web.web_interface - INFO - [INTENT] user_id=686fb237b60f2fc3846f22a4 username=student message='what do you think about the professors ?' intent=feedback confidence=0.8 reasoning=The user is asking for an opinion about the professors, which implies they are seeking feedback or evaluation about a specific aspect of ESB.
+2025-07-10 13:30:27,807 - src.web.web_interface - INFO - [SENTIMENT] user_id=686fb237b60f2fc3846f22a4 username=student message='what do you think about the professors ?' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001437FB8F140>
+2025-07-10 13:30:28,418 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:30:28,420 - src.agents.response_agent - INFO - Detected intent: feedback
+2025-07-10 13:30:29,530 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:30:29,650 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:30:29] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:31:01,596 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:31:01,596 - src.web.web_interface - INFO - [INTENT] user_id=686fb237b60f2fc3846f22a4 username=student message='I'm frustrated with the registration system!' intent=complaint confidence=0.9 reasoning=The user explicitly expresses frustration with a specific aspect of ESB, which is a clear indicator of a complaint.
+2025-07-10 13:31:02,212 - src.web.web_interface - INFO - [SENTIMENT] user_id=686fb237b60f2fc3846f22a4 username=student message='I'm frustrated with the registration system!' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001437FB8CBF0>
+2025-07-10 13:31:02,829 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:31:02,829 - src.agents.response_agent - INFO - Detected intent: complaint
+2025-07-10 13:31:02,980 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 13:31:02,980 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 13.000000 seconds
+2025-07-10 13:31:16,646 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:31:16,699 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:31:16] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:32:00,114 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:32:00,114 - src.web.web_interface - INFO - [INTENT] user_id=686fb237b60f2fc3846f22a4 username=student message='it is quite slow and many papers to deal with in the inscription process' intent=complaint confidence=0.8 reasoning=The user is expressing a negative sentiment about the inscription process, mentioning that it is slow and involves many papers, which indicates a complaint about the administrative process at ESB.
+2025-07-10 13:32:00,614 - src.web.web_interface - INFO - [SENTIMENT] user_id=686fb237b60f2fc3846f22a4 username=student message='it is quite slow and many papers to deal with in the inscription process' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001437FBA9940>
+2025-07-10 13:32:01,127 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:32:01,143 - src.agents.response_agent - INFO - Detected intent: complaint
+2025-07-10 13:32:01,329 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 13:32:01,329 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 9.000000 seconds
+2025-07-10 13:32:11,164 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:32:11,278 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:32:11] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:33:48,527 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:33:48] "POST /auth/logout HTTP/1.1" 200 -
+2025-07-10 13:33:48,766 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:33:48] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:33:50,999 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:33:50] "GET / HTTP/1.1" 200 -
+2025-07-10 13:33:53,899 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:33:53] "GET /login HTTP/1.1" 200 -
+2025-07-10 13:33:55,578 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:33:55] "GET /register HTTP/1.1" 200 -
+2025-07-10 13:34:03,206 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:34:03] "POST /auth/register HTTP/1.1" 200 -
+2025-07-10 13:34:03,269 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:34:03] "[32mGET /chat HTTP/1.1[0m" 302 -
+2025-07-10 13:34:03,301 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:34:03] "GET /login HTTP/1.1" 200 -
+2025-07-10 13:34:09,898 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:34:09] "POST /auth/login HTTP/1.1" 200 -
+2025-07-10 13:34:09,934 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:34:09] "GET /chat HTTP/1.1" 200 -
+2025-07-10 13:34:10,169 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:34:10] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 13:34:10,237 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:34:10] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:34:10,469 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:34:10] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:34:51,343 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:34:51,343 - src.web.web_interface - INFO - [INTENT] user_id=686fb33ab60f2fc3846f22ab username=student message='how can i register into marketing class ?' intent=ask_admission confidence=0.8 reasoning=The user is asking about registering for a specific class, which implies they are seeking information about the admission or enrollment process.
+2025-07-10 13:34:52,050 - src.web.web_interface - INFO - [SENTIMENT] user_id=686fb33ab60f2fc3846f22ab username=student message='how can i register into marketing class ?' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001437FBA9D30>
+2025-07-10 13:34:52,733 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:34:52,738 - src.agents.response_agent - INFO - Detected intent: ask_admission
+2025-07-10 13:34:53,854 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:34:54,015 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:34:54] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:35:42,053 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:35:42,053 - src.web.web_interface - INFO - [INTENT] user_id=686fb33ab60f2fc3846f22ab username=student message='i am going into masters' intent=ask_program_info confidence=0.8 reasoning=The user mentions 'masters', which is likely related to a graduate program, implying they are seeking information about a specific program at ESB.
+2025-07-10 13:35:42,988 - src.web.web_interface - INFO - [SENTIMENT] user_id=686fb33ab60f2fc3846f22ab username=student message='i am going into masters' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001437FBA1BB0>
+2025-07-10 13:35:43,585 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:35:43,585 - src.agents.response_agent - INFO - Detected intent: ask_program_info
+2025-07-10 13:35:44,195 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:35:44,229 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:35:44] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:36:25,697 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:36:25,697 - src.web.web_interface - INFO - [INTENT] user_id=686fb33ab60f2fc3846f22ab username=student message='can i register in a masters degree in this course' intent=ask_admission confidence=0.9 reasoning=The user is inquiring about registering for a master's degree, which is directly related to the admission process at ESB.
+2025-07-10 13:36:26,499 - src.web.web_interface - INFO - [SENTIMENT] user_id=686fb33ab60f2fc3846f22ab username=student message='can i register in a masters degree in this course' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001437FBB7B30>
+2025-07-10 13:36:27,039 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:36:27,043 - src.agents.response_agent - INFO - Detected intent: ask_admission
+2025-07-10 13:36:27,243 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 13:36:27,244 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 7.000000 seconds
+2025-07-10 13:36:35,272 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:36:35,314 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:36:35] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:38:31,631 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:38:31,633 - src.web.web_interface - INFO - [INTENT] user_id=686fb33ab60f2fc3846f22ab username=student message='can you list me all masters ?' intent=ask_program_info confidence=0.9 reasoning=The user is asking for a list of masters, which is related to the programs offered by ESB, indicating a strong intent to inquire about program information.
+2025-07-10 13:38:32,230 - src.web.web_interface - INFO - [SENTIMENT] user_id=686fb33ab60f2fc3846f22ab username=student message='can you list me all masters ?' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001437FBB9010>
+2025-07-10 13:38:32,945 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:38:32,950 - src.agents.response_agent - INFO - Detected intent: ask_program_info
+2025-07-10 13:38:33,861 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:38:33,905 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:38:33] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:38:57,353 - root - INFO - Logging configured successfully
+2025-07-10 13:38:59,938 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 13:38:59,940 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 13:39:05,046 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:39:05] "GET /chat HTTP/1.1" 200 -
+2025-07-10 13:39:05,315 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:39:05] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 13:39:05,930 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:39:05] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:39:06,143 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:39:06] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:39:08,312 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:39:08,312 - src.web.web_interface - INFO - [INTENT] user_id=686fb33ab60f2fc3846f22ab username=student message='can you list me all masters ?' intent=ask_program_info confidence=0.9 reasoning=The user is asking for a list of all masters programs, which is related to ESB's academic offerings.
+2025-07-10 13:39:08,843 - src.web.web_interface - INFO - [SENTIMENT] user_id=686fb33ab60f2fc3846f22ab username=student message='can you list me all masters ?' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000002905E215BB0>
+2025-07-10 13:39:09,519 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:39:09,528 - src.agents.response_agent - INFO - Detected intent: ask_program_info
+2025-07-10 13:39:09,695 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 13:39:09,697 - src.agents.response_agent - WARNING - _call_llm_response failed with Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jn3ggbzhe8hvdg8b9ywgj2zf` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 94560, Requested 12679. Please try again in 1h44m14.329s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}, retrying in 2s... (2 tries left)
+2025-07-10 13:39:11,787 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 13:39:11,788 - src.agents.response_agent - WARNING - _call_llm_response failed with Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jn3ggbzhe8hvdg8b9ywgj2zf` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 94558, Requested 12679. Please try again in 1h44m12.241s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}, retrying in 4s... (1 tries left)
+2025-07-10 13:39:16,071 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-10 13:39:16,077 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:39:16] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:40:53,577 - root - INFO - Logging configured successfully
+2025-07-10 13:40:54,877 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 13:40:54,877 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 13:41:01,922 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:41:01] "GET /chat HTTP/1.1" 200 -
+2025-07-10 13:41:02,052 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:41:02] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 13:41:02,451 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:41:02] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:41:02,685 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:41:02] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:41:04,814 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:41:04,817 - src.web.web_interface - INFO - [INTENT] user_id=686fb33ab60f2fc3846f22ab username=student message='can you list me all masters ?' intent=ask_program_info confidence=0.9 reasoning=The user is asking for a list of all masters programs, which is related to ESB's academic offerings.
+2025-07-10 13:41:05,549 - src.web.web_interface - INFO - [SENTIMENT] user_id=686fb33ab60f2fc3846f22ab username=student message='can you list me all masters ?' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x00000209048EC500>
+2025-07-10 13:41:06,577 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:41:06,582 - src.agents.response_agent - INFO - Detected intent: ask_program_info
+2025-07-10 13:41:06,747 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 413 Payload Too Large"
+2025-07-10 13:41:06,747 - src.agents.response_agent - WARNING - _call_llm_response failed with Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.3-70b-versatile` in organization `org_01jzt5jt5vec89ajdwbxnr904d` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Requested 12679, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}, retrying in 2s... (2 tries left)
+2025-07-10 13:41:08,833 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 413 Payload Too Large"
+2025-07-10 13:41:08,835 - src.agents.response_agent - WARNING - _call_llm_response failed with Error code: 413 - {'error': {'message': 'Request too large for model `llama-3.3-70b-versatile` in organization `org_01jzt5jt5vec89ajdwbxnr904d` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Requested 12679, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}, retrying in 4s... (1 tries left)
+2025-07-10 13:41:12,955 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 413 Payload Too Large"
+2025-07-10 13:41:12,960 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:41:12] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:47:12,370 - root - INFO - Logging configured successfully
+2025-07-10 13:47:14,325 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-10 13:47:14,326 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 13:47:21,808 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:47:21] "GET /chat HTTP/1.1" 200 -
+2025-07-10 13:47:21,977 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:47:21] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-10 13:47:22,339 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:47:22] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:47:22,489 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:47:22] "GET /api/health HTTP/1.1" 200 -
+2025-07-10 13:47:24,821 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:47:24,824 - src.web.web_interface - INFO - [INTENT] user_id=686fb33ab60f2fc3846f22ab username=student message='can you list me all masters ?' intent=ask_program_info confidence=0.9 reasoning=The user is asking for a list of masters, which is related to ESB programs, indicating a strong intention to inquire about program information.
+2025-07-10 13:47:25,267 - src.web.web_interface - INFO - [SENTIMENT] user_id=686fb33ab60f2fc3846f22ab username=student message='can you list me all masters ?' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x0000021F61468BF0>
+2025-07-10 13:47:25,788 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:47:25,788 - src.agents.response_agent - INFO - Detected intent: ask_program_info
+2025-07-10 13:47:27,215 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:47:27,412 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:47:27] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:48:02,877 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:48:02,880 - src.web.web_interface - INFO - [INTENT] user_id=686fb33ab60f2fc3846f22ab username=student message='so i can enroll into a marketing master program ?' intent=ask_program_info confidence=0.8 reasoning=The user is inquiring about enrolling in a specific program (marketing master program), which indicates they are seeking information about a particular program offered by ESB.
+2025-07-10 13:48:03,329 - src.web.web_interface - INFO - [SENTIMENT] user_id=686fb33ab60f2fc3846f22ab username=student message='so i can enroll into a marketing master program ?' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x0000021F61495AF0>
+2025-07-10 13:48:04,745 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:48:04,746 - src.agents.response_agent - INFO - Detected intent: ask_program_info
+2025-07-10 13:48:08,875 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:48:08,976 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:48:08] "POST /api/chat HTTP/1.1" 200 -
+2025-07-10 13:49:35,963 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:49:35,963 - src.web.web_interface - INFO - [INTENT] user_id=686fb33ab60f2fc3846f22ab username=student message='how can i enroll ?' intent=ask_admission confidence=0.9 reasoning=The user is asking about the enrollment process, which is directly related to admission at ESB.
+2025-07-10 13:49:36,560 - src.web.web_interface - INFO - [SENTIMENT] user_id=686fb33ab60f2fc3846f22ab username=student message='how can i enroll ?' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x0000021F61496EA0>
+2025-07-10 13:49:37,162 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:49:37,162 - src.agents.response_agent - INFO - Detected intent: ask_admission
+2025-07-10 13:49:38,473 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-10 13:49:38,588 - werkzeug - INFO - 127.0.0.1 - - [10/Jul/2025 13:49:38] "POST /api/chat HTTP/1.1" 200 -
