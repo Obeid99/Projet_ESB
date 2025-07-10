@@ -30,6 +30,10 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
 from admin_agents.orchestrator import handle_admin_query
+from src.core.chat_history import store_message
+from src.agents.response_agent import generate_response
+from src.agents.intent_agent import IntentAgent
+from src.agents.sentiment_agent import SentimentAgent
 
 # Dummy admin credentials fallback (upgrade this later)
 ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "admin")
@@ -140,7 +144,7 @@ def admin_chat_page():
 # =========================
 # === ETUDIANT: CHATBOT ===
 # =========================
-
+from src.core.models import ChatbotState
 @app.route('/api/chat', methods=['POST'])
 def chat():
     try:
@@ -157,60 +161,28 @@ def chat():
                 'response': 'Merci de saisir un message.'
             })
 
-        # Stockage dans MongoDB
-        mongodb[MONGO_COLLECTION_CHAT_STUD].insert_one({
-            "user_id": user_id,
-            "username": username,
-            "sender": "student",
-            "message": user_message,
-            "timestamp": time.time()
-        })
+        # Intent and Sentiment detection
+        intent_agent = IntentAgent()
+        sentiment_agent = SentimentAgent()
+        state = intent_agent.process(ChatbotState(user_message=user_message, session_id=user_id))
+        logger.info(f"[INTENT] user_id={user_id} username={username} message='{user_message}' intent={state.intent} confidence={state.context.get('intent_confidence')} reasoning={state.context.get('intent_reasoning')}")
+        state = sentiment_agent.process(state)
+        logger.info(f"[SENTIMENT] user_id={user_id} username={username} message='{user_message}' sentiment={getattr(state, 'sentiment_result', None)}")
 
-        # Récupère les 10 derniers messages pour l'historique du contexte
-        chat_history = list(
-            mongodb[MONGO_COLLECTION_CHAT_STUD].find({"user_id": user_id}).sort("timestamp", -1).limit(10)
-        )[::-1]
-        conversation = [{"role": "user" if msg["sender"] == "student" else "assistant", "content": msg["message"]}
-                        for msg in chat_history]
+        # Store user message with intent and sentiment
+        sentiment = getattr(state, 'sentiment_result', None)
+        sentiment_label = sentiment.label if sentiment and hasattr(sentiment, 'label') else str(sentiment)
+        store_message(user_id, user_message, is_user=True, username=username, sender="student", sentiment=sentiment_label, intent=state.intent)
 
-        # Prompt système étudiant (tu peux l'améliorer ici)
-        SYSTEM_PROMPT = (
-            "You are an assistant for ESPRIT School of Business (ESB) in Tunisia. "
-            "Never refer to any other school or institution. "
-            "All information, responses, and context are about ESPRIT School of Business only. "
-            "Here is a list of all specialties and degrees offered at ESB: "
-            "- Licence in Management\n"
-            "- Licence in Accounting\n"
-            "- Licence in Business Computing (Business Intelligence / Business Information Systems)\n"
-            "- Masters of Business Analytics\n"
-            "- Masters of Digital Marketing\n"
-            "- Masters of Accounting\n"
-            "If a user asks about a course, specialty, or subject not in this list, politely inform them that it is not offered at ESB and do not make up information."
-        )
+        # Generate response
+        bot_response = generate_response(user_message, session_id=user_id)
 
-        messages = [{"role": "system", "content": SYSTEM_PROMPT}] + conversation + [{"role": "user", "content": user_message}]
-
-        start_time = time.time()
-        response = openai.ChatCompletion.create(
-            model=OPENAI_MODEL,
-            messages=messages
-        )
-        bot_response = response.choices[0].message['content']
-        total_time = time.time() - start_time
-
-        # Stocke la réponse du bot dans MongoDB
-        mongodb[MONGO_COLLECTION_CHAT_STUD].insert_one({
-            "user_id": user_id,
-            "username": username,
-            "sender": "bot",
-            "message": bot_response,
-            "timestamp": time.time()
-        })
+        # Store bot response
+        store_message(user_id, bot_response, is_user=False, username=username, sender="bot")
 
         return jsonify({
             'success': True,
             'response': bot_response,
-            'processing_time': f"{total_time*1000:.1f}ms",
         })
     except Exception as e:
         error_trace = traceback.format_exc()
@@ -295,6 +267,12 @@ def admin_feedback_chart():
     <p>This is a demo chart. À remplacer par vrai graph généré en prod !</p>
     </body></html>
     '''
+
+from src.web.auth import bp_auth
+app.register_blueprint(bp_auth)
+
+import logging
+logger = logging.getLogger(__name__)
 
 if __name__ == '__main__':
     print("🚀 Starting Multi-Agent Chatbot Web Interface...")

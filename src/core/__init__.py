@@ -14,7 +14,6 @@ from .models import (
 
 
 from .config import get_settings
-from .database import get_db_manager, DatabaseManager
 
 __all__ = [
     'SentimentLabel',
