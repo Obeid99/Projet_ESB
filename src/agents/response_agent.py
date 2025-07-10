@@ -3,16 +3,22 @@
 import logging
 from typing import Optional, List
 import json
+import os
+
+from groq import Groq
 
 from ..agents.intent_agent import IntentAgent
 from ..agents.web_agent import WebAgent
 from ..core.models import ChatbotState
 from ..utils import retry_on_exception
+from ..utils.esb_data import get_esb_data
 
 logger = logging.getLogger(__name__)
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def _format_llm_context(state):
-    """Format all relevant state/context for LLM prompt."""
+    import json
+    esb_data = get_esb_data()
     context = {
         "intent": state.intent,
         "entities": state.context.get("intent_entities", {}),
@@ -21,16 +27,13 @@ def _format_llm_context(state):
         "user_message": state.user_message,
         "session_id": state.session_id,
         "reasoning": state.context.get("intent_reasoning", ""),
-        # Add conversation history for turnover
         "conversation_history": state.conversation_history,
+        "esb_programs": esb_data[:],
     }
     return json.dumps(context, ensure_ascii=False)
 
 @retry_on_exception((Exception,), tries=3, delay=2, backoff=2, logger=logger)
 def _call_llm_response(state):
-    import os
-    os.environ["OLLAMA_HOST"] = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-    import ollama
     # Use conversation history for context
     history = state.conversation_history[-6:] if len(state.conversation_history) > 6 else state.conversation_history[:]
     # Add the latest user message if not already present
@@ -44,8 +47,15 @@ def _call_llm_response(state):
         "Conversation history: " + json.dumps(history, ensure_ascii=False) + "\n"
         "Response:"
     )
-    response = ollama.chat(model="llama3.1:8b", messages=[{"role": "user", "content": prompt}])
-    return response['message']['content'].strip()
+    completion = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {"role": "system", "content": "You are an ESB (esprit school of business) assistant agent."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.2
+    )
+    return completion.choices[0].message.content.strip()
 
 def generate_response(user_input, session_id=None):
     """
