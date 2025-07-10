@@ -76,28 +76,63 @@
         .sidebar-btn.chart   {background:#f8b400;}
         .sidebar-btn.tools   {background:#764ba2;}
         .sidebar-btn:hover {filter:brightness(1.15);}
-        .agent-status {
-            display: flex;
-            align-items: center;
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.07);
-            padding: 10px 14px;
-            font-size: 15px;
-        }
-        .agent-status span {font-size: 15px;}
+        /* Student feedback card list */
         .feedback-list {
-            max-height: 300px;
-            min-height: 120px;
+            max-height: 540px;
+            min-height: 220px;
             overflow-y: auto;
             margin-bottom: 12px;
             border: 1px solid #e9ecef;
             border-radius: 8px;
-            padding: 10px;
+            padding: 8px 2px 8px 2px;
             background: #f8f9fa;
             font-size: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
         }
+        .feedback-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(50,50,100,0.09);
+            border: 1px solid #ececec;
+            padding: 10px 14px 9px 14px;
+            margin-bottom: 2px;
+            transition: box-shadow .14s;
+            cursor: pointer;
+        }
+        .feedback-card:hover {
+            box-shadow: 0 5px 18px rgba(120,80,160,0.18);
+        }
+        .feedback-card .feedback-msg {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #44375a;
+            word-break: break-word;
+        }
+        .feedback-card .feedback-meta {
+            display: flex;
+            font-size: 13px;
+            color: #777;
+            gap: 7px;
+            margin-bottom: 2px;
+        }
+        .feedback-card .feedback-badge {
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .feedback-card .badge-intent      { background: #E6EEFA; color: #2a4d87; }
+        .feedback-card .badge-sentiment  { background: #F6F6F6; color: #5e5c5c; }
+        .feedback-card .badge-positive   { background: #e6fae8; color: #2b8b4b;}
+        .feedback-card .badge-negative   { background: #ffebef; color: #d53f46;}
+        .feedback-card .badge-neutral    { background: #f8f8f8; color: #666;}
+        .feedback-card .badge-user       { background: #eee; color: #333;}
+        .feedback-card .badge-date       { background: #eee; color: #555;}
         /* Chat main */
         .chat-main {
             flex: 5.5;
@@ -150,8 +185,7 @@
             background: #f8f9fa;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            align-items: flex-start;
+            justify-content: flex-start;
         }
         .message {
             margin-bottom: 18px;
@@ -252,30 +286,8 @@
                 <button class="sidebar-btn tools" onclick="showSuggestions()">Other Admin Tools</button>
             </div>
         </div>
-        <div class="sidebar-section">
-            <h3 style="display:flex;align-items:center;gap:8px;">
-                <span style="font-size:1.3em;">🤖</span> Agent Status
-            </h3>
-            <div id="agentStatus">
-                <div class="agent-status"><span>🧠 SentimentAgent</span>
-                    <input type="checkbox" id="toggle-sentiment" checked onchange="toggleAgent('sentiment')" style="margin-left:auto;">
-                </div>
-                <div class="agent-status"><span>🎯 IntentAgent</span>
-                    <input type="checkbox" id="toggle-intent" checked onchange="toggleAgent('intent')" style="margin-left:auto;">
-                </div>
-                <div class="agent-status"><span>🌐 WebAgent</span>
-                    <input type="checkbox" id="toggle-web" checked onchange="toggleAgent('web')" style="margin-left:auto;">
-                </div>
-                <div class="agent-status"><span>✨ RefinerAgent</span>
-                    <input type="checkbox" id="toggle-refiner" checked onchange="toggleAgent('refiner')" style="margin-left:auto;">
-                </div>
-                <div class="agent-status"><span>🤔 SelfReflectionAgent</span>
-                    <input type="checkbox" id="toggle-reflection" checked onchange="toggleAgent('reflection')" style="margin-left:auto;">
-                </div>
-            </div>
-        </div>
-        <div class="sidebar-section">
-            <h3>📋 Student Feedback</h3>
+        <div class="sidebar-section" style="margin-top:0;">
+            <h3 style="margin-bottom:10px;">📋 Student Feedback</h3>
             <div id="feedbackList" class="feedback-list">
                 Loading feedback...
             </div>
@@ -308,18 +320,6 @@
     </div>
 </div>
 <script>
-    // ----- Variables et fonctions globales -----
-    let agentStatus = {
-        sentiment: true,
-        intent: true,
-        web: true,
-        refiner: true,
-        reflection: true
-    };
-    function toggleAgent(agent) {
-        agentStatus[agent] = !agentStatus[agent];
-    }
-
     function showAboutESB() {
         alert("ESB (Ecole Supérieure de Business) is a leading business school offering innovative programs, a vibrant student community, and a commitment to excellence in education and personal development. Learn more at our website!");
     }
@@ -361,58 +361,47 @@
                     list.innerHTML = '<div style="color:#888;">No feedback yet.</div>';
                     return;
                 }
-                list.innerHTML = data.map(discussion => `
-                    <div class="discussion-title" onclick="showDiscussion('${discussion.id}')">
-                        <strong>${discussion.title || '(No Title)'}</strong><br>
-                        <span class="discussion-meta">User: ${discussion.username} • ${discussion.created_at}</span>
-                    </div>
-                `).join('');
+                // Tri du plus récent au plus ancien, limit 40 affichés
+                data.sort((a,b) => (b.timestamp || b.created_at || 0) - (a.timestamp || a.created_at || 0));
+                list.innerHTML = data.slice(0, 40).map(fb => {
+                    // Protection: format date
+                    let d = new Date(fb.timestamp || fb.created_at);
+                    let dt = !isNaN(d) ? d.toLocaleString(undefined, {year: "numeric", month: "2-digit", day: "2-digit", hour:"2-digit", minute:"2-digit"}) : (fb.created_at || "");
+                    // Sentiment badge
+                    let sentiment = (fb.sentiment || '').toLowerCase();
+                    let sentimentClass = "badge-sentiment";
+                    if (sentiment === "positive") sentimentClass = "badge-sentiment badge-positive";
+                    else if (sentiment === "negative") sentimentClass = "badge-sentiment badge-negative";
+                    else if (sentiment === "neutral")  sentimentClass = "badge-sentiment badge-neutral";
+                    return `
+                        <div class="feedback-card">
+                            <div class="feedback-msg">${(fb.message || fb.text || "").replace(/</g,"&lt;")}</div>
+                            <div class="feedback-meta">
+                                <span class="feedback-badge badge-user">${fb.username || "unknown"}</span>
+                                <span class="feedback-badge badge-date">${dt}</span>
+                            </div>
+                            <div class="feedback-meta">
+                                <span class="feedback-badge badge-intent">${fb.intent || "?"}</span>
+                                <span class="feedback-badge ${sentimentClass}">${sentiment || "?"}</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
             });
-    }
-    function showDiscussion(discussionId) {
-        fetch(`/admin/api/discussion/${discussionId}`, { credentials: 'include' })
-            .then(res => res.json())
-            .then(data => {
-                let html = `<div style='max-height:400px;overflow-y:auto;'><h3 style='margin-bottom:10px;'>Discussion with ${data.username}</h3>`;
-                data.messages.forEach(msg => {
-                    html += `<div style='margin-bottom:12px;'><b>${msg.sender}:</b> ${msg.text}<br><span style='font-size:12px;color:#888;'>${msg.created_at}</span></div>`;
-                });
-                html += `</div>`;
-                showModal(html);
-            });
-    }
-    function showModal(contentHtml) {
-        let modal = document.getElementById('discussionModal');
-        if (!modal) {
-            modal = document.createElement('div');
-            modal.id = 'discussionModal';
-            modal.style.position = 'fixed';
-            modal.style.top = '0'; modal.style.left = '0';
-            modal.style.width = '100vw'; modal.style.height = '100vh';
-            modal.style.background = 'rgba(0,0,0,0.3)';
-            modal.style.display = 'flex';
-            modal.style.alignItems = 'center';
-            modal.style.justifyContent = 'center';
-            modal.style.zIndex = '9999';
-            modal.innerHTML = `<div id='modalContent' style='background:#fff;padding:30px 24px;border-radius:12px;min-width:350px;max-width:90vw;max-height:90vh;overflow:auto;position:relative;box-shadow:0 8px 32px rgba(0,0,0,0.18);'></div>`;
-            document.body.appendChild(modal);
-        }
-        document.getElementById('modalContent').innerHTML = `<button onclick='closeModal()' style='position:absolute;top:10px;right:16px;font-size:18px;background:none;border:none;cursor:pointer;'>&times;</button>` + contentHtml;
-        modal.style.display = 'flex';
-    }
-    function closeModal() {
-        let modal = document.getElementById('discussionModal');
-        if (modal) modal.style.display = 'none';
     }
 
-    function addMessage(text, sender) {
+    // Chat messages (admin-bot)
+    function addMessage(text, sender, timestamp = null) {
         const messages = document.getElementById('chatMessages');
         const msgDiv = document.createElement('div');
         msgDiv.className = 'message ' + sender;
+        let time = timestamp
+            ? new Date(timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+            : new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         msgDiv.innerHTML = `
             <div class="message-content">
                 ${text}
-                <div class="message-meta">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                <div class="message-meta">${time}</div>
             </div>
         `;
         messages.appendChild(msgDiv);
@@ -428,7 +417,7 @@
         fetch('/admin/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: msg, agents: agentStatus }),
+            body: JSON.stringify({ message: msg }),
             credentials: 'include'
         })
         .then(res => res.json())
@@ -436,8 +425,6 @@
             addMessage(data.response || 'No response.', 'bot');
         });
     }
-
-    // Click et Entrée envoient le message
     document.getElementById("sendButton").onclick = sendAdminMessage;
     document.getElementById("adminMessage").addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
@@ -446,10 +433,18 @@
         }
     });
 
-    // Chargement au démarrage
     window.onload = function() {
         loadFeedback();
-        addMessage("👋 Bonjour, bienvenue sur l'interface admin ESB.", 'bot');
+        fetch('/admin/api/chat_history', { credentials: 'include' })
+            .then(res => res.json())
+            .then(history => {
+                if (history && Array.isArray(history)) {
+                    history.forEach(m => addMessage(m.text, m.sender, m.timestamp));
+                }
+            })
+            .catch(() => {
+                addMessage("👋 Bonjour, bienvenue sur l'interface admin ESB.", 'bot');
+            });
     };
 </script>
 </body>

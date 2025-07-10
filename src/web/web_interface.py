@@ -1,6 +1,6 @@
 """
-Flask Web Interface for Multi-Agent Chatbot (MongoDB + OpenAI)
-Admin + Student: tout passe par MongoDB et OpenAI
+Flask Web Interface for Multi-Agent Chatbot (MongoDB + Groq)
+Admin + Student: tout passe par MongoDB et Groq
 """
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
 import time
@@ -8,13 +8,14 @@ import traceback
 from dotenv import load_dotenv
 import os
 import sys
+from datetime import datetime
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Chargement .env
+# Load .env
 load_dotenv()
 
 from pymongo import MongoClient
-import openai
+from groq import Groq
 
 # ============ ENV VARS & INIT =============
 MONGO_URI = os.getenv("MONGO_URI")
@@ -24,10 +25,13 @@ MONGO_COLLECTION_AUTH_ADMIN = os.getenv("MONGO_COLLECTION_AUTH_ADMIN")
 MONGO_COLLECTION_CHAT_ADMIN = os.getenv("MONGO_COLLECTION_CHAT_ADMIN")
 MONGO_COLLECTION_CHAT_STUD = os.getenv("MONGO_COLLECTION_CHAT_STUD")
 
-client = MongoClient(MONGO_URI)
-mongodb = client[MONGO_DB_NAME]
-openai.api_key = os.getenv("OPENAI_API_KEY")
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+mongodb_client = MongoClient(MONGO_URI)
+mongodb = mongodb_client[MONGO_DB_NAME]
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "mixtral-8x7b-32768")
+
+groq_client = Groq(api_key=GROQ_API_KEY)
 
 from admin_agents.orchestrator import handle_admin_query
 
@@ -41,6 +45,7 @@ app.secret_key = os.getenv("SECRET_KEY", "supersecretkey")
 # ========================
 # === AUTHENTIFICATION ===
 # ========================
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
@@ -249,7 +254,9 @@ def admin_chat_api():
         admin_message,
         mongo_db=mongodb,
         collection_feedbacks=MONGO_COLLECTION_CHAT_STUD,
-        collection_admin=MONGO_COLLECTION_CHAT_ADMIN
+        collection_admin=MONGO_COLLECTION_CHAT_ADMIN,
+        session=session,
+        
     )
 
     # Stocker la réponse bot dans Mongo
@@ -295,6 +302,38 @@ def admin_feedback_chart():
     <p>This is a demo chart. À remplacer par vrai graph généré en prod !</p>
     </body></html>
     '''
+
+# --- chat history in admin interface ---
+
+
+def get_latest_student_feedback(mongo_db, collection_feedbacks, limit=10):
+    """
+    Récupère les derniers feedbacks étudiants (utilisateur humain).
+    """
+    cursor = mongo_db[collection_feedbacks].find(
+        {"is_user": True}
+    ).sort("timestamp", -1).limit(limit)
+    feedbacks = []
+    for fb in cursor:
+        feedbacks.append({
+            "id": str(fb.get("_id")),
+            "username": fb.get("username", "") or fb.get("user_id", "") or "Etudiant inconnu",
+            "title": fb.get("message")[:32] + ("..." if len(fb.get("message","")) > 32 else ""),
+            "created_at": datetime.fromtimestamp(fb.get("timestamp")).strftime("%Y-%m-%d %H:%M"),
+            "message": fb.get("message", "")
+        })
+    return feedbacks
+
+# --- Endpoint Flask ---
+@app.route('/admin/api/feedback', methods=['GET'])
+def api_latest_student_feedback():
+    # Mets bien le nom de ta collection ici
+    collection_feedbacks = "history_student"
+    feedbacks = get_latest_student_feedback(mongodb, collection_feedbacks, limit=10)
+    return jsonify(feedbacks)
+
+
+
 
 if __name__ == '__main__':
     print("🚀 Starting Multi-Agent Chatbot Web Interface...")

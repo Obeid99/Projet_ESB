@@ -1,4 +1,4 @@
-# Liste des matières ESB (exemple, adapte à ta réalité)
+# Liste des matières ESB
 VALID_SUBJECTS = {
     "Machine Learning",
     "Marketing",
@@ -13,7 +13,9 @@ VALID_SUBJECTS = {
 def is_valid_subject(subject):
     """
     Vérifie si le sujet demandé est bien dans le syllabus officiel.
+    On neutralise les accents, espaces et la casse.
     """
     if not subject:
         return False
-    return subject.strip().title() in VALID_SUBJECTS
+    normalized = subject.strip().title()
+    return normalized in VALID_SUBJECTS
