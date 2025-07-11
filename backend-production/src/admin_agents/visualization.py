@@ -109,7 +109,9 @@ def generate_all_feedback_charts_from_mongo(
     counts_negative = [x["negative"] for x in data_table]
     counts_neutral = [x["neutral"] for x in data_table]
 
-    static_dir = "static"
+    # Save charts in the web/static folder for Flask static serving
+    web_dir = os.path.join(os.path.dirname(__file__), '..', 'web', 'static')
+    static_dir = os.path.abspath(web_dir)
     if not os.path.exists(static_dir):
         os.makedirs(static_dir)
     filenames = {}
@@ -120,7 +122,7 @@ def generate_all_feedback_charts_from_mongo(
     ax.set_ylabel("Nombre de feedbacks")
     ax.set_title("Nombre de feedbacks par matière")
     plt.xticks(rotation=30, ha='right')
-    filename = f"bar_total_{uuid.uuid4().hex[:8]}.png"
+    filename = "bar_total.png"
     filepath = os.path.join(static_dir, filename)
     plt.tight_layout()
     plt.savefig(filepath)
@@ -137,7 +139,7 @@ def generate_all_feedback_charts_from_mongo(
     plt.xticks(rotation=30, ha='right')
     ax.legend()
     plt.tight_layout()
-    filename = f"bar_stacked_{uuid.uuid4().hex[:8]}.png"
+    filename = "bar_stacked.png"
     filepath = os.path.join(static_dir, filename)
     plt.savefig(filepath)
     filenames["bar_stacked"] = f"/static/{filename}"
@@ -147,7 +149,7 @@ def generate_all_feedback_charts_from_mongo(
     fig, ax = plt.subplots()
     ax.pie(counts_total, labels=labels, autopct='%1.1f%%')
     ax.set_title("Répartition des feedbacks par matière")
-    filename = f"pie_{uuid.uuid4().hex[:8]}.png"
+    filename = "pie.png"
     filepath = os.path.join(static_dir, filename)
     plt.tight_layout()
     plt.savefig(filepath)
