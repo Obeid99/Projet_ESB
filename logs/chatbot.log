@@ -1917,3 +1917,46 @@ Respond with valid JSON only.
 2025-07-11 07:50:31,739 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 07:50:31] "[33mGET /api/projects HTTP/1.1[0m" 404 -
 2025-07-11 07:50:31,846 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 07:50:31] "GET /api/health HTTP/1.1" 200 -
 2025-07-11 07:50:31,916 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 07:50:31] "GET /api/health HTTP/1.1" 200 -
+2025-07-11 08:21:16,889 - root - INFO - Logging configured successfully
+2025-07-11 08:21:17,588 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.19.0.3:5000
+2025-07-11 08:21:17,588 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 08:21:22,078 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:21:22] "GET / HTTP/1.1" 200 -
+2025-07-11 08:21:23,795 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:21:23] "GET /login HTTP/1.1" 200 -
+2025-07-11 08:21:25,225 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:21:25] "GET /register HTTP/1.1" 200 -
+2025-07-11 08:21:34,679 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:21:34] "[31m[1mPOST /auth/register HTTP/1.1[0m" 409 -
+2025-07-11 08:21:38,001 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:21:38] "POST /auth/register HTTP/1.1" 200 -
+2025-07-11 08:21:38,117 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:21:38] "GET /chat HTTP/1.1" 200 -
+2025-07-11 08:21:38,260 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:21:38] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-11 08:21:38,531 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:21:38] "GET /api/health HTTP/1.1" 200 -
+2025-07-11 08:21:38,616 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:21:38] "GET /api/health HTTP/1.1" 200 -
+2025-07-11 08:21:45,222 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 08:21:45,235 - src.web.web_interface - INFO - [INTENT] user_id=68700f0a5dc8fc771753182c username=student message='hello' intent=greeting confidence=1.0 reasoning=The message only contains a greeting.
+2025-07-11 08:21:45,631 - src.web.web_interface - INFO - [SENTIMENT] user_id=68700f0a5dc8fc771753182c username=student message='hello' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x7f34a5ec1e50>
+2025-07-11 08:21:46,306 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 08:21:46,309 - src.agents.response_agent - INFO - Detected intent: greeting
+2025-07-11 08:21:46,959 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 08:21:47,011 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:21:47] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 08:22:14,869 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 08:22:14,872 - src.web.web_interface - INFO - [INTENT] user_id=68700f0a5dc8fc771753182c username=student message='i don't like history classes man' intent=out_of_scope confidence=0.9 reasoning=The message does not mention ESB, its programs, or any official information related to the school, and instead expresses a personal opinion about a subject (history classes) that is not relevant to ESB.
+2025-07-11 08:22:15,227 - src.web.web_interface - INFO - [SENTIMENT] user_id=68700f0a5dc8fc771753182c username=student message='i don't like history classes man' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x7f34a5ec3830>
+2025-07-11 08:22:15,932 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 08:22:15,937 - src.agents.response_agent - INFO - Detected intent: out_of_scope
+2025-07-11 08:22:20,654 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 08:22:20,696 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:22:20] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 08:22:48,430 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 08:22:48,434 - src.web.web_interface - INFO - [INTENT] user_id=68700f0a5dc8fc771753182c username=student message='so is there a history class or course ?' intent=ask_general_info confidence=0.8 reasoning=The user is inquiring about the availability of a specific course or class, which is related to the academic programs offered by ESB, but does not specifically mention a program.
+2025-07-11 08:22:48,846 - src.web.web_interface - INFO - [SENTIMENT] user_id=68700f0a5dc8fc771753182c username=student message='so is there a history class or course ?' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x7f34a5edd400>
+2025-07-11 08:22:49,424 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 08:22:49,427 - src.agents.response_agent - INFO - Detected intent: ask_general_info
+2025-07-11 08:22:50,281 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 08:22:50,328 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:22:50] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 08:24:48,221 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:24:48] "GET /admin/login HTTP/1.1" 200 -
+2025-07-11 08:24:56,971 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:24:56] "POST /admin/login HTTP/1.1" 200 -
+2025-07-11 08:24:57,071 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:24:57] "GET /admin/chat HTTP/1.1" 200 -
+2025-07-11 08:24:57,165 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:24:57] "[33mGET /admin/api/feedback HTTP/1.1[0m" 404 -
+2025-07-11 08:25:04,803 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:25:04] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 08:25:16,219 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:25:16] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 08:40:24,499 - werkzeug - INFO - 172.19.0.1 - - [11/Jul/2025 08:40:24] "GET / HTTP/1.1" 200 -
