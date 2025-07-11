@@ -257,36 +257,53 @@ export default function ChatbotPage() {
           </Flex>
 
           {/* Right Sidebar */}
-          <Box w="300px" bg="white" borderRadius="lg" boxShadow="md" p="20px" ml="20px">
-            <Text fontSize="lg" fontWeight="bold" mb="4" color="gray.700">
-              Agent Status
-            </Text>
-            <VStack align="start" spacing="2" mb="6">
-              <Text>SentimentAgent</Text>
-              <Text>IntentAgent</Text>
-              <Text>WebAgent</Text>
-            </VStack>
-            <Text fontSize="lg" fontWeight="bold" mb="4" color="gray.700">
-              Try These Examples
-            </Text>
-            <VStack align="start" spacing="2">
+          <Box
+            w="320px"
+            bgGradient="linear(to-br, white, red.50)"
+            borderRadius="2xl"
+            boxShadow="2xl"
+            p="28px"
+            ml="24px"
+            border="1px solid"
+            borderColor="red.100"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            minH="400px"
+          >
+            <Flex align="center" mb="6">
+              <Icon as={IoPersonCircle} w="32px" h="32px" color="red.400" mr="2" />
+              <Text fontSize="2xl" fontWeight="extrabold" color="red.500" letterSpacing="wide">
+                Try These Examples
+              </Text>
+            </Flex>
+            <VStack align="stretch" spacing="3" w="100%">
               {[
                 "I love the entrepreneurship program at ESB!",
                 "I'm frustrated with the registration system!",
-                "What are the library hours?",
                 "I need career guidance for my future",
                 "Thank you for the excellent support!",
-                "J'adore ESB!"
+                "i want to pursue a degree in marketing",
+                "i don't like Machine Learning."
+                
               ].map((example, i) => (
-                <Text
+                <Button
                   key={i}
-                  as="span"
-                  cursor="pointer"
-                  _hover={{ textDecoration: 'underline', color: 'red.500' }}
+                  variant="ghost"
+                  justifyContent="flex-start"
+                  leftIcon={<Icon as={IoSend} color="red.400" />}
+                  fontWeight="medium"
+                  fontSize="md"
+                  color="gray.700"
+                  bg="white"
+                  borderRadius="md"
+                  boxShadow="sm"
+                  _hover={{ bg: 'red.100', color: 'red.500', transform: 'scale(1.03)' }}
+                  transition="all 0.2s"
                   onClick={() => handleExampleClick(example)}
                 >
                   {example}
-                </Text>
+                </Button>
               ))}
             </VStack>
           </Box>
