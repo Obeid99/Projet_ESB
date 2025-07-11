@@ -9,13 +9,28 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
-    env_file:
-      - .env
 
   web:
     build: .
-    env_file:
-      - .env
+    environment:
+      - GROQ_API_KEY=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
+      - OPENAI_API_KEY=your_openai_api_key_here
+      - MONGO_URI=mongodb://192.168.60.129:27017
+      - MONGO_DB_NAME=test_chatesb
+      - MONGO_COLLECTION_AUTH_STUD=student_auth
+      - MONGO_COLLECTION_AUTH_ADMIN=admin_auth
+      - MONGO_COLLECTION_CHAT_ADMIN=history_admin
+      - MONGO_COLLECTION_CHAT_STUD=history_student
+      - SENTIMENT_MODEL=hybrid
+      - SENTIMENT_THRESHOLD_POSITIVE=0.1
+      - SENTIMENT_THRESHOLD_NEGATIVE=-0.1
+      - LOG_LEVEL=INFO
+      - LOG_FILE=logs/chatbot.log
+      - ESB_WEBSITE_URL=https://esprit.tn
+      - ESB_FACEBOOK_URL=https://facebook.com/esprit.tn
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - OLLAMA_MODEL=llama3.1:8b
+      - SECRET_KEY=supersecretkey
     ports:
       - "5000:5000"
     depends_on:
