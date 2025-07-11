@@ -1,9 +1,8 @@
-
 """
 Flask Web Interface for Multi-Agent Chatbot (MongoDB + OpenAI)
 Admin + Student: tout passe par MongoDB et OpenAI
 """
-from flask import Flask, render_template, request, jsonify, session, redirect, url_for
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for, send_from_directory
 from flask_cors import CORS
 import time
 import traceback
@@ -302,6 +301,65 @@ def get_latest_student_feedback(mongo_db, collection_feedbacks, limit=10):
     return feedbacks
 
 # --- Endpoint Flask ---
+@app.route('/api/student-messages/<user_id>', methods=['GET'])
+def api_student_messages_by_user(user_id):
+    """
+    Fetch only messages from MONGO_COLLECTION_CHAT_STUD for a given user_id.
+    """
+    collection = mongodb[MONGO_COLLECTION_CHAT_STUD]
+    auth_collection = mongodb[MONGO_COLLECTION_AUTH_STUD]
+    cursor = collection.find({"user_id": user_id})
+    # Find username for this user_id
+    user_doc = auth_collection.find_one({"_id": user_id})
+    username = user_doc["username"] if user_doc and "username" in user_doc else user_id
+    messages = []
+    for doc in cursor:
+        msg = {
+            "_id": str(doc.get("_id")),
+            "user_id": doc.get("user_id"),
+            "message": doc.get("message", ""),
+            "is_user": doc.get("is_user", False),
+            "timestamp": doc.get("timestamp"),
+            "username": username,
+            "sender": doc.get("sender", ""),
+            "sentiment": doc.get("sentiment", ""),
+            "intent": doc.get("intent", "")
+        }
+        messages.append(msg)
+    return jsonify(messages)
+
+# New endpoint: get all student messages grouped by user, with usernames
+@app.route('/api/student-messages/all', methods=['GET'])
+def api_student_messages_all():
+    collection = mongodb[MONGO_COLLECTION_CHAT_STUD]
+    auth_collection = mongodb[MONGO_COLLECTION_AUTH_STUD]
+    # Get all unique user_ids
+    user_ids = collection.distinct("user_id")
+    all_messages = []
+    from bson import ObjectId
+    for user_id in user_ids:
+        # Try to match user_id to _id in auth collection (ObjectId or str)
+        user_doc = None
+        if ObjectId.is_valid(user_id):
+            user_doc = auth_collection.find_one({"_id": ObjectId(user_id)})
+        if not user_doc:
+            user_doc = auth_collection.find_one({"_id": user_id})
+        username = user_doc["username"] if user_doc and "username" in user_doc else user_id
+        cursor = collection.find({"user_id": user_id})
+        for doc in cursor:
+            msg = {
+                "_id": str(doc.get("_id")),
+                "user_id": doc.get("user_id"),
+                "message": doc.get("message", ""),
+                "is_user": doc.get("is_user", False),
+                "timestamp": doc.get("timestamp"),
+                "username": username,
+                "sender": doc.get("sender", ""),
+                "sentiment": doc.get("sentiment", ""),
+                "intent": doc.get("intent", "")
+            }
+            all_messages.append(msg)
+    return jsonify(all_messages)
 @app.route('/admin/api/feedback', methods=['GET'])
 def api_latest_student_feedback():
     # Mets bien le nom de ta collection ici
@@ -328,8 +386,9 @@ def api_student_stats():
         "intent": intent_counts
     })
 
-
-
+@app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory('static', filename)
 
 if __name__ == '__main__':
     print("🚀 Starting Multi-Agent Chatbot Web Interface...")
