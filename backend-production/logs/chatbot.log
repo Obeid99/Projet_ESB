@@ -2343,3 +2343,220 @@ Respond with valid JSON only.
 2025-07-11 14:12:46,232 - root - INFO - Logging configured successfully
 2025-07-11 14:12:46,903 - werkzeug - WARNING -  * Debugger is active!
 2025-07-11 14:12:46,920 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 14:22:28,618 - root - INFO - Logging configured successfully
+2025-07-11 14:22:29,236 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.205.48:5000
+2025-07-11 14:22:29,236 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 14:22:29,238 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:22:30,531 - root - INFO - Logging configured successfully
+2025-07-11 14:22:31,159 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 14:22:31,165 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 14:22:42,522 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:22:42] "OPTIONS /admin/login HTTP/1.1" 200 -
+2025-07-11 14:22:54,750 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:22:54] "OPTIONS /admin/login HTTP/1.1" 200 -
+2025-07-11 14:23:13,024 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:23:13] "[35m[1mPOST /admin/login HTTP/1.1[0m" 500 -
+2025-07-11 14:23:27,387 - root - INFO - Logging configured successfully
+2025-07-11 14:23:27,991 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.205.48:5000
+2025-07-11 14:23:27,992 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 14:23:27,993 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:23:29,332 - root - INFO - Logging configured successfully
+2025-07-11 14:23:29,989 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 14:23:29,997 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 14:23:41,101 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:23:41] "OPTIONS /admin/login HTTP/1.1" 200 -
+2025-07-11 14:24:11,244 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:24:11] "[35m[1mPOST /admin/login HTTP/1.1[0m" 500 -
+2025-07-11 14:28:00,161 - root - INFO - Logging configured successfully
+2025-07-11 14:28:00,791 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.24:5000
+2025-07-11 14:28:00,791 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 14:28:00,798 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:28:02,243 - root - INFO - Logging configured successfully
+2025-07-11 14:28:02,868 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 14:28:02,873 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 14:28:07,860 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:28:07] "OPTIONS /admin/login HTTP/1.1" 200 -
+2025-07-11 14:28:08,216 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:28:08] "POST /admin/login HTTP/1.1" 200 -
+2025-07-11 14:28:11,124 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:28:11] "[31m[1mGET /admin/feedback_chart HTTP/1.1[0m" 401 -
+2025-07-11 14:28:11,180 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:28:11] "GET /api/health HTTP/1.1" 200 -
+2025-07-11 14:29:24,765 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:29:24] "[31m[1mGET /admin/feedback_chart HTTP/1.1[0m" 401 -
+2025-07-11 14:29:24,924 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:29:24] "GET /api/health HTTP/1.1" 200 -
+2025-07-11 14:29:29,811 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:29:29] "[31m[1mGET /admin/feedback_chart HTTP/1.1[0m" 401 -
+2025-07-11 14:33:16,839 - root - INFO - Logging configured successfully
+2025-07-11 14:33:17,748 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.24:5000
+2025-07-11 14:33:17,748 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 14:33:17,748 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:33:20,229 - root - INFO - Logging configured successfully
+2025-07-11 14:33:21,298 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 14:33:21,310 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 14:35:56,951 - werkzeug - INFO -  * Detected change in 'C:\\Users\\zzouaoui\\Downloads\\chatbot-main\\ESB-proj\\backend-production\\src\\web\\web_interface.py', reloading
+2025-07-11 14:35:57,763 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:35:59,265 - root - INFO - Logging configured successfully
+2025-07-11 14:35:59,904 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 14:35:59,910 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 14:37:40,519 - werkzeug - INFO -  * Detected change in 'C:\\Users\\zzouaoui\\Downloads\\chatbot-main\\ESB-proj\\backend-production\\src\\web\\web_interface.py', reloading
+2025-07-11 14:37:41,441 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:37:45,045 - root - INFO - Logging configured successfully
+2025-07-11 14:37:46,310 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 14:37:46,318 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 14:38:06,216 - werkzeug - INFO -  * Detected change in 'C:\\Users\\zzouaoui\\Downloads\\chatbot-main\\ESB-proj\\backend-production\\src\\web\\web_interface.py', reloading
+2025-07-11 14:38:06,866 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:38:08,381 - root - INFO - Logging configured successfully
+2025-07-11 14:38:09,176 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 14:38:09,182 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 14:39:18,500 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:39:18] "OPTIONS /login HTTP/1.1" 200 -
+2025-07-11 14:39:18,792 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:39:18] "POST /login HTTP/1.1" 200 -
+2025-07-11 14:39:28,327 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:39:28] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-07-11 14:39:29,097 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 14:39:29,109 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:39:29] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 14:39:50,735 - werkzeug - INFO -  * Detected change in 'C:\\Users\\zzouaoui\\Downloads\\chatbot-main\\ESB-proj\\backend-production\\src\\web\\web_interface.py', reloading
+2025-07-11 14:39:51,606 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:40:05,553 - root - INFO - Logging configured successfully
+2025-07-11 14:40:06,341 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.24:5000
+2025-07-11 14:40:06,342 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 14:40:06,347 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:40:07,894 - root - INFO - Logging configured successfully
+2025-07-11 14:40:08,531 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 14:40:08,541 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 14:40:13,726 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:40:13] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-07-11 14:40:14,254 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 14:40:14,261 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:40:14] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 14:40:54,624 - werkzeug - INFO -  * Detected change in 'C:\\Users\\zzouaoui\\Downloads\\chatbot-main\\ESB-proj\\backend-production\\src\\web\\web_interface.py', reloading
+2025-07-11 14:40:55,426 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:41:06,863 - root - INFO - Logging configured successfully
+2025-07-11 14:41:07,510 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.24:5000
+2025-07-11 14:41:07,511 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 14:41:07,512 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:41:08,984 - root - INFO - Logging configured successfully
+2025-07-11 14:41:09,629 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 14:41:09,636 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 14:41:18,902 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:41:18] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-07-11 14:41:19,587 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 14:41:19,594 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:41:19] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 14:41:50,381 - werkzeug - INFO -  * Detected change in 'C:\\Users\\zzouaoui\\Downloads\\chatbot-main\\ESB-proj\\backend-production\\src\\web\\web_interface.py', reloading
+2025-07-11 14:41:51,261 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:41:52,842 - root - INFO - Logging configured successfully
+2025-07-11 14:41:53,591 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 14:41:53,602 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 14:41:54,883 - werkzeug - INFO -  * Detected change in 'C:\\Users\\zzouaoui\\Downloads\\chatbot-main\\ESB-proj\\backend-production\\src\\web\\web_interface.py', reloading
+2025-07-11 14:41:55,681 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:42:02,515 - root - INFO - Logging configured successfully
+2025-07-11 14:42:03,146 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.24:5000
+2025-07-11 14:42:03,147 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 14:42:03,148 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 14:42:04,577 - root - INFO - Logging configured successfully
+2025-07-11 14:42:05,271 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 14:42:05,277 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 14:42:07,848 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:42:07] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-07-11 14:42:08,330 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 14:42:08,336 - root - INFO - [INTENT] user_id=686fb237b60f2fc3846f22a4 username=student message='hey' intent=greeting confidence=1.0 reasoning=The message only contains a casual greeting.
+2025-07-11 14:42:08,740 - root - INFO - [SENTIMENT] user_id=686fb237b60f2fc3846f22a4 username=student message='hey' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001B1A473F2D0>
+2025-07-11 14:42:09,322 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 14:42:09,325 - src.agents.response_agent - INFO - Detected intent: greeting
+2025-07-11 14:42:09,893 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 14:42:09,928 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:42:09] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 14:42:30,627 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:42:30] "OPTIONS /admin/login HTTP/1.1" 200 -
+2025-07-11 14:42:30,961 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:42:30] "POST /admin/login HTTP/1.1" 200 -
+2025-07-11 14:42:33,591 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:42:33] "GET /admin/feedback_chart HTTP/1.1" 200 -
+2025-07-11 14:43:06,963 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:43:06] "OPTIONS /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 14:43:07,064 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:43:07] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 14:57:39,595 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:57:39] "OPTIONS /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 14:57:39,933 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:57:39] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 14:58:08,365 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:58:08] "OPTIONS /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 14:58:09,851 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 14:58:09] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:00:31,895 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:00:31] "GET / HTTP/1.1" 200 -
+2025-07-11 15:00:32,623 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:00:32] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-11 15:00:34,008 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:00:34] "GET /admin/login HTTP/1.1" 200 -
+2025-07-11 15:00:41,173 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:00:41] "POST /admin/login HTTP/1.1" 200 -
+2025-07-11 15:00:41,527 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:00:41] "GET /admin/chat HTTP/1.1" 200 -
+2025-07-11 15:00:41,797 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:00:41] "GET /admin/api/feedback HTTP/1.1" 200 -
+2025-07-11 15:00:44,163 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:00:44] "[33mGET /admin/api/feedback_count HTTP/1.1[0m" 404 -
+2025-07-11 15:00:45,647 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:00:45] "[33mGET /admin/api/feedback_count HTTP/1.1[0m" 404 -
+2025-07-11 15:00:45,895 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:00:45] "[33mGET /admin/api/feedback_count?sentiment=positive HTTP/1.1[0m" 404 -
+2025-07-11 15:00:46,268 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:00:46] "[33mGET /admin/api/feedback_count?sentiment=negative HTTP/1.1[0m" 404 -
+2025-07-11 15:00:46,997 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:00:46] "GET /admin/feedback_chart HTTP/1.1" 200 -
+2025-07-11 15:01:05,035 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:01:05] "[33mGET /admin/api/discussion/6870e781e23dc50f9aae28ca HTTP/1.1[0m" 404 -
+2025-07-11 15:01:09,892 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:01:09] "[33mGET /admin/api/feedback_count HTTP/1.1[0m" 404 -
+2025-07-11 15:01:15,625 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:01:15] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:01:53,925 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:01:53] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:02:03,240 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:02:03] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:02:18,859 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:02:18] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:04:26,806 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:04:26] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:04:26,844 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:04:26] "[33mGET /static/bar_total_dd439815.png HTTP/1.1[0m" 404 -
+2025-07-11 15:04:27,161 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:04:27] "[33mGET /static/bar_stacked_c43e5e7d.png HTTP/1.1[0m" 404 -
+2025-07-11 15:04:27,162 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:04:27] "[33mGET /static/pie_c45b0eba.png HTTP/1.1[0m" 404 -
+2025-07-11 15:06:32,673 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:06:32] "[33mGET /admin/api/discussion/687114b05afff238b9df1672 HTTP/1.1[0m" 404 -
+2025-07-11 15:06:32,936 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:06:32] "[33mGET /admin/api/discussion/687114b05afff238b9df1672 HTTP/1.1[0m" 404 -
+2025-07-11 15:14:32,421 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:14:32] "[33mGET /admin/landing HTTP/1.1[0m" 404 -
+2025-07-11 15:14:35,492 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:14:35] "GET /admin/login HTTP/1.1" 200 -
+2025-07-11 15:17:36,167 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:17:36] "GET / HTTP/1.1" 200 -
+2025-07-11 15:17:37,856 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:17:37] "GET /admin/login HTTP/1.1" 200 -
+2025-07-11 15:17:44,576 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:17:44] "POST /admin/login HTTP/1.1" 200 -
+2025-07-11 15:17:44,942 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:17:44] "GET /admin/chat HTTP/1.1" 200 -
+2025-07-11 15:17:45,043 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:17:45] "[33mGET /admin/api/chat_history HTTP/1.1[0m" 404 -
+2025-07-11 15:17:45,241 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:17:45] "GET /admin/api/feedback HTTP/1.1" 200 -
+2025-07-11 15:17:54,712 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:17:54] "[33mGET /admin/api/feedback_count HTTP/1.1[0m" 404 -
+2025-07-11 15:17:54,962 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:17:54] "[33mGET /admin/api/feedback_count HTTP/1.1[0m" 404 -
+2025-07-11 15:18:03,701 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:18:03] "[33mGET /admin/api/feedback_count?sentiment=positive HTTP/1.1[0m" 404 -
+2025-07-11 15:18:06,348 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:18:06] "[33mGET /admin/api/feedback_count?sentiment=negative HTTP/1.1[0m" 404 -
+2025-07-11 15:18:09,195 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:18:09] "GET /admin/feedback_chart HTTP/1.1" 200 -
+2025-07-11 15:18:18,506 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:18:18] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:18:29,872 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:18:29] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:18:41,546 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:18:41] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:18:51,787 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:18:51] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:19:05,456 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:19:05] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:19:05,795 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:19:05] "[33mGET /static/bar_total_223be75e.png HTTP/1.1[0m" 404 -
+2025-07-11 15:19:05,796 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:19:05] "[33mGET /static/bar_stacked_3730ea1f.png HTTP/1.1[0m" 404 -
+2025-07-11 15:19:05,797 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:19:05] "[33mGET /static/pie_9f53429d.png HTTP/1.1[0m" 404 -
+2025-07-11 15:23:53,279 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:23:53] "GET /admin/chat HTTP/1.1" 200 -
+2025-07-11 15:23:53,461 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:23:53] "GET /admin/api/feedback HTTP/1.1" 200 -
+2025-07-11 15:23:53,528 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:23:53] "[33mGET /admin/api/chat_history HTTP/1.1[0m" 404 -
+2025-07-11 15:23:57,296 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:23:57] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:24:08,203 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:24:08] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:24:08,529 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:24:08] "[33mGET /static/bar_total_1bdf261e.png HTTP/1.1[0m" 404 -
+2025-07-11 15:24:08,530 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:24:08] "[33mGET /static/bar_stacked_3b16ebbd.png HTTP/1.1[0m" 404 -
+2025-07-11 15:24:08,532 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:24:08] "[33mGET /static/pie_b75195b9.png HTTP/1.1[0m" 404 -
+2025-07-11 15:25:10,507 - werkzeug - INFO -  * Detected change in 'C:\\Users\\zzouaoui\\Downloads\\chatbot-main\\ESB-proj\\backend-production\\src\\web\\web_interface.py', reloading
+2025-07-11 15:25:11,255 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 15:26:24,378 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 15:26:25,836 - root - INFO - Logging configured successfully
+2025-07-11 15:26:26,446 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 15:26:26,454 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 15:26:30,897 - werkzeug - INFO -  * Detected change in 'C:\\Users\\zzouaoui\\Downloads\\chatbot-main\\ESB-proj\\backend-production\\src\\web\\web_interface.py', reloading
+2025-07-11 15:26:31,674 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 15:26:34,187 - root - INFO - Logging configured successfully
+2025-07-11 15:28:12,281 - root - INFO - Logging configured successfully
+2025-07-11 15:28:12,945 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.24:5000
+2025-07-11 15:28:12,945 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 15:28:12,946 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 15:28:14,230 - root - INFO - Logging configured successfully
+2025-07-11 15:28:15,088 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 15:28:15,094 - werkzeug - INFO -  * Debugger PIN: 591-964-559
+2025-07-11 15:28:20,748 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:28:20] "GET /admin/chat HTTP/1.1" 200 -
+2025-07-11 15:28:21,411 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:28:21] "[33mGET /admin/api/chat_history HTTP/1.1[0m" 404 -
+2025-07-11 15:28:21,851 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:28:21] "GET /admin/api/feedback HTTP/1.1" 200 -
+2025-07-11 15:28:44,110 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:28:44] "OPTIONS /admin/login HTTP/1.1" 200 -
+2025-07-11 15:28:44,276 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:28:44] "POST /admin/login HTTP/1.1" 200 -
+2025-07-11 15:28:45,401 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:28:45] "GET /admin/feedback_chart HTTP/1.1" 200 -
+2025-07-11 15:28:58,460 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:28:58] "OPTIONS /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:28:59,431 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:28:59] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:30:49,149 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:30:49] "OPTIONS /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:30:50,013 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:30:50] "POST /admin/api/chat HTTP/1.1" 200 -

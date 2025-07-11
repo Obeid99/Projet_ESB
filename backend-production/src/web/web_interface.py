@@ -9,7 +9,10 @@ import traceback
 from dotenv import load_dotenv
 import os
 import sys
+import logging
+from datetime import datetime
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+logger = logging.getLogger()
 
 # Chargement .env
 load_dotenv()
@@ -204,6 +207,7 @@ def chat():
 # === ADMIN: CHATBOT ======
 # =========================
 
+
 @app.route('/admin/api/chat', methods=['POST'])
 def admin_chat_api():
     if 'admin_id' not in session:
@@ -226,7 +230,9 @@ def admin_chat_api():
         admin_message,
         mongo_db=mongodb,
         collection_feedbacks=MONGO_COLLECTION_CHAT_STUD,
-        collection_admin=MONGO_COLLECTION_CHAT_ADMIN
+        collection_admin=MONGO_COLLECTION_CHAT_ADMIN,
+        session=session,
+        
     )
 
     # Stocker la réponse bot dans Mongo
@@ -273,11 +279,37 @@ def admin_feedback_chart():
     </body></html>
     '''
 
-from src.web.auth import bp_auth
-app.register_blueprint(bp_auth)
+# --- chat history in admin interface ---
 
-import logging
-logger = logging.getLogger(__name__)
+
+def get_latest_student_feedback(mongo_db, collection_feedbacks, limit=10):
+    """
+    Récupère les derniers feedbacks étudiants (utilisateur humain).
+    """
+    cursor = mongo_db[collection_feedbacks].find(
+        {"is_user": True}
+    ).sort("timestamp", -1).limit(limit)
+    feedbacks = []
+    for fb in cursor:
+        feedbacks.append({
+            "id": str(fb.get("_id")),
+            "username": fb.get("username", "") or fb.get("user_id", "") or "Etudiant inconnu",
+            "title": fb.get("message")[:32] + ("..." if len(fb.get("message","")) > 32 else ""),
+            "created_at": datetime.fromtimestamp(fb.get("timestamp")).strftime("%Y-%m-%d %H:%M"),
+            "message": fb.get("message", "")
+        })
+    return feedbacks
+
+# --- Endpoint Flask ---
+@app.route('/admin/api/feedback', methods=['GET'])
+def api_latest_student_feedback():
+    # Mets bien le nom de ta collection ici
+    collection_feedbacks = "history_student"
+    feedbacks = get_latest_student_feedback(mongodb, collection_feedbacks, limit=10)
+    return jsonify(feedbacks)
+
+
+
 
 if __name__ == '__main__':
     print("🚀 Starting Multi-Agent Chatbot Web Interface...")
