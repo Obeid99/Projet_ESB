@@ -2560,3 +2560,470 @@ Respond with valid JSON only.
 2025-07-11 15:28:59,431 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:28:59] "POST /admin/api/chat HTTP/1.1" 200 -
 2025-07-11 15:30:49,149 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:30:49] "OPTIONS /admin/api/chat HTTP/1.1" 200 -
 2025-07-11 15:30:50,013 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:30:50] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 15:51:11,596 - root - INFO - Logging configured successfully
+2025-07-11 15:51:13,379 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-11 15:51:13,384 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 15:51:13,388 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 15:51:16,164 - root - INFO - Logging configured successfully
+2025-07-11 15:51:17,237 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 15:51:17,253 - werkzeug - INFO -  * Debugger PIN: 713-461-185
+2025-07-11 15:51:24,004 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:51:24] "GET /chat HTTP/1.1" 200 -
+2025-07-11 15:51:24,533 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:51:24] "[33mGET /api/projects HTTP/1.1[0m" 404 -
+2025-07-11 15:51:24,727 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:51:24] "GET /api/health HTTP/1.1" 200 -
+2025-07-11 15:51:24,819 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:51:24] "GET /api/health HTTP/1.1" 200 -
+2025-07-11 15:51:31,941 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:51:31] "GET / HTTP/1.1" 200 -
+2025-07-11 15:52:42,008 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:52:42] "OPTIONS /login HTTP/1.1" 200 -
+2025-07-11 15:52:42,308 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:52:42] "POST /login HTTP/1.1" 200 -
+2025-07-11 15:52:55,130 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:52:55] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-07-11 15:52:56,074 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:52:56,084 - root - INFO - [INTENT] user_id=686fb237b60f2fc3846f22a4 username=student message='hello' intent=greeting confidence=1.0 reasoning=The message only contains a greeting.
+2025-07-11 15:52:56,587 - root - INFO - [SENTIMENT] user_id=686fb237b60f2fc3846f22a4 username=student message='hello' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001D8793B34D0>
+2025-07-11 15:52:57,157 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:52:57,162 - src.agents.response_agent - INFO - Detected intent: greeting
+2025-07-11 15:52:57,823 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:52:57,915 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:52:57] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 15:53:24,476 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:53:24] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-07-11 15:53:24,952 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:53:24,955 - root - INFO - [INTENT] user_id=686fb237b60f2fc3846f22a4 username=student message='boss, i want to register in esb' intent=ask_admission confidence=0.9 reasoning=The user mentions wanting to register in ESB, which implies they are interested in the admission process.
+2025-07-11 15:53:25,365 - root - INFO - [SENTIMENT] user_id=686fb237b60f2fc3846f22a4 username=student message='boss, i want to register in esb' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001D8793FD1C0>
+2025-07-11 15:53:25,870 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:53:25,870 - src.agents.response_agent - INFO - Detected intent: ask_admission
+2025-07-11 15:53:26,567 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:53:26,647 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:53:26] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 15:54:08,869 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:54:08] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-07-11 15:54:09,460 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:54:09,464 - root - INFO - [INTENT] user_id=686fb237b60f2fc3846f22a4 username=student message='what if i want to go into analytics ? a masters degree' intent=ask_program_info confidence=0.8 reasoning=The user is inquiring about a potential career path in analytics and mentions a master's degree, which suggests they are seeking information about a specific program or field of study offered by ESB.
+2025-07-11 15:54:09,921 - root - INFO - [SENTIMENT] user_id=686fb237b60f2fc3846f22a4 username=student message='what if i want to go into analytics ? a masters degree' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001D8793DA7E0>
+2025-07-11 15:54:10,415 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:54:10,419 - src.agents.response_agent - INFO - Detected intent: ask_program_info
+2025-07-11 15:54:10,622 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-11 15:54:10,624 - groq._base_client - INFO - Retrying request to /openai/v1/chat/completions in 1.000000 seconds
+2025-07-11 15:54:13,080 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:54:13,180 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:54:13] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 15:54:31,569 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:54:31] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-07-11 15:54:31,768 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-11 15:54:31,776 - root - INFO - [INTENT] user_id=686fb237b60f2fc3846f22a4 username=student message='a masters degree aligned more with IT ?' intent=out_of_scope confidence=0.0 reasoning=None
+2025-07-11 15:54:32,005 - root - INFO - [SENTIMENT] user_id=686fb237b60f2fc3846f22a4 username=student message='a masters degree aligned more with IT ?' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000001D8793B3A70>
+2025-07-11 15:54:32,187 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-11 15:54:32,187 - src.agents.response_agent - INFO - Detected intent: out_of_scope
+2025-07-11 15:54:32,330 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-11 15:54:32,332 - src.agents.response_agent - WARNING - _call_llm_response failed with Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jzt5jt5vec89ajdwbxnr904d` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 100345, Requested 1433. Please try again in 25m36.739999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}, retrying in 2s... (2 tries left)
+2025-07-11 15:54:34,480 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-11 15:54:34,480 - src.agents.response_agent - WARNING - _call_llm_response failed with Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jzt5jt5vec89ajdwbxnr904d` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 100343, Requested 1433. Please try again in 25m34.645s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}, retrying in 4s... (1 tries left)
+2025-07-11 15:54:38,574 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-07-11 15:54:38,587 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:54:38] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 15:56:17,185 - root - INFO - Logging configured successfully
+2025-07-11 15:56:18,442 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-11 15:56:18,442 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 15:56:18,446 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 15:56:20,933 - root - INFO - Logging configured successfully
+2025-07-11 15:56:22,239 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 15:56:22,248 - werkzeug - INFO -  * Debugger PIN: 713-461-185
+2025-07-11 15:56:49,105 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:56:49] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-07-11 15:56:49,755 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:56:49,761 - root - INFO - [INTENT] user_id=686fb237b60f2fc3846f22a4 username=student message='boss i want a masters degree in IT ?' intent=ask_program_info confidence=0.8 reasoning=The user is inquiring about a master's degree in IT, which is related to the programs offered by ESB, such as the 'licence en business computing - lbc'.
+2025-07-11 15:56:50,127 - root - INFO - [SENTIMENT] user_id=686fb237b60f2fc3846f22a4 username=student message='boss i want a masters degree in IT ?' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000002550C3A3290>
+2025-07-11 15:56:50,627 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:56:50,634 - src.agents.response_agent - INFO - Detected intent: ask_program_info
+2025-07-11 15:56:51,492 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:56:51,537 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:56:51] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 15:57:18,174 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:57:18] "OPTIONS /api/chat HTTP/1.1" 200 -
+2025-07-11 15:57:18,627 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:57:18,632 - root - INFO - [INTENT] user_id=686fb237b60f2fc3846f22a4 username=student message='how can i register in BA masters degree ?' intent=ask_admission confidence=0.9 reasoning=The user is asking about the registration process for a specific program (BA masters degree), which is related to the admission process at ESB.
+2025-07-11 15:57:19,028 - root - INFO - [SENTIMENT] user_id=686fb237b60f2fc3846f22a4 username=student message='how can i register in BA masters degree ?' sentiment=<src.agents.sentiment_agent.SentimentResult object at 0x000002550C3E1070>
+2025-07-11 15:57:19,552 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:57:19,552 - src.agents.response_agent - INFO - Detected intent: ask_admission
+2025-07-11 15:57:20,838 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-11 15:57:20,936 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:57:20] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 15:57:48,095 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:57:48] "OPTIONS /admin/login HTTP/1.1" 200 -
+2025-07-11 15:57:48,315 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:57:48] "POST /admin/login HTTP/1.1" 200 -
+2025-07-11 15:57:56,902 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:57:56] "GET /admin/feedback_chart HTTP/1.1" 200 -
+2025-07-11 15:59:52,331 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 15:59:52] "GET /admin/feedback_chart HTTP/1.1" 200 -
+2025-07-11 16:00:15,755 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:00:15] "GET /admin/feedback_chart HTTP/1.1" 200 -
+2025-07-11 16:00:37,001 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:00:37] "GET /admin/feedback_chart HTTP/1.1" 200 -
+2025-07-11 16:00:55,467 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:00:55] "GET /admin/feedback_chart HTTP/1.1" 200 -
+2025-07-11 16:01:19,711 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:01:19] "GET /admin/feedback_chart HTTP/1.1" 200 -
+2025-07-11 16:01:54,706 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:01:54] "GET /admin/feedback_chart HTTP/1.1" 200 -
+2025-07-11 16:03:11,461 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:03:11] "GET /admin/feedback_chart HTTP/1.1" 200 -
+2025-07-11 16:05:07,118 - root - INFO - Logging configured successfully
+2025-07-11 16:05:12,370 - root - INFO - Logging configured successfully
+2025-07-11 16:05:13,100 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-11 16:05:13,102 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 16:05:13,105 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 16:05:14,474 - root - INFO - Logging configured successfully
+2025-07-11 16:05:15,183 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 16:05:15,187 - werkzeug - INFO -  * Debugger PIN: 713-461-185
+2025-07-11 16:27:32,057 - root - INFO - Logging configured successfully
+2025-07-11 16:27:34,179 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-11 16:27:34,180 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 16:27:34,184 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 16:27:36,708 - root - INFO - Logging configured successfully
+2025-07-11 16:27:37,770 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 16:27:37,774 - werkzeug - INFO -  * Debugger PIN: 713-461-185
+2025-07-11 16:44:27,200 - werkzeug - INFO -  * Detected change in 'C:\\Users\\onouicer\\Desktop\\ESB_FINAL\\Projet_ESB\\backend-production\\src\\web\\web_interface.py', reloading
+2025-07-11 16:44:27,868 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 16:49:10,159 - root - INFO - Logging configured successfully
+2025-07-11 16:49:11,023 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.41.91:5000
+2025-07-11 16:49:11,024 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 16:49:11,026 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 16:49:12,506 - root - INFO - Logging configured successfully
+2025-07-11 16:49:13,372 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 16:49:13,374 - werkzeug - INFO -  * Debugger PIN: 713-461-185
+2025-07-11 16:49:15,600 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:49:15] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:50:10,585 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:50:10] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:50:59,962 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:50:59] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:51:13,734 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:51:13] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:51:54,688 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:51:54] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:56:11,975 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:56:11] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:56:17,114 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:56:17] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:56:21,968 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:56:21] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:56:25,351 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:56:25] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:56:30,699 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:56:30] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:56:35,512 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:56:35] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:56:40,736 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:56:40] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:56:45,431 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:56:45] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:56:50,692 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:56:50] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:56:55,479 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:56:55] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:57:01,487 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:57:01] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:57:06,213 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:57:06] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:57:11,516 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:57:11] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:57:16,221 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:57:16] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:57:21,544 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:57:21] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:57:26,201 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:57:26] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:57:31,466 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:57:31] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:57:36,132 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:57:36] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:57:41,502 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:57:41] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:57:46,130 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:57:46] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:57:51,494 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:57:51] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:57:56,097 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:57:56] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:58:13,541 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:58:13] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:59:10,506 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:59:10] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:59:16,690 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:59:16] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:59:21,110 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:59:21] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:59:26,411 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:59:26] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:59:31,109 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:59:31] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:59:36,425 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:59:36] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 16:59:41,113 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 16:59:41] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:00:13,249 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:00:13] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:00:15,588 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:00:15] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:00:20,850 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:00:20] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:00:26,149 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:00:26] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:00:31,527 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:00:31] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:00:36,153 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:00:36] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:00:41,512 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:00:41] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:00:46,186 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:00:46] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:00:51,512 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:00:51] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:00:56,149 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:00:56] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:01:01,414 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:01:01] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:01:06,111 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:01:06] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:01:11,543 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:01:11] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:01:16,120 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:01:16] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:01:21,446 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:01:21] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:01:32,278 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:01:32] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:01:35,825 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:01:35] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:01:40,510 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:01:40] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:01:46,964 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:01:46] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 17:01:51,706 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 17:01:51] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:06:34,056 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:06:34] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:07:04,166 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:07:04] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:07:04,687 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:07:04] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:07:24,755 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:07:24] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:07:24,762 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:07:24] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:07:24,763 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:07:24] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:07:24,766 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:07:24] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:07:34,577 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:07:34] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:07:35,106 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:07:35] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:07:55,170 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:07:55] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:07:55,172 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:07:55] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:07:55,682 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:07:55] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:07:55,684 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:07:55] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:08:05,451 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:08:05] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:08:05,972 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:08:05] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:08:12,537 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:08:12] "OPTIONS /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 18:08:26,043 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:08:26] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:08:26,048 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:08:26] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:08:26,589 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:08:26] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:08:26,591 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:08:26] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:08:36,331 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:08:36] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:08:36,856 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:08:36] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:08:43,062 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:08:43] "[35m[1mPOST /admin/api/chat HTTP/1.1[0m" 500 -
+2025-07-11 18:08:56,922 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:08:56] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:08:56,930 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:08:56] "[35m[1mGET /api/student-stats HTTP/1.1[0m" 500 -
+2025-07-11 18:09:01,359 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:09:01] "OPTIONS /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 18:09:12,406 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:09:12] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:09:12,696 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:09:12] "POST /admin/api/chat HTTP/1.1" 200 -
+2025-07-11 18:10:00,812 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:10:00] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:10:05,443 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:10:05] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:10:10,862 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:10:10] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:10:15,461 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:10:15] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:10:20,965 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:10:20] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:10:25,660 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:10:25] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:10:30,816 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:10:30] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:10:35,648 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:10:35] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:10:40,756 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:10:40] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:10:45,564 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:10:45] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:10:51,926 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:10:51] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:10:56,327 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:10:56] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:11:01,583 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:11:01] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:11:06,386 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:11:06] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:11:11,755 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:11:11] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:11:16,292 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:11:16] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:11:21,615 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:11:21] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:11:26,196 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:11:26] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:11:31,763 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:11:31] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:11:36,263 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:11:36] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:11:42,100 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:11:42] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:11:46,272 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:11:46] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:12:13,624 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:12:13] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:12:15,476 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:12:15] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:12:18,247 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:12:18] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:12:22,931 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:12:22] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:12:28,696 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:12:28] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:12:32,994 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:12:32] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:12:38,285 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:12:38] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:12:43,510 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:12:43] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:12:48,600 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:12:48] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:12:48,758 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:12:48] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:12:54,568 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:12:54] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:12:58,188 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:12:58] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:13:03,619 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:13:03] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:13:05,620 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:13:05] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:13:07,974 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:13:07] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:13:12,673 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:13:12] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:13:18,460 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:13:18] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:13:22,733 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:13:22] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:13:27,916 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:13:27] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:13:32,969 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:13:32] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:13:38,723 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:13:38] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:13:43,509 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:13:43] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:13:48,579 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:13:48] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:13:53,408 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:13:53] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:13:58,511 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:13:58] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:14:03,254 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:14:03] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:14:08,691 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:14:08] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:14:13,347 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:14:13] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:14:19,124 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:14:19] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:14:23,585 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:14:23] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:14:28,810 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:14:28] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:14:33,291 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:14:33] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:14:38,540 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:14:38] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:14:43,514 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:14:43] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:14:48,739 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:14:48] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:14:53,299 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:14:53] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:14:58,708 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:14:58] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:03,283 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:03] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:04,137 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:04] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:08,769 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:08] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:14,246 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:14] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:19,256 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:19] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:24,618 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:24] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:29,293 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:29] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:30,616 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:30] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:36,937 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:36] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:42,337 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:42] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:47,055 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:47] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:52,368 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:52] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:57,208 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:57] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:15:59,249 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:15:59] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:16:04,309 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:16:04] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:16:09,675 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:16:09] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:16:14,229 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:16:14] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:16:19,344 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:16:19] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:16:24,251 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:16:24] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:16:28,912 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:16:28] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:16:34,303 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:16:34] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:16:39,276 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:16:39] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:16:42,094 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:16:42] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:16:47,484 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:16:47] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:16:52,645 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:16:52] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:16:57,579 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:16:57] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:02,688 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:02] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:04,550 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:04] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:09,083 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:09] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:15,022 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:15] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:19,865 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:19] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:25,575 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:25] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:25,904 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:25] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:29,645 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:29] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:32,910 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:32] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:39,154 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:39] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:43,506 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:43] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:48,791 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:48] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:53,405 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:53] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:53,955 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:53] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:17:59,717 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:17:59] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:18:05,228 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:18:05] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:18:10,408 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:18:10] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:18:12,805 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:18:12] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:18:14,977 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:18:14] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:18:20,386 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:18:20] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:18:25,306 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:18:25] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:18:30,853 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:18:30] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:18:35,280 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:18:35] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:18:40,617 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:18:40] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:18:45,230 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:18:45] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:18:50,307 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:18:50] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:18:55,258 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:18:55] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:19:00,746 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:19:00] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:19:05,654 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:19:05] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:19:10,999 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:19:10] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:19:15,364 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:19:15] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:19:20,758 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:19:20] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:19:25,568 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:19:25] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:19:30,889 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:19:30] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:19:35,498 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:19:35] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:19:40,929 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:19:40] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:19:45,528 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:19:45] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:19:50,485 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:19:50] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:19:55,349 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:19:55] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:20:00,693 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:20:00] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:20:05,294 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:20:05] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:20:10,834 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:20:10] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:20:15,477 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:20:15] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:20:19,535 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:20:19] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:20:24,318 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:20:24] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:20:29,570 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:20:29] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:20:34,074 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:20:34] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:20:39,501 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:20:39] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:20:44,211 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:20:44] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:20:49,712 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:20:49] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:20:54,658 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:20:54] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:20:59,548 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:20:59] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:21:04,364 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:21:04] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:21:10,119 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:21:10] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:21:14,331 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:21:14] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:21:14,854 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:21:14] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:21:20,294 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:21:20] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:21:24,024 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:21:24] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:21:28,663 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:21:28] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:21:34,081 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:21:34] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:21:38,755 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:21:38] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:21:44,220 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:21:44] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:21:48,623 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:21:48] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:21:54,257 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:21:54] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:21:58,637 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:21:58] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:22:03,882 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:22:03] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:22:08,591 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:22:08] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:22:14,077 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:22:14] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:22:18,549 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:22:18] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:22:24,014 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:22:24] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:22:28,624 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:22:28] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:22:33,986 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:22:33] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:22:38,652 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:22:38] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:22:44,227 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:22:44] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:22:48,969 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:22:48] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:22:54,570 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:22:54] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:22:58,729 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:22:58] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:23:04,208 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:23:04] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:23:08,905 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:23:08] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:23:14,435 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:23:14] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:23:19,358 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:23:19] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:23:24,846 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:23:24] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:23:29,263 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:23:29] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:23:34,606 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:23:34] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:23:39,230 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:23:39] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:23:42,650 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:23:42] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:23:47,347 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:23:47] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:23:52,505 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:23:52] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:23:57,306 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:23:57] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:24:02,641 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:24:02] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:24:07,216 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:24:07] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:24:12,505 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:24:12] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:24:12,779 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:24:12] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:24:17,701 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:24:17] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:24:23,619 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:24:23] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:24:28,367 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:24:28] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:24:33,798 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:24:33] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:24:38,216 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:24:38] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:24:43,518 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:24:43] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:24:48,258 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:24:48] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:24:51,640 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:24:51] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:24:56,534 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:24:56] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:25:01,786 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:25:01] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:25:06,259 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:25:06] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:25:11,681 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:25:11] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:25:16,248 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:25:16] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:25:21,497 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:25:21] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:25:26,429 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:25:26] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:25:31,569 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:25:31] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:25:36,365 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:25:36] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:25:41,498 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:25:41] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:25:46,255 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:25:46] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:25:51,588 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:25:51] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:25:56,189 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:25:56] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:26:01,569 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:26:01] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:26:06,181 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:26:06] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:26:11,905 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:26:11] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:26:16,285 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:26:16] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:26:21,531 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:26:21] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:26:26,365 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:26:26] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:26:31,724 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:26:31] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:26:36,325 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:26:36] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:26:41,560 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:26:41] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:26:46,306 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:26:46] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:26:51,793 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:26:51] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:26:56,226 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:26:56] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:27:01,501 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:27:01] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:27:01,717 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:27:01] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:27:07,289 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:27:07] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:27:12,505 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:27:12] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:27:16,607 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:27:16] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:27:21,837 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:27:21] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:27:26,744 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:27:26] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:27:31,863 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:27:31] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:27:37,595 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:27:37] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:27:42,920 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:27:42] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:27:47,572 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:27:47] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:27:52,546 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:27:52] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:27:57,257 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:27:57] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:28:02,756 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:28:02] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:28:07,495 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:28:07] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:28:10,872 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:28:10] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:28:15,620 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:28:15] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:28:20,940 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:28:20] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:28:25,779 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:28:25] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:28:31,044 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:28:31] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:28:35,606 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:28:35] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:28:41,045 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:28:41] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:28:46,335 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:28:46] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:28:51,615 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:28:51] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:28:56,306 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:28:56] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:29:01,513 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:29:01] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:29:06,438 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:29:06] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:29:11,870 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:29:11] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:29:16,367 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:29:16] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:29:21,726 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:29:21] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:29:25,761 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:29:25] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:29:31,872 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:29:31] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:29:35,866 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:29:35] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:29:41,593 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:29:41] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:29:46,066 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:29:46] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:29:51,615 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:29:51] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:29:56,331 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:29:56] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:30:01,478 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:30:01] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:30:06,410 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:30:06] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:30:11,930 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:30:11] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:30:16,405 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:30:16] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:30:21,623 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:30:21] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:30:26,337 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:30:26] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:30:31,844 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:30:31] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:30:36,373 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:30:36] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:30:41,654 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:30:41] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:30:46,463 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:30:46] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:31:13,812 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:31:13] "GET /api/student-stats HTTP/1.1" 200 -
+2025-07-11 18:32:13,546 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 18:32:13] "GET /api/student-stats HTTP/1.1" 200 -
