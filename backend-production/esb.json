@@ -1,0 +1,160 @@
+[
+  {
+    "title": "licence en business computing - lbc",
+    "niveau": "licence",
+    "duree": "6 semestres",
+    "credits": "180 ects",
+    "parcours": ["bi", "bis"],
+    "competences": [
+      "Concevoir et développer des solutions décisionnelles et analytiques",
+      "Maîtriser les systèmes et outils informatiques",
+      "Maîtriser les notions fondamentales des sciences de gestion",
+      "Piloter la transformation digitale",
+      "Gérer et organiser des projets informatiques"
+    ],
+    "metiers": [
+      "Consultant BI", "Analyste décisionnel", "Développeur", "Architecte système", "Administrateur de bases de données"
+    ],
+    "secteurs": [
+      "Sociétés de services informatique", "Éditeurs de logiciels", "Banques & assurances", "Entreprises commerciales"
+    ]
+  },
+  {
+    "title": "licence en mathématiques appliquées à l’analyse des données et à aide à la décision - lmad",
+    "niveau": "licence",
+    "duree": "6 semestres",
+    "credits": "180 ects",
+    "competences": [
+      "Maîtriser l’analyse et le traitement des données massives (big data)",
+      "Maîtriser les langages de programmation en data science",
+      "Évaluer la rentabilité et gérer le risque pour les produits financiers"
+    ],
+    "metiers": [
+      "Analyste de données", "Data scientist", "Business analyst", "Statisticien"
+    ],
+    "secteurs": [
+      "Banques et assurances", "Sociétés de services informatique", "Entreprises industrielles"
+    ]
+  },
+  {
+    "title": "master professionnel en finance digitale",
+    "niveau": "master professionnel",
+    "duree": "4 semestres",
+    "credits": "120 ects",
+    "competences": [
+      "Analyser et gérer les risques financiers",
+      "Maîtriser les technologies appliquées aux transactions financières",
+      "Auditer la sécurité des systèmes d’information financiers"
+    ],
+    "metiers": [
+      "Analyste financier", "Chef de projet fintech", "Consultant en innovation financière"
+    ],
+    "secteurs": [
+      "Banques et assurances", "Entreprises fintech", "Cabinets de conseil"
+    ]
+  },
+  {
+    "title": "master professionnel en gestion actuarielle & modélisation mathématique - gamma",
+    "niveau": "master professionnel",
+    "duree": "4 semestres",
+    "credits": "120 ects",
+    "competences": [
+      "Adapter les outils de traitement statistique des données",
+      "Modéliser mathématiquement des problèmes managériaux",
+      "Réaliser des études en analyse de données financières"
+    ],
+    "metiers": [
+      "Actuaire", "Data scientist", "Analyste financier"
+    ],
+    "secteurs": [
+      "Banques, assurances & bourses", "Entreprises industrielles"
+    ]
+  },
+  {
+    "title": "licence en sciences de gestion - lsg",
+    "niveau": "licence",
+    "duree": "6 semestres",
+    "credits": "180 ects",
+    "parcours": ["comptabilité", "management"],
+    "competences": [
+      "Maîtriser les techniques d’élaboration des supports de communication comptables",
+      "Établir les déclarations fiscales et sociales",
+      "Préparer un rapport d’analyse financière",
+      "Animer et coordonner l’activité d’une équipe"
+    ],
+    "metiers": [
+      "Comptable", "Contrôleur de gestion", "Manager"
+    ],
+    "secteurs": [
+      "Banques, leasing, assurances", "Cabinets d’expertise comptable"
+    ]
+  },
+  {
+    "title": "master professionnel de comptabilité, contrôle, audit - cca",
+    "niveau": "master professionnel",
+    "duree": "4 semestres",
+    "credits": "120 ects",
+    "competences": [
+      "Utiliser les outils numériques pour traiter et diffuser l’information comptable" ,
+       "définir et mettre en œuvre un manuel de procédures comptables et de contrôle interne.",
+      "assurer et superviser les missions d’audit."
+    ],
+    "metiers": [
+      "Conseiller fiscal"
+    ],
+    "secteurs": [
+      "Cabinets d’expertise comptable"
+    ]
+  },
+  {
+    "title": "master professionnel en business analytics - ba",
+    "niveau": "master professionnel",
+    "duree": "4 semestres",
+    "credits": "120 ects",
+    "competences": [
+      "Construire des indicateurs de performance via l’analyse de données",
+       "définir et mettre en œuvre un manuel de procédures comptables et de contrôle interne.",
+      "assurer et superviser les missions d’audit."
+    ],
+    "metiers": [
+      "Consultant big data"
+    ],
+    "secteurs": [
+      "Entreprises commerciales ou industrielles"
+    ]
+  },
+  {
+    "title": "master professionnel de management digital & systèmes d’information - mdsi",
+    "niveau": "master professionnel",
+    "duree": "4 semestres",
+    "credits": "120 ects",
+    "competences": [
+      "Conduire des projets à fort contenu technologique" ,
+       "intégrer le management des systèmes d’information et des outils technologiques it dans la stratégie globale de l’entreprise.",
+      "assurer la veille technologique et évaluer la pertinence des technologies émergentes dans le développement des affaires pour une entreprise."
+    ],
+    "metiers": [
+      "Consultant CRM"
+    ],
+    "secteurs": [
+      "Technologies de l’information et des communications"
+    ]
+  },
+  {
+    "title": "master professionnel en marketing digital - mkd",
+    "niveau": "master professionnel",
+    "duree": "4 semestres",
+    "credits": "120 ects",
+    "competences": [
+      "Appréhender les spécificités des technologies liées au web" ,
+      "concevoir et administrer une ligne éditoriale de publications, de contenu, de messages et de supports de communication.",
+      "définir la politique de communication et établir le budget des actions relatives à la communication."
+    ],
+    "metiers": [
+      "E-commerce manager"
+    ],
+    "secteurs": [
+      "Télécommunications"
+    ]
+  }
+]

@@ -54,7 +54,7 @@ export default function WelcomePage() {
               colorScheme="whiteAlpha"
               variant="outline"
               _hover={{ bg: 'white', color: 'black' }}
-              onClick={() => router.push('/login?redirect=administration-chatbot')}
+              onClick={() => router.push('/administration-login')}
             >
               Administration
             </Button>

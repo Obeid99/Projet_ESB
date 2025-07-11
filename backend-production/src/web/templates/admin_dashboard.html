@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - ESB Multi-Agent Chatbot</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dashboard-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px 32px 32px 32px;
+            min-width: 350px;
+            max-width: 900px;
+            width: 95vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .dashboard-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .dashboard-stats {
+            display: flex;
+            gap: 32px;
+            margin: 24px 0 32px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 28px 36px;
+            min-width: 180px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 600;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        .stat-label {
+            font-size: 1em;
+            font-weight: 400;
+            margin-top: 8px;
+            opacity: 0.9;
+        }
+        .chart-section {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 32px auto;
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 24px 18px 18px 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+        }
+        .feedback-list-section {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .feedback-list-title {
+            font-size: 1.2em;
+            color: #495057;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .feedback-list {
+            max-height: 300px;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+            padding: 12px 18px;
+        }
+        .feedback-item {
+            border-bottom: 1px solid #e9ecef;
+            padding: 10px 0;
+        }
+        .feedback-item:last-child {
+            border-bottom: none;
+        }
+        .feedback-meta {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+        .feedback-text {
+            font-size: 15px;
+            color: #333;
+        }
+        @media (max-width: 700px) {
+            .dashboard-container {
+                padding: 18px 4px;
+                min-width: unset;
+                max-width: 99vw;
+            }
+            .dashboard-stats {
+                gap: 12px;
+            }
+            .stat-box {
+                min-width: 110px;
+                padding: 16px 10px;
+                font-size: 1em;
+            }
+            .chart-section {
+                padding: 10px 2px 2px 2px;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-title">📊 Admin Dashboard<br><span style="font-size:0.7em;font-weight:400;">Student Feedback Analytics</span></div>
+        <div style="width:100%;display:flex;justify-content:flex-end;margin-bottom:10px;">
+            <button onclick="window.location.href='/admin/landing'" style="background:#e9ecef;color:#667eea;border:none;border-radius:8px;padding:8px 18px;font-size:15px;cursor:pointer;">Back to Menu</button>
+        </div>
+        <div class="dashboard-stats">
+            <div class="stat-box" id="totalFeedbacks">0<div class="stat-label">Total Feedbacks</div></div>
+            <div class="stat-box" id="positiveFeedbacks">0<div class="stat-label">Positive</div></div>
+            <div class="stat-box" id="negativeFeedbacks">0<div class="stat-label">Negative</div></div>
+        </div>
+        <div class="chart-section">
+            <canvas id="sentimentChart" width="400" height="220"></canvas>
+        </div>
+        <div class="feedback-list-section">
+            <div class="feedback-list-title" style="display:flex;justify-content:space-between;align-items:center;">
+                <span>Recent Student Feedbacks</span>
+                <button id="exportBtn" style="background:#667eea;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:14px;cursor:pointer;">Export</button>
+            </div>
+            <div class="feedback-list" id="feedbackList">Loading...</div>
+            <div id="feedbackTableModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.25);z-index:1000;align-items:center;justify-content:center;">
+                <div style="background:#fff;padding:24px 18px 18px 18px;border-radius:12px;min-width:320px;max-width:90vw;max-height:90vh;overflow:auto;position:relative;">
+                    <button onclick="closeFeedbackTableModal()" style="position:absolute;top:8px;right:12px;background:none;border:none;font-size:20px;color:#888;cursor:pointer;">&times;</button>
+                    <h3 style="margin-top:0;">All Feedbacks</h3>
+                    <div style="margin-bottom:12px;">
+                        <button onclick="exportFeedbacks('csv')" style="background:#667eea;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:14px;cursor:pointer;margin-right:8px;">Export as CSV</button>
+                        <button onclick="exportFeedbacks('pdf')" style="background:#e53935;color:#fff;border:none;border-radius:6px;padding:6px 16px;font-size:14px;cursor:pointer;">Export as PDF</button>
+                    </div>
+                    <table id="feedbackExportTable" style="width:100%;border-collapse:collapse;">
+                        <thead>
+                            <tr style="background:#f8f9fa;">
+                                <th style="padding:8px 6px;border-bottom:1px solid #e9ecef;">Title</th>
+                                <th style="padding:8px 6px;border-bottom:1px solid #e9ecef;">User</th>
+                                <th style="padding:8px 6px;border-bottom:1px solid #e9ecef;">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="feedbackExportTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        async function fetchStats() {
+            const total = await fetch('/admin/api/feedback_count', { credentials: 'include' }).then(r => r.json());
+            const positive = await fetch('/admin/api/feedback_count?sentiment=positive', { credentials: 'include' }).then(r => r.json());
+            const negative = await fetch('/admin/api/feedback_count?sentiment=negative', { credentials: 'include' }).then(r => r.json());
+            document.getElementById('totalFeedbacks').innerHTML = `${total.count ?? 0}<div class='stat-label'>Total Feedbacks</div>`;
+            document.getElementById('positiveFeedbacks').innerHTML = `${positive.count ?? 0}<div class='stat-label'>Positive</div>`;
+            document.getElementById('negativeFeedbacks').innerHTML = `${negative.count ?? 0}<div class='stat-label'>Negative</div>`;
+            return {
+                total: total.count ?? 0,
+                positive: positive.count ?? 0,
+                negative: negative.count ?? 0
+            };
+        }
+        let allFeedbacks = [];
+        async function fetchRecentFeedbacks() {
+            const res = await fetch('/admin/api/feedback', { credentials: 'include' });
+            const data = await res.json();
+            allFeedbacks = data || [];
+            const list = document.getElementById('feedbackList');
+            if (!data || data.length === 0) {
+                list.innerHTML = '<div style="color:#888;">No feedback yet.</div>';
+                return [];
+            }
+            // Show the most recent 10 feedbacks
+            list.innerHTML = data.slice(0, 10).map(f => `
+                <div class='feedback-item'>
+                    <div class='feedback-meta'>User: ${f.username} &bull; ${f.created_at}</div>
+                    <div class='feedback-text'>${f.title}</div>
+                </div>
+            `).join('');
+            return data;
+        }
+
+        // Modal open/close logic
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('exportBtn').onclick = function() {
+                openFeedbackTableModal();
+            };
+        });
+        function openFeedbackTableModal() {
+            const modal = document.getElementById('feedbackTableModal');
+            const tbody = document.getElementById('feedbackExportTableBody');
+            tbody.innerHTML = allFeedbacks.map(f => `
+                <tr>
+                    <td style='padding:6px 4px;border-bottom:1px solid #e9ecef;'>${f.title}</td>
+                    <td style='padding:6px 4px;border-bottom:1px solid #e9ecef;'>${f.username}</td>
+                    <td style='padding:6px 4px;border-bottom:1px solid #e9ecef;'>${f.created_at}</td>
+                </tr>
+            `).join('');
+            modal.style.display = 'flex';
+        }
+        function closeFeedbackTableModal() {
+            document.getElementById('feedbackTableModal').style.display = 'none';
+        }
+
+        // Export logic
+        function exportFeedbacks(type) {
+            if (type === 'csv') {
+                let csv = 'Title,User,Date\n';
+                csv += allFeedbacks.map(f => `"${(f.title||'').replace(/"/g,'""')}","${(f.username||'').replace(/"/g,'""')}","${(f.created_at||'').replace(/"/g,'""')}"`).join('\n');
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'feedbacks.csv';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } else if (type === 'pdf') {
+                generatePDF();
+            }
+        }
+
+        // Simple PDF export using jsPDF and autoTable
+        function generatePDF() {
+            if (typeof window.jspdf === 'undefined' || typeof window.jspdf.autoTable === 'undefined') {
+                alert('PDF export requires jsPDF and jsPDF-AutoTable.');
+                return;
+            }
+            const doc = new window.jspdf.jsPDF();
+            doc.autoTable({
+                head: [['Title', 'User', 'Date']],
+                body: allFeedbacks.map(f => [f.title, f.username, f.created_at]),
+            });
+            doc.save('feedbacks.pdf');
+        }
+        let sentimentChartObj = null;
+        async function drawChart(stats) {
+            const ctx = document.getElementById('sentimentChart').getContext('2d');
+            if (sentimentChartObj) sentimentChartObj.destroy();
+            sentimentChartObj = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Positive', 'Negative'],
+                    datasets: [{
+                        data: [stats.positive, stats.negative],
+                        backgroundColor: ['#43a047', '#e53935'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                            labels: { color: '#333', font: { size: 15 } }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Removed all extra chart code, only single pie chart remains
+        async function initDashboard() {
+            const stats = await fetchStats();
+            await fetchRecentFeedbacks();
+            await drawChart(stats);
+        }
+        // Load jsPDF and autoTable for PDF export
+        function loadJsPDFIfNeeded() {
+            if (!window.jspdf) {
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+                script.onload = function() {
+                    const autoTableScript = document.createElement('script');
+                    autoTableScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.7.0/jspdf.plugin.autotable.min.js';
+                    document.body.appendChild(autoTableScript);
+                };
+                document.body.appendChild(script);
+            }
+        }
+        loadJsPDFIfNeeded();
+        initDashboard();
+    </script>
+</body>
+</html>

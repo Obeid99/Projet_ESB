@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - ESB Multi-Agent Chatbot</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .admin-landing-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 48px 32px 40px 32px;
+            min-width: 350px;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .admin-landing-title {
+            font-size: 2.1em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .admin-landing-squares {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            margin-top: 18px;
+        }
+        .admin-square {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25em;
+            font-weight: 600;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            text-align: center;
+            border: none;
+        }
+        .admin-square:hover {
+            transform: translateY(-6px) scale(1.04);
+            box-shadow: 0 8px 32px rgba(102,126,234,0.18);
+        }
+        .admin-square .icon {
+            font-size: 2.2em;
+            margin-bottom: 12px;
+        }
+        @media (max-width: 600px) {
+            .admin-landing-container {
+                padding: 24px 8px;
+                min-width: unset;
+                max-width: 98vw;
+            }
+            .admin-landing-squares {
+                gap: 18px;
+            }
+            .admin-square {
+                width: 110px;
+                height: 110px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-landing-container">
+        <div class="admin-landing-title">Welcome, Admin!<br><span style="font-size:0.7em;font-weight:400;">ESB Multi-Agent Chatbot</span></div>
+        <div class="admin-landing-squares">
+            <button class="admin-square" onclick="location.href='/admin/chat'" aria-label="Go to Chatbot" type="button">
+                <div class="icon">💬</div>
+                Chatbot
+            </button>
+            <button class="admin-square" onclick="location.href='/admin/dashboard'" aria-label="Go to Dashboard" type="button">
+                <div class="icon">📊</div>
+                Dashboard
+            </button>
+            <button class="admin-square" onclick="location.href='/admin/export_feedbacks'" aria-label="Export Feedbacks" type="button">
+                <div class="icon">📁</div>
+                Export Feedbacks
+            </button>
+        </div>
+    </div>
+</body>
+</html>
