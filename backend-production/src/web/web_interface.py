@@ -1,3 +1,4 @@
+
 """
 Flask Web Interface for Multi-Agent Chatbot (MongoDB + OpenAI)
 Admin + Student: tout passe par MongoDB et OpenAI
@@ -307,6 +308,25 @@ def api_latest_student_feedback():
     collection_feedbacks = "history_student"
     feedbacks = get_latest_student_feedback(mongodb, collection_feedbacks, limit=10)
     return jsonify(feedbacks)
+
+@app.route('/api/student-stats', methods=['GET'])
+def api_student_stats():
+    """
+    Returns sentiment and intent stats for student messages (for dashboard charts).
+    """
+    collection = mongodb[MONGO_COLLECTION_CHAT_STUD]
+    cursor = collection.find({"is_user": True})
+    sentiment_counts = {}
+    intent_counts = {}
+    for doc in cursor:
+        sentiment = doc.get("sentiment", "neutral")
+        intent = doc.get("intent", "unknown")
+        sentiment_counts[sentiment] = sentiment_counts.get(sentiment, 0) + 1
+        intent_counts[intent] = intent_counts.get(intent, 0) + 1
+    return jsonify({
+        "sentiment": sentiment_counts,
+        "intent": intent_counts
+    })
 
 
 
