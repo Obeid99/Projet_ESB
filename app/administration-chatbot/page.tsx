@@ -156,7 +156,7 @@ export default function AdministrationChatbotPage() {
         <Flex flex="1" overflow="hidden">
           {/* Chatbot Content */}
           <Flex flex="1" direction="column" alignItems="center" justifyContent="center" minH="0">
-            <Box w="80%" h="80%" bg="white" borderRadius="md" boxShadow="md" p="20px" display="flex" flexDirection="column" minH="0">
+            <Box w="80%" h="70%" bg="white" borderRadius="md" boxShadow="md" p="20px" display="flex" flexDirection="column" minH="0">
               <Text fontSize="2xl" fontWeight="bold" mb="20px" color="red.500" textAlign="center" w="100%">Administration Chatbot</Text>
               <VStack spacing="10px" align="start" h="100%" flex="1" minH="0">
                 <Box
