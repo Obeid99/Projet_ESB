@@ -1,92 +1,69 @@
 "use client";
 import { Box, Text, Flex, Button, Image } from "@chakra-ui/react";
-import { IoArrowBack, IoBarChart, IoChatbubbles, IoDownload } from 'react-icons/io5';
+import { Card, CardBody, CardHeader } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Bar, Pie } from "react-chartjs-2";
+import Chart from "chart.js/auto";
+import { ArcElement } from "chart.js";
+Chart.register(ArcElement);
+import { IoArrowBack, IoBarChart, IoChatbubbles } from 'react-icons/io5';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-import axios from 'axios';
 
-// Chart.js registration for required elements/scales
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement,
-} from 'chart.js';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement
-);
-
-// Dynamically import chart.js components to avoid SSR issues
-const Bar = dynamic(() => import('react-chartjs-2').then(mod => mod.Bar), { ssr: false });
-const Pie = dynamic(() => import('react-chartjs-2').then(mod => mod.Pie), { ssr: false });
+// Images from backend-production/static folder
+const imageNames = [
+  "bar_stacked_95cc0f42.png",
+  "bar_stacked_b56b9397.png",
+  "bar_stacked_bf48e2aa.png",
+  "bar_total_3879d3da.png",
+  "bar_total_5bf2824a.png",
+  "bar_total_6ebe98f2.png",
+  "pie_510c0198.png",
+  "pie_8b239dd5.png",
+  "pie_dd17bff4.png",
+];
 
 export default function AdministrationDashboardPage() {
   const router = useRouter();
-  const [feedbackData, setFeedbackData] = useState<{ positive: number; negative: number } | null>(null);
+  const [sentimentCounts, setSentimentCounts] = useState({});
+  const [intentCounts, setIntentCounts] = useState({});
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5000/admin/feedback_chart', { withCredentials: true })
-      .then(res => {
-        // Expecting backend to return JSON: { positive: 10, negative: 5 }
-        if (res.data && typeof res.data === 'object' && 'positive' in res.data && 'negative' in res.data) {
-          setFeedbackData(res.data);
-        }
-      })
-      .catch(() => {
-        // fallback to demo data if backend fails
-        setFeedbackData({ positive: 10, negative: 5 });
-      });
+    const fetchStats = () => {
+      fetch("http://localhost:5000/api/student-stats")
+        .then((res) => res.json())
+        .then((stats) => {
+          setSentimentCounts(stats.sentiment || {});
+          setIntentCounts(stats.intent || {});
+        });
+    };
+
+    fetchStats(); // initial fetch
+    const interval = setInterval(fetchStats, 5000); // fetch every 5 seconds
+
+    return () => clearInterval(interval); // cleanup on unmount
   }, []);
 
-  // Example data for charts
-  const barData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+  const sentimentChart = {
+    labels: Object.keys(sentimentCounts),
     datasets: [
       {
-        label: 'Student Requests',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: 'rgba(133, 3, 3, 0.7)',
+        label: "Sentiment",
+        data: Object.values(sentimentCounts),
+        backgroundColor: ["#ec534bff", "#5b5555ff", "#38A169", "#3182CE"],
       },
     ],
   };
 
-  const pieData = feedbackData
-    ? {
-        labels: ['Positive', 'Negative'],
-        datasets: [
-          {
-            data: [feedbackData.positive, feedbackData.negative],
-            backgroundColor: [
-              'rgba(72, 137, 180, 0.7)',
-              'rgba(133, 3, 3, 0.7)'
-            ],
-          },
-        ],
-      }
-    : {
-        labels: ['Positive', 'Negative'],
-        datasets: [
-          {
-            data: [10, 5],
-            backgroundColor: [
-              'rgba(72, 137, 180, 0.7)',
-              'rgba(133, 3, 3, 0.7)'
-            ],
-          },
-        ],
-      };
+  const intentChart = {
+    labels: Object.keys(intentCounts),
+    datasets: [
+      {
+        label: "Intent",
+        data: Object.values(intentCounts),
+        backgroundColor: ["#3182CE", "#38A169", "#E53E3E", "#ECC94B", "#805AD5"],
+      },
+    ],
+  };
 
   return (
     <Flex w="100vw" h="100vh">
@@ -148,32 +125,44 @@ export default function AdministrationDashboardPage() {
         >
           Chatbot
         </Button>
-        
       </Flex>
 
-      {/* Dashboard Content */}
-      <Flex flex="1" direction="column" alignItems="center" justifyContent="flex-start" bg="gray.100" p="40px" gap={10}>
-        <Box w="100%" maxW="1000px" bg="white" borderRadius="md" boxShadow="md" p="40px" textAlign="center" mb={10}>
-          <Text fontSize="2xl" fontWeight="bold" mb="10px" color="red.500">
-            Administration Dashboard
-          </Text>
-          <Text fontSize="lg" mb="20px" color="gray.700">
-            Overview of Student Requests and Status
-          </Text>
-        </Box>
-        <Flex w="100%" maxW="1000px" gap={10} direction={{ base: 'column', md: 'row' }}>
-          <Box flex={1} bg="white" borderRadius="md" boxShadow="md" p="40px" textAlign="center">
-            <Text fontWeight="bold" mb="4" fontSize="xl">Requests per Month</Text>
-            <Box w="100%" h="400px">
-              <Bar data={barData} options={{ maintainAspectRatio: false }} height={400} />
-            </Box>
-          </Box>
-          <Box flex={1} bg="white" borderRadius="md" boxShadow="md" p="40px" textAlign="center">
-            <Text fontWeight="bold" mb="4" fontSize="xl">Feedback Chart</Text>
-            <Box w="100%" h="400px">
-              <Pie data={pieData} options={{ maintainAspectRatio: false }} height={400} />
-            </Box>
-          </Box>
+      {/* Dashboard Charts & Images */}
+      <Flex flex="1" direction="column" alignItems="center" justifyContent="center" bg="#f8fafc" p="40px" gap={6}>
+        <Text fontSize="2xl" fontWeight="bold" mb="24px" color="#2d3748" textAlign="center">
+          Student Sentiment & Intent Dashboard
+        </Text>
+        <Flex direction={["column", "row"]} alignItems="stretch" justifyContent="center" w="100%" maxW="1100px" gap={8}>
+          <Card flex="1" minW="320px" maxW="600px" boxShadow="lg" borderRadius="lg" bg="#fff" border="2px solid #E53E3E" display="flex" flexDirection="column" alignItems="center">
+            <CardHeader bg="#E53E3E" color="white" borderTopLeftRadius="lg" borderTopRightRadius="lg" textAlign="center" w="100%">
+              <Text fontWeight="bold" fontSize="lg">Sentiment Distribution</Text>
+            </CardHeader>
+            <CardBody w="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+              <Pie data={sentimentChart} />
+            </CardBody>
+          </Card>
+          <Card flex="1" minW="320px" maxW="600px" boxShadow="lg" borderRadius="lg" bg="#fff" border="2px solid #E53E3E" display="flex" flexDirection="column" alignItems="center">
+            <CardHeader bg="#E53E3E" color="white" borderTopLeftRadius="lg" borderTopRightRadius="lg" textAlign="center" w="100%">
+              <Text fontWeight="bold" fontSize="lg">Intent Distribution</Text>
+            </CardHeader>
+            <CardBody w="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+              <Bar
+                data={{ ...intentChart, options: { plugins: { legend: { display: false } } } }}
+                options={{ plugins: { legend: { display: false } } }}
+              />
+              <Box mt={6} w="100%" textAlign="left">
+                <Text fontWeight="bold" mb={2} color="#E53E3E" fontSize="md">Intents:</Text>
+                <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap={2} ml={4} fontSize="0.95em">
+                  {Object.keys(intentCounts).map((intent, idx) => (
+                    <Box key={intent} display="flex" alignItems="center" gap={2} mb={2} fontWeight={500} color="#2d3748">
+                      <span style={{ display: 'inline-block', width: '16px', height: '16px', borderRadius: '4px', background: intentChart.datasets[0].backgroundColor[idx % intentChart.datasets[0].backgroundColor.length], border: '1px solid #ccc' }}></span>
+                      <span style={{ fontSize: '0.95em' }}>{intent}</span>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+            </CardBody>
+          </Card>
         </Flex>
       </Flex>
     </Flex>
