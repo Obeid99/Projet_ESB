@@ -1,14 +1,12 @@
-FROM python:3.12-slim
+FROM python:3.11
 
 WORKDIR /app
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
 COPY . .
 
-ENV FLASK_APP=src/web/web_interface.py
-ENV FLASK_RUN_HOST=0.0.0.0
-ENV FLASK_ENV=production
+RUN pip install --no-cache-dir -r requirements.txt
+
+ENV PORT=5000
+EXPOSE 5000
 
 CMD ["python", "run_server.py"]
