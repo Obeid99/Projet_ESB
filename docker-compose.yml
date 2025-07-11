@@ -1,0 +1,26 @@
+services:
+  mongo:
+    image: mongo:7
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: esbuser
+      MONGO_INITDB_ROOT_PASSWORD: esbpass
+      MONGO_INITDB_DATABASE: esbchatbot
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    env_file:
+      - .env
+
+  web:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    volumes:
+      - .:/app
+volumes:
+  mongo_data:

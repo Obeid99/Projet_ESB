@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export Feedbacks - ESB Multi-Agent Chatbot</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .export-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px 32px 32px 32px;
+            min-width: 350px;
+            max-width: 900px;
+            width: 95vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .export-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .export-btns {
+            margin-bottom: 18px;
+            display: flex;
+            gap: 12px;
+        }
+        .export-btns button {
+            background: #667eea;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .export-btns button.pdf {
+            background: #e53935;
+        }
+        .export-btns button:hover {
+            opacity: 0.85;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        th, td {
+            padding: 8px 6px;
+            border-bottom: 1px solid #e9ecef;
+            text-align: left;
+        }
+        th {
+            background: #f8f9fa;
+        }
+        @media (max-width: 700px) {
+            .export-container {
+                padding: 18px 4px;
+                min-width: unset;
+                max-width: 99vw;
+            }
+            table, th, td {
+                font-size: 13px;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.7.0/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="export-container">
+        <div class="export-title">📁 Export Feedbacks</div>
+        <div class="export-btns">
+            <button onclick="exportFeedbacks('csv')">Export as CSV</button>
+            <button class="pdf" onclick="exportFeedbacks('pdf')">Export as PDF</button>
+        </div>
+        <div style="width:100%;overflow-x:auto;">
+            <table id="feedbackExportTable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>User</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="feedbackExportTableBody">
+                    <tr><td colspan="3" style="text-align:center;color:#888;">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:10px;">
+            <button onclick="window.location.href='/admin/landing'" style="background:#e9ecef;color:#667eea;border:none;border-radius:8px;padding:8px 18px;font-size:15px;cursor:pointer;">Back to Menu</button>
+            <button onclick="window.location.href='/admin/chat'" style="background:#e9ecef;color:#667eea;border:none;border-radius:8px;padding:8px 18px;font-size:15px;cursor:pointer;">Back to Chatbot</button>
+        </div>
+    </div>
+    <script>
+        let allFeedbacks = [];
+        async function fetchAllFeedbacks() {
+            const res = await fetch('/admin/api/feedback', { credentials: 'include' });
+            const data = await res.json();
+            allFeedbacks = data || [];
+            const tbody = document.getElementById('feedbackExportTableBody');
+            if (!data || data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;color:#888;">No feedback yet.</td></tr>';
+                return;
+            }
+            tbody.innerHTML = data.map(f => `
+                <tr>
+                    <td>${f.title}</td>
+                    <td>${f.username}</td>
+                    <td>${f.created_at}</td>
+                </tr>
+            `).join('');
+        }
+        function exportFeedbacks(type) {
+            if (type === 'csv') {
+                let csv = 'Title,User,Date\n';
+                csv += allFeedbacks.map(f => `"${(f.title||'').replace(/"/g,'""')}","${(f.username||'').replace(/"/g,'""')}","${(f.created_at||'').replace(/"/g,'""')}"`).join('\n');
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'feedbacks.csv';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } else if (type === 'pdf') {
+                generatePDF();
+            }
+        }
+        function generatePDF() {
+            if (typeof window.jspdf === 'undefined' || typeof window.jspdf.autoTable === 'undefined') {
+                alert('PDF export requires jsPDF and jsPDF-AutoTable.');
+                return;
+            }
+            const doc = new window.jspdf.jsPDF();
+            doc.autoTable({
+                head: [['Title', 'User', 'Date']],
+                body: allFeedbacks.map(f => [f.title, f.username, f.created_at]),
+            });
+            doc.save('feedbacks.pdf');
+        }
+        fetchAllFeedbacks();
+    </script>
+</body>
+</html>
