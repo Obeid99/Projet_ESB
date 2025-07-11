@@ -1,5 +1,6 @@
-'use client'
-import { chakra, useColorMode } from '@chakra-ui/system';
+
+'use client';
+import { chakra, useColorMode } from '@chakra-ui/react';
 import { ComponentProps } from 'react';
 import { Image } from './Image';
 
@@ -28,7 +29,6 @@ export function NextAvatar({
                   }
                 : {})}
             alt={alt}
-            objectFit={'fill'}
             src={src}
             style={{ ...style, borderRadius: '50%' }}
         />
@@ -36,6 +36,6 @@ export function NextAvatar({
 }
 
 export const ChakraNextAvatar = chakra(NextAvatar, {
-  shouldForwardProp: (prop) =>
+  shouldForwardProp: (prop: string) =>
     ['width', 'height', 'src', 'alt', 'layout'].includes(prop),
 });
