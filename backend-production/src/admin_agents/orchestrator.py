@@ -81,7 +81,7 @@ def handle_admin_query(message, mongo_db, collection_feedbacks, collection_admin
         for fb in fbs:
             m = fb.get("message")
             if m:
-                html += f"- {m}<br>"
+                html += f"- {m}\n"
         return html, {}
 
     # 2. Bloc : matière la plus positive/négative/neutre (corrigé pour ne pas sortir "0" si tout à zéro)
@@ -147,9 +147,9 @@ def handle_admin_query(message, mongo_db, collection_feedbacks, collection_admin
             urls, _ = generate_all_feedback_charts_from_mongo(mongo_db, subject, date)
             session['pending_intent'] = None
             session['pending_data'] = {}
-            html = "Voici les graphiques demandés :<br>"
+            html = "Voici les graphiques demandés :\n"
             for label, url in urls.items():
-                html += f"<b>{label.capitalize()}</b><br><img src='{url}' style='max-width:300px;max-height:300px;'/><br>"
+                html += f"<b>{label.capitalize()}</b>\n<img src='{url}' style='max-width:300px;max-height:300px;'/>\n"
             return html, {"chart_urls": urls}
 
     # 3. Refus NON
@@ -248,9 +248,9 @@ def handle_admin_query(message, mongo_db, collection_feedbacks, collection_admin
             info.append(f"La matière la plus **négative** est **{meta['most_negative'][0]}** ({meta['most_negative'][1]} feedbacks négatifs)")
         if "most_neutral" in meta:
             info.append(f"La matière la plus **neutre** est **{meta['most_neutral'][0]}** ({meta['most_neutral'][1]} feedbacks neutres)")
-        html = f"Voici plusieurs graphiques demandés pour la/les matière(s) **{', '.join(subjects)}** ({date}) :<br>"
+        html = f"Voici plusieurs graphiques demandés pour la/les matière(s) **{', '.join(subjects)}** ({date}) :\n"
         for label, url in urls.items():
-            html += f"<b>{label.capitalize()}</b><br><img src='{url}' style='max-width:350px;max-height:350px;'/><br>"
+            html += f"<b>{label.capitalize()}</b>\n<img src='{url}' style='max-width:350px;max-height:350px;'/>\n"
         return html, {"chart_urls": urls}
 
 
@@ -430,10 +430,10 @@ def handle_admin_query(message, mongo_db, collection_feedbacks, collection_admin
             session['pending_data'] = {}
             html = (
                 f"Pour {matiere_text} sur la période demandée, voici plusieurs graphiques pour {total} feedbacks : "
-                f"- 👍 {counts['positive']} positifs - 👎 {counts['negative']} négatifs - 😐 {counts['neutral']} neutres.<br>"
+                f"- 👍 {counts['positive']} positifs - 👎 {counts['negative']} négatifs - 😐 {counts['neutral']} neutres.\n"
             )
             for label, url in urls.items():
-                html += f"<b>{label.capitalize()}</b><br><img src='{url}' style='max-width:300px;max-height:300px;'/><br>"
+                html += f"<b>{label.capitalize()}</b>\n<img src='{url}' style='max-width:300px;max-height:300px;'/>\n"
             return html, {"chart_urls": urls}
 
     # 12. Fallback graphique
@@ -452,10 +452,10 @@ def handle_admin_query(message, mongo_db, collection_feedbacks, collection_admin
         session['pending_intent'] = None
         session['pending_data'] = {}
         html = (
-            f"Voici plusieurs graphiques demandés pour {matiere_text} ({date_fallback}) :<br>"
+            f"Voici plusieurs graphiques demandés pour {matiere_text} ({date_fallback}) :\n"
         )
         for label, url in urls.items():
-            html += f"<b>{label.capitalize()}</b><br><img src='{url}' style='max-width:300px;max-height:300px;'/><br>"
+            html += f"<b>{label.capitalize()}</b>\n<img src='{url}' style='max-width:300px;max-height:300px;'/>\n"
         return html, {"chart_urls": urls}
 
     # 13. Aide / Fonctionnalités possibles (robuste et sans accent)
@@ -477,21 +477,21 @@ def handle_admin_query(message, mongo_db, collection_feedbacks, collection_admin
     for pattern in HELP_PATTERNS:
         if re.search(pattern, msg_ascii):
             return (
-    "Voici tout ce que je peux faire pour toi :<br>"
-    "📊 Donne-moi le feedback chart.<br>"
-    "🟢🔴😐 Afficher le détail des <b>feedbacks positifs, négatifs ou neutres</b> sur une période donnée ou par matière.<br>"
-    "📈 Afficher des <b>graphiques</b> (camembert, barres, donut) pour toutes les matières ou une matière précise.<br>"
-    "⚖️ Comparer plusieurs matières sur leurs feedbacks (nombre, positifs, négatifs, neutres).<br>"
-    "🏆 Afficher le <b>top N matières</b> ayant reçu le plus de feedbacks sur une période.<br>"
-    "🤖 Répondre à toutes tes questions sur les statistiques de feedbacks étudiants.<br>"
+    "Voici tout ce que je peux faire pour toi :\n"
+    "📊 Donne-moi le feedback chart.\n"
+    "🟢🔴😐 Afficher le détail des feedbacks positifs, négatifs ou neutres \n sur une période donnée ou par matière.\n"
+    "📈 Afficher des \n graphiques \n (camembert, barres, donut) pour toutes les matières ou une matière précise.\n"
+    "⚖️ Comparer plusieurs matières sur leurs feedbacks (nombre, positifs, négatifs, neutres).\n"
+    "🏆 Afficher le <b>top N matières \n ayant reçu le plus de feedbacks sur une période.\n"
+    "🤖 Répondre à toutes tes questions sur les statistiques de feedbacks étudiants.\n"
 
-    "<br>Tu peux essayer par exemple :<br>"
-    "• 👉 « Afficher les details de feedbacks positifs aujourd'hui. »<br>"
-    "• 👉 « Afficher les details de feedbacks pour la matière machine learning. »<br>"
-    "• 👉 « Donne-moi les feedbacks négatifs cette semaine. »<br>"
-    "• 👉 « Affiche moi des graphiques pour la matiere machine learning et la matiere business.»<br>"
-    "• 👉 « Donne-moi les graphiques des feedbacks pour la matière finance hier. »<br>"
-    "• 👉 « Donne moi les top 3 matières de cette semaine. »<br>"
+    "<br>Tu peux essayer par exemple :\n"
+    "• 👉 « Afficher les details de feedbacks positifs aujourd'hui. »\n"
+    "• 👉 « Afficher les details de feedbacks pour la matière machine learning. »\n"
+    "• 👉 « Donne-moi les feedbacks négatifs cette semaine. »\n"
+    "• 👉 « Affiche moi des graphiques pour la matiere machine learning et la matiere business.»\n"
+    "• 👉 « Donne-moi les graphiques des feedbacks pour la matière finance hier. »\n"
+    "• 👉 « Donne moi les top 3 matières de cette semaine. »\n"
     "• 👉 « Donne-moi le chart comparatif des feedbacks par matière. »"
 , {})
 
