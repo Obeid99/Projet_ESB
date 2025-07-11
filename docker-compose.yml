@@ -2,7 +2,6 @@ services:
   mongo:
     image: mongo:7
     environment:
-
       MONGO_INITDB_ROOT_USERNAME: esbuser
       MONGO_INITDB_ROOT_PASSWORD: esbpass
       MONGO_INITDB_DATABASE: esbchatbot
@@ -11,29 +10,12 @@ services:
     volumes:
       - mongo_data:/data/db
     env_file:
-    - .env
+      - .env
 
   web:
     build: .
-    environment:
-      - MONGO_URI=mongodb://esbuser:esbpass@mongo:27017/esbchatbot?authSource=admin
-      - MONGO_DB_NAME=esbchatbot
-      - MONGO_COLLECTION_AUTH_STUD=student_auth
-      - MONGO_COLLECTION_AUTH_ADMIN=admin_auth
-      - MONGO_COLLECTION_CHAT_ADMIN=history_admin
-      - MONGO_COLLECTION_CHAT_STUD=history_student
-      - OPENAI_API_KEY=your_openai_api_key_here
-      - GROQ_API_KEY=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
-      - SENTIMENT_MODEL=hybrid
-      - SENTIMENT_THRESHOLD_POSITIVE=0.1
-      - SENTIMENT_THRESHOLD_NEGATIVE=-0.1
-      - LOG_LEVEL=INFO
-      - LOG_FILE=logs/chatbot.log
-      - ESB_WEBSITE_URL=https://esprit.tn
-      - ESB_FACEBOOK_URL=https://facebook.com/esprit.tn
-      - OLLAMA_BASE_URL=http://host.docker.internal:11434
-      - OLLAMA_MODEL=llama3.1:8b
-      - SECRET_KEY=supersecretkey
+    env_file:
+      - .env
     ports:
       - "5000:5000"
     depends_on:
