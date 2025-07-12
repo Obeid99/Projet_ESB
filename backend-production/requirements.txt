@@ -44,3 +44,4 @@ flask_cors
 matplotlib
 pymongo
 openai
+groq
