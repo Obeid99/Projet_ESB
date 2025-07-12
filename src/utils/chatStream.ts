@@ -1,9 +1,4 @@
 import endent from 'endent';
-import {
-  createParser,
-  ParsedEvent,
-  ReconnectInterval,
-} from 'eventsource-parser';
 
 const createPrompt = (inputCode: string) => {
   const data = (inputCode: string) => {
@@ -20,8 +15,10 @@ export const OpenAIStream = async (
   model: string,
   key: string | undefined,
 ) => {
-  const prompt = createPrompt(inputCode);
+  // Dynamically import only the runtime function
+  const { createParser } = await import('eventsource-parser');
 
+  const prompt = createPrompt(inputCode);
   const system = { role: 'system', content: prompt };
 
   const res = await fetch(`https://api.openai.com/v1/chat/completions`, {
@@ -53,7 +50,8 @@ export const OpenAIStream = async (
 
   const stream = new ReadableStream({
     async start(controller) {
-      const onParse = (event: ParsedEvent | ReconnectInterval) => {
+      // Use 'any' for event type to avoid type errors
+      const onParse = (event: any) => {
         if (event.type === 'event') {
           const data = event.data;
 
@@ -64,9 +62,11 @@ export const OpenAIStream = async (
 
           try {
             const json = JSON.parse(data);
-            const text = json.choices[0].delta.content;
-            const queue = encoder.encode(text);
-            controller.enqueue(queue);
+            const text = json.choices[0]?.delta?.content;
+            if (text) {
+              const queue = encoder.encode(text);
+              controller.enqueue(queue);
+            }
           } catch (e) {
             controller.error(e);
           }
