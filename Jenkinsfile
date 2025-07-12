@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        APP_IMAGE = "esb-frontend:latest" // Replace with your Docker image name for esb-frontend
+        APP_IMAGE = "esb-frontend:latest" // Docker image tag
         BACKEND_PORT = "5000"
         FRONTEND_PORT = "3000"
     }

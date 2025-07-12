@@ -3918,3 +3918,28 @@ Conversation history: [{"role": "system", "content": "To provide you with the mo
 Response:
 2025-07-11 23:04:36,775 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
 2025-07-11 23:04:37,058 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 23:04:37] "POST /api/chat HTTP/1.1" 200 -
+2025-07-11 23:18:12,414 - root - INFO - Logging configured successfully
+2025-07-11 23:18:13,531 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.20.10.8:5000
+2025-07-11 23:18:13,531 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-11 23:18:13,531 - werkzeug - INFO -  * Restarting with stat
+2025-07-11 23:18:15,530 - root - INFO - Logging configured successfully
+2025-07-11 23:18:16,505 - werkzeug - WARNING -  * Debugger is active!
+2025-07-11 23:18:16,517 - werkzeug - INFO -  * Debugger PIN: 857-661-313
+2025-07-11 23:18:25,430 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 23:18:25] "GET / HTTP/1.1" 200 -
+2025-07-11 23:18:25,678 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 23:18:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-11 23:18:29,278 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 23:18:29] "[31m[1mGET /login HTTP/1.1[0m" 415 -
+2025-07-11 23:23:09,421 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 23:23:09] "OPTIONS /login HTTP/1.1" 200 -
+2025-07-11 23:23:39,590 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 23:23:39] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-07-11 23:23:46,504 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 23:23:46] "OPTIONS /login HTTP/1.1" 200 -
+2025-07-11 23:24:16,995 - werkzeug - INFO - 127.0.0.1 - - [11/Jul/2025 23:24:16] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-07-12 01:27:13,372 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 01:27:13] "GET / HTTP/1.1" 200 -
+2025-07-12 01:41:49,611 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 01:41:49] "OPTIONS /login HTTP/1.1" 200 -
+2025-07-12 01:42:20,229 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 01:42:20] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-07-12 01:42:22,198 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 01:42:22] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-07-12 02:18:33,157 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 02:18:33] "OPTIONS /admin/login HTTP/1.1" 200 -
+2025-07-12 02:18:39,144 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 02:18:39] "OPTIONS /admin/login HTTP/1.1" 200 -
+2025-07-12 02:19:08,496 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 02:19:08] "[35m[1mPOST /admin/login HTTP/1.1[0m" 500 -
+2025-07-12 02:19:09,363 - werkzeug - INFO - 127.0.0.1 - - [12/Jul/2025 02:19:09] "[35m[1mPOST /admin/login HTTP/1.1[0m" 500 -
