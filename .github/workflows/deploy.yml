@@ -33,4 +33,4 @@ jobs:
 
       - name: Check backend health
         run: |
-          curl --fail http://l127.0.0.1:5000 || (echo "Server did not respond" && exit 1)
+          curl --fail http://127.0.0.1:5000 || (echo "Server did not respond" && exit 1)
