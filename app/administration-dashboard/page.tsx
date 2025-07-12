@@ -1,13 +1,25 @@
 "use client";
+
 import { Box, Text, Flex, Button, Image } from "@chakra-ui/react";
 import { Card, CardBody, CardHeader } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { Bar, Pie } from "react-chartjs-2";
-import Chart from "chart.js/auto";
-import { ArcElement } from "chart.js";
-Chart.register(ArcElement);
-import { IoArrowBack, IoBarChart, IoChatbubbles } from 'react-icons/io5';
-import { useRouter } from 'next/navigation';
+import dynamic from "next/dynamic";
+import { IoArrowBack, IoBarChart, IoChatbubbles } from "react-icons/io5";
+import { useRouter } from "next/navigation";
+
+// Dynamic imports for ESM modules
+const Bar = dynamic(() => import("react-chartjs-2").then(mod => mod.Bar), { ssr: false });
+const Pie = dynamic(() => import("react-chartjs-2").then(mod => mod.Pie), { ssr: false });
+
+// Dynamically import chart.js/auto to avoid ESM/CommonJS conflict
+useEffect(() => {
+  (async () => {
+    const Chart = (await import("chart.js/auto")).default;
+    const { ArcElement } = await import("chart.js");
+    Chart.register(ArcElement);
+  })();
+}, []);
+
 
 // Images from backend-production/static folder
 const imageNames = [
@@ -147,7 +159,7 @@ export default function AdministrationDashboardPage() {
             </CardHeader>
             <CardBody w="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
               <Bar
-                data={{ ...intentChart, options: { plugins: { legend: { display: false } } } }}
+                data={intentChart}
                 options={{ plugins: { legend: { display: false } } }}
               />
               <Box mt={6} w="100%" textAlign="left">
@@ -156,7 +168,7 @@ export default function AdministrationDashboardPage() {
                   {Object.keys(intentCounts).map((intent, idx) => (
                     <Box key={intent} display="flex" alignItems="center" gap={2} mb={2} fontWeight={500} color="#2d3748">
                       <span style={{ display: 'inline-block', width: '16px', height: '16px', borderRadius: '4px', background: intentChart.datasets[0].backgroundColor[idx % intentChart.datasets[0].backgroundColor.length], border: '1px solid #ccc' }}></span>
-                      <span style={{ fontSize: '0.95em' }}>{intent}</span>
+                      <span>{intent}</span>
                     </Box>
                   ))}
                 </Box>
