@@ -22,9 +22,15 @@ jobs:
       - name: Install dependencies
         run: pip install --no-cache-dir -r requirements.txt
 
-      - name: Run backend server
-        run: python run_server.py
+      - name: Start backend server in background
+        run: |
+          python run_server.py &
+          sleep 5
         env:
           FLASK_APP: src/web/web_interface.py
           FLASK_RUN_HOST: 0.0.0.0
           FLASK_ENV: production
+
+      - name: Check backend health
+        run: |
+          curl --fail http://l127.0.0.1:5000 || (echo "Server did not respond" && exit 1)
