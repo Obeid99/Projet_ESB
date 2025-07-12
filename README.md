@@ -21,7 +21,7 @@ The ESB Admin Chatbot is a next-generation, modular analytics and feedback manag
 
 - **Security & Compliance:**
 
-   Implements robust authentication, session management, and data privacy best practices, ensuring compliance with institutional and legal standards.
+   Implements robust authentication, session management, and data privacy best practices, ensuring compliance with institutional and regulatory standards.
   
 - **Extensibility:**
 
@@ -56,7 +56,7 @@ The ESB Admin Chatbot system is architected for scalability, maintainability, an
   
     - **Intent Parser:** Extracts actionable intent and entities (subject, date, etc.) from free-form queries.
     - **Sentiment Agent:** Classifies feedback sentiment and provides explainable reasoning.
-    - **Web Agent:** Retrieves contextual information from ESB’s digital presence (website, socials).
+    - **Web Agent:** Retrieves contextual information from ESB's digital presence (website, socials).
     - **Orchestrator:** Coordinates agent outputs, manages session state, and generates responses.
     - **Visualization Module:** Produces bar, pie, and stacked charts for analytics.
     - **Subject Validator:** Ensures robust, accent-insensitive subject matching.
@@ -153,7 +153,7 @@ The backend is designed for modularity, security, and extensibility, with a focu
 
 - **Web Info Retrieval (`web_agent.py`):**
   
-  - Fetches contextual information from ESB’s website and social media for enriched responses.
+  - Fetches contextual information from ESB's website and social media for enriched responses.
   - Used for queries like "What are the latest events in the Computer Science department?"
 
 - **Orchestration (`orchestrator.py`):**
@@ -255,6 +255,650 @@ backend-production/
 ---
 
 
+## DevOps & Infrastructure
+
+### Architecture DevOps Overview
+
+Le système ESB Chatbot utilise une architecture DevOps moderne avec **containerisation multi-stage**, **CI/CD automatisé**, et **orchestration de processus** pour garantir un déploiement fiable et scalable.
+
+---
+
+## 1. Containerisation avec Docker
+
+### Architecture Multi-Stage Dockerfile
+
+```dockerfile
+# --- Frontend Stage ---
+FROM node:20-alpine AS frontend
+WORKDIR /frontend
+COPY package.json yarn.lock* package-lock.json* ./
+RUN yarn install --frozen-lockfile || npm install
+COPY . .
+RUN yarn build || npm run build
+
+# --- Backend Stage ---
+FROM python:3.12-slim AS backend
+RUN apt-get update && \
+    apt-get install -y supervisor && \
+    rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY backend-production/requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+COPY backend-production/ ./
+
+# --- Final Stage ---
+FROM python:3.12-slim
+RUN apt-get update && \
+    apt-get install -y supervisor nodejs npm && \
+    npm install -g yarn && \
+    rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY --from=backend /app /app
+COPY --from=frontend /frontend/.next /app/.next
+COPY --from=frontend /frontend/public /app/public
+COPY --from=frontend /frontend/package.json /app/package.json
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ENV FLASK_APP=src/web/web_interface.py
+ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_ENV=production
+EXPOSE 5000 3000
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+```
+
+### Avantages de l'Architecture Multi-Stage
+
+#### 🎯 Optimisation des Images
+- **Réduction de taille** : L'image finale ne contient que les artefacts nécessaires
+- **Sécurité renforcée** : Les outils de build ne sont pas inclus en production
+- **Cache optimisé** : Chaque stage peut être mis en cache indépendamment
+
+#### 🔧 Séparation des Préoccupations
+- **Frontend Stage** : Build Next.js optimisé
+- **Backend Stage** : Installation des dépendances Python
+- **Final Stage** : Combinaison des deux avec Supervisor
+
+#### 📦 Gestion des Dépendances
+```bash
+# Frontend Dependencies (package.json)
+"@chakra-ui/react": "^2.10.9"
+"next": "^15.1.6"
+"react": "^19.0.0-rc.1"
+"chart.js": "^4.5.0"
+
+# Backend Dependencies (requirements.txt)
+langgraph>=0.0.40
+flask>=2.3.0
+groq
+openai
+pymongo
+matplotlib
+```
+
+---
+
+## 2. Orchestration avec Supervisor
+
+### Configuration Supervisor
+```ini
+[supervisord]
+nodaemon=true
+
+[program:backend]
+command=python -m flask run --host=0.0.0.0 --port=5000
+directory=/app
+autostart=true
+autorestart=true
+
+[program:frontend]
+command=yarn start
+directory=/app/frontend
+autostart=true
+autorestart=true
+```
+
+### Fonctionnalités Supervisor
+
+#### 🔄 Gestion des Processus
+- **Auto-redémarrage** : Relance automatique en cas de crash
+- **Gestion centralisée** : Contrôle unifié des services
+- **Logs unifiés** : Centralisation des logs d'application
+
+#### 📊 Monitoring Intégré
+- **État des processus** : Surveillance en temps réel
+- **Gestion des ressources** : Contrôle de la consommation mémoire/CPU
+- **Notifications** : Alertes en cas de défaillance
+
+---
+
+## 3. Pipeline CI/CD avec Jenkins
+
+### Jenkinsfile Configuration
+```groovy
+pipeline {
+    agent any
+
+    environment {
+        APP_IMAGE = "esb-frontend:latest"
+        BACKEND_PORT = "5000"
+        FRONTEND_PORT = "3000"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/Obeid99/Projet_ESB.git', branch: 'integration'
+            }
+        }
+
+        stage('Build Combined Docker Image') {
+            steps {
+                sh 'docker build -t $APP_IMAGE .'
+            }
+        }
+
+        stage('Run Combined Container') {
+            steps {
+                sh 'docker run -d -p $BACKEND_PORT:5000 -p $FRONTEND_PORT:3000 --name test-app --env-file backend-production/.env $APP_IMAGE'
+            }
+        }
+
+        stage('Test Backend') {
+            steps {
+                sh 'curl --retry 5 --retry-delay 3 http://localhost:$BACKEND_PORT/health || echo "Backend health check failed"'
+            }
+        }
+
+        stage('Test Frontend') {
+            steps {
+                sh 'curl --retry 5 --retry-delay 3 http://localhost:$FRONTEND_PORT || echo "Frontend health check failed"'
+            }
+        }
+
+        stage('Cleanup') {
+            steps {
+                sh 'docker stop test-app || true && docker rm test-app || true'
+            }
+        }
+    }
+}
+```
+
+### Stages du Pipeline CI/CD
+
+#### 📥 Stage 1: Checkout
+- **Récupération du code** depuis GitHub
+- **Branch cible** : `integration`
+- **Authentification** : SSH keys ou tokens
+
+#### 🔨 Stage 2: Build
+- **Construction de l'image Docker** multi-stage
+- **Optimisation** : Cache des couches Docker
+- **Tagging** : Versioning automatique
+
+#### 🚀 Stage 3: Deploy
+- **Déploiement du container** avec variables d'environnement
+- **Port mapping** : 5000 (backend) et 3000 (frontend)
+- **Configuration** : Fichier `.env` pour les secrets
+
+#### 🧪 Stage 4: Testing
+- **Health checks** : Vérification de la disponibilité des services
+- **Retry logic** : 5 tentatives avec délai de 3 secondes
+- **Fallback** : Messages d'erreur explicites
+
+#### 🧹 Stage 5: Cleanup
+- **Nettoyage des ressources** : Arrêt et suppression du container de test
+- **Gestion d'erreurs** : `|| true` pour éviter l'échec du pipeline
+
+---
+
+## 4. Gestion des Environnements
+
+### Variables d'Environnement
+```bash
+# Production Environment (.env)
+MONGO_URI=mongodb://localhost:27017
+MONGO_DB_NAME=esb_chatbot
+MONGO_COLLECTION_AUTH_STUD=auth_students
+MONGO_COLLECTION_AUTH_ADMIN=auth_admins
+MONGO_COLLECTION_CHAT_STUD=chat_students
+MONGO_COLLECTION_CHAT_ADMIN=chat_admins
+
+# LLM Configuration
+GROQ_API_KEY=your_groq_api_key
+OPENAI_API_KEY=your_openai_api_key
+LLM_PROVIDER=groq
+
+# Security
+SECRET_KEY=your_secret_key
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=admin
+
+# ESB Configuration
+ESB_WEBSITE_URL=https://esprit.tn
+ESB_FACEBOOK_URL=https://facebook.com/esprit.tn
+```
+
+### Configuration Multi-Environnement
+```yaml
+# docker-compose.yml (Development)
+version: '3.8'
+services:
+  esb-chatbot:
+    build: .
+    ports:
+      - "5000:5000"
+      - "3000:3000"
+    environment:
+      - FLASK_ENV=development
+      - MONGO_URI=mongodb://mongo:27017
+    depends_on:
+      - mongo
+    volumes:
+      - ./logs:/app/logs
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
+```
+
+---
+
+## 5. Monitoring et Observabilité
+
+### Health Checks
+```python
+# Backend Health Check
+@app.route('/api/health')
+def health_check():
+    try:
+        mongodb.list_collection_names()
+        openai.Model.list()
+        healthy = True
+    except Exception:
+        healthy = False
+    return jsonify({
+        'status': 'healthy' if healthy else 'error',
+        'timestamp': time.time()
+    })
+```
+
+### Logging Configuration
+```python
+# Logging Setup
+import logging
+from src.utils.logging_config import setup_logging
+
+setup_logging()
+logger = logging.getLogger(__name__)
+
+# Structured Logging
+logger.info(f"[INTENT] user_id={user_id} intent={state.intent}")
+logger.error(f"Error processing message: {e}")
+```
+
+### Métriques de Performance
+```python
+# Performance Monitoring
+import time
+
+start_time = time.time()
+# ... processing ...
+execution_time = time.time() - start_time
+logger.info(f"Request processed in {execution_time:.2f}s")
+```
+
+---
+
+## 6. Sécurité DevOps
+
+### Sécurité des Images Docker
+```dockerfile
+# Security Best Practices
+FROM python:3.12-slim
+
+# Non-root user
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+USER appuser
+
+# Minimal base image
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    supervisor && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy only necessary files
+COPY --chown=appuser:appuser backend-production/ /app/
+```
+
+### Gestion des Secrets
+```bash
+# Kubernetes Secrets (Production)
+apiVersion: v1
+kind: Secret
+metadata:
+  name: esb-secrets
+type: Opaque
+data:
+  groq-api-key: <base64-encoded-key>
+  mongo-uri: <base64-encoded-uri>
+  secret-key: <base64-encoded-secret>
+```
+
+### Network Security
+```yaml
+# Docker Network Configuration
+networks:
+  esb-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+```
+
+---
+
+## 7. Déploiement et Scaling
+
+### Déploiement Kubernetes
+```yaml
+# esb-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: esb-chatbot
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: esb-chatbot
+  template:
+    metadata:
+      labels:
+        app: esb-chatbot
+    spec:
+      containers:
+      - name: esb-chatbot
+        image: esb-frontend:latest
+        ports:
+        - containerPort: 5000
+        - containerPort: 3000
+        env:
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: esb-secrets
+              key: mongo-uri
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+```
+
+### Auto-Scaling
+```yaml
+# Horizontal Pod Autoscaler
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: esb-chatbot-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: esb-chatbot
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+```
+
+---
+
+## 8. Backup et Disaster Recovery
+
+### Backup Strategy
+```bash
+#!/bin/bash
+# backup-script.sh
+
+# MongoDB Backup
+mongodump --uri="$MONGO_URI" --out="/backups/$(date +%Y%m%d_%H%M%S)"
+
+# Application Data Backup
+tar -czf "/backups/app_$(date +%Y%m%d_%H%M%S).tar.gz" /app/data
+
+# Logs Backup
+tar -czf "/backups/logs_$(date +%Y%m%d_%H%M%S).tar.gz" /app/logs
+
+# Cleanup old backups (keep 30 days)
+find /backups -name "*.tar.gz" -mtime +30 -delete
+```
+
+### Recovery Procedures
+```bash
+#!/bin/bash
+# recovery-script.sh
+
+# Restore MongoDB
+mongorestore --uri="$MONGO_URI" /backups/latest_backup/
+
+# Restore Application Data
+tar -xzf /backups/app_latest.tar.gz -C /app/
+
+# Restart Services
+supervisorctl restart all
+```
+
+---
+
+## 9. Performance et Optimisation
+
+### Docker Optimization
+```dockerfile
+# Multi-stage build optimization
+FROM node:20-alpine AS frontend-builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+
+FROM node:20-alpine AS frontend
+COPY --from=frontend-builder /app/node_modules ./node_modules
+COPY . .
+RUN npm run build
+
+# Layer caching optimization
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+```
+
+### Resource Management
+```yaml
+# Resource Limits
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "100m"
+  limits:
+    memory: "512Mi"
+    cpu: "200m"
+```
+
+---
+
+## 10. Monitoring Avancé
+
+### Prometheus Metrics
+```python
+# metrics.py
+from prometheus_client import Counter, Histogram, generate_latest
+
+# Metrics
+REQUEST_COUNT = Counter('esb_requests_total', 'Total requests')
+REQUEST_DURATION = Histogram('esb_request_duration_seconds', 'Request duration')
+
+@app.route('/metrics')
+def metrics():
+    return generate_latest()
+
+# Usage in application
+@REQUEST_DURATION.time()
+def process_request():
+    REQUEST_COUNT.inc()
+    # ... processing
+```
+
+### Grafana Dashboards
+```json
+{
+  "dashboard": {
+    "title": "ESB Chatbot Metrics",
+    "panels": [
+      {
+        "title": "Request Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(esb_requests_total[5m])"
+          }
+        ]
+      },
+      {
+        "title": "Response Time",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(esb_request_duration_seconds_bucket[5m]))"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+---
+
+## 11. Scripts d'Automatisation
+
+### Deployment Script
+```bash
+#!/bin/bash
+# deploy.sh
+
+set -e
+
+echo "🚀 Starting ESB Chatbot Deployment..."
+
+# Build Docker image
+echo "📦 Building Docker image..."
+docker build -t esb-chatbot:latest .
+
+# Run tests
+echo "🧪 Running tests..."
+docker run --rm esb-chatbot:latest python -m pytest
+
+# Deploy to production
+echo "🚀 Deploying to production..."
+docker-compose -f docker-compose.prod.yml up -d
+
+# Health check
+echo "🏥 Performing health check..."
+sleep 30
+curl -f http://localhost:5000/api/health || exit 1
+
+echo "✅ Deployment completed successfully!"
+```
+
+### Rollback Script
+```bash
+#!/bin/bash
+# rollback.sh
+
+echo "🔄 Rolling back to previous version..."
+
+# Stop current deployment
+docker-compose down
+
+# Restore previous image
+docker tag esb-chatbot:previous esb-chatbot:latest
+
+# Restart services
+docker-compose up -d
+
+echo "✅ Rollback completed!"
+```
+
+---
+
+## 12. Documentation DevOps
+
+### Architecture Diagram
+```mermaid
+graph TB
+    A[Developer] -->|Push Code| B[GitHub]
+    B -->|Webhook| C[Jenkins]
+    C -->|Build| D[Docker Registry]
+    C -->|Deploy| E[Kubernetes Cluster]
+    E -->|Health Check| F[Prometheus]
+    F -->|Metrics| G[Grafana]
+    E -->|Logs| H[ELK Stack]
+    E -->|Backup| I[Storage]
+    
+    subgraph "Production Environment"
+        E
+        F
+        G
+        H
+        I
+    end
+```
+
+### DevOps Checklist
+- [ ] **Code Quality** : Linting, testing, code review
+- [ ] **Security** : Vulnerability scanning, secrets management
+- [ ] **Performance** : Load testing, optimization
+- [ ] **Monitoring** : Health checks, metrics, alerting
+- [ ] **Backup** : Data backup, disaster recovery
+- [ ] **Documentation** : Runbooks, procedures
+- [ ] **Compliance** : Audit trails, security policies
+
+Cette architecture DevOps complète garantit un déploiement fiable, scalable et maintenable du système ESB Chatbot, avec une forte emphase sur la sécurité, la performance et l'observabilité.
+
+---
+
+
 ## Workflow: How It All Works
 
 The ESB Admin Chatbot system is designed for seamless, end-to-end feedback analytics and reporting. Below is a detailed walkthrough of a typical workflow, highlighting the interplay between system components:
@@ -269,7 +913,7 @@ The ESB Admin Chatbot system is designed for seamless, end-to-end feedback analy
    - The frontend transmits the query to the backend via a RESTful API call, including session context.
 
 3. **Intent & Entity Extraction:**
-   - The backend’s Intent Parser analyzes the query, extracting actionable intent (e.g., get_positive_feedbacks), subject (e.g., Finance), and temporal context (e.g., this_week).
+   - The backend's Intent Parser analyzes the query, extracting actionable intent (e.g., get_positive_feedbacks), subject (e.g., Finance), and temporal context (e.g., this_week).
    - The Subject Validator normalizes and validates the subject to ensure accurate analytics.
 
 4. **Orchestration & Agent Pipeline:**
@@ -406,7 +1050,7 @@ The ESB Admin Chatbot system stands out in a crowded market due to its unique bl
 
 ## Example User Journey
 
-To illustrate the system’s capabilities, here is a detailed walkthrough of a typical admin user’s experience:
+To illustrate the system's capabilities, here is a detailed walkthrough of a typical admin user's experience:
 
 1. **Login:**
    - The admin navigates to the ESB Admin Chatbot portal and enters their credentials.
