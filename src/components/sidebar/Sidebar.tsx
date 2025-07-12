@@ -1,24 +1,26 @@
-'use client';
 import React from 'react';
-
-// chakra imports
 import {
   Box,
   Button,
   Flex,
   Icon,
   Image,
+  Text,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { IoArrowBack, IoLogOut } from 'react-icons/io5';
 import logo from '/public/img/esb.png';
+import { IRoute } from '@/types/navigation'; // Make sure this exists
 
-function Sidebar() {
-  // Chakra Color Mode
+interface SidebarProps {
+  routes: IRoute[];
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ routes }) => {
   let sidebarBg = useColorModeValue('white', 'navy.800');
   let sidebarRadius = '14px';
   let sidebarMargins = '0px';
-  // SIDEBAR
+
   return (
     <Flex
       direction="column"
@@ -30,35 +32,26 @@ function Sidebar() {
       <Box
         bg={sidebarBg}
         w="250px"
-        my={{
-          sm: '16px',
-        }}
+        my={{ sm: '16px' }}
         h="calc(100vh - 32px)"
         m={sidebarMargins}
         borderRadius={sidebarRadius}
-        minH="100%"
         p="20px"
         display="flex"
         flexDirection="column"
       >
-        {/* Logo */}
         <Box mb="20px" textAlign="center">
           <Image src={logo.src} alt="Logo" boxSize="100px" mx="auto" />
         </Box>
-        <Button
-          leftIcon={<IoArrowBack />}
-          variant="solid"
-          colorScheme="red"
-          bg="white"
-          color="red.500"
-          _hover={{ bg: 'red.100' }}
-          _active={{ bg: 'red.200' }}
-          mb="20px"
-        >
-          Retour
-        </Button>
+
+        {/* Render dynamic nav items */}
+        {routes.map((route, idx) => (
+          <Button key={idx} variant="ghost" w="full" justifyContent="flex-start">
+            <Text>{route.name}</Text>
+          </Button>
+        ))}
+
         <Flex flex="1" />
-        {/* Log Out Button */}
         <Button
           leftIcon={<Icon as={IoLogOut} />}
           variant="solid"
@@ -73,6 +66,6 @@ function Sidebar() {
       </Box>
     </Flex>
   );
-}
+};
 
 export default Sidebar;

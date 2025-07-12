@@ -1,5 +1,14 @@
-import ReactMarkdown from 'react-markdown';
+import dynamic from "next/dynamic";
 import { FC, useEffect, useState } from 'react';
+
+// Remove this problematic import
+// import type { ReactMarkdownOptions } from "react-markdown/lib/react-markdown";
+
+// Workaround: manually type cast to satisfy dynamic
+const ReactMarkdown = dynamic(
+  () => import("react-markdown").then(mod => mod.default as FC<any>),
+  { ssr: false }
+);
 
 interface Props {
   code: string;
