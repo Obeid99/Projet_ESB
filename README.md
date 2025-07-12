@@ -1,5 +1,21 @@
 # ESB Student/Admin Chatbot System — Full Technical & Business Report
+## DEVELOPERS :
+Nouicer Obeid Allah
+Hached Mhamed Amine
+Ajroud Eya
+Zouaoui Zayneb
+Samet Mohamed
 
+## HOW TO RUN :
+pip install -r requirements.txt
+npm install
+npm run dev
+
+python run_server.py
+
+### RQ:
+YOU NEED TO SWITCH TO POSTGRES(or another mongodb instance and add a new connection in the MongoDB compass) 
+WE ARE USING A PRIVATE INSTANCE OF MONGODB
 
 ## Executive Summary
 
